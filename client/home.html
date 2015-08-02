@@ -1,0 +1,41 @@
+<template name="home">
+<div class="container">
+  <h1 style="margin-bottom:150px">The Battleground</h1>
+  <div class="row">
+        {{#each videos}}
+        <div class="col-sm-8">
+        {{> mainVideos}}
+        <div class="hidden-xs" style="height:150px;"></div>
+        </div>
+        <div class="col-sm-4" style="margin-bottom:150px">
+          <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
+          <div class="comments" id="{{_id}}" style="margin-bottom:10px">
+            {{#if currentUser}}
+            <form method="post" id="form{{_id}}">
+            <input id="comment{{_id}}" class="comment-box" type="text" required/>
+            <button class="pull-right lb-button-post" id="addComment" type="submit">ADD COMMENT</button>
+            </form>
+            {{/if}}
+          </div>
+          {{#each comment}}
+          <div class="post">
+          {{post}}
+            <div class="post-info">
+            {{name}}
+            {{date}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        {{/each}}
+  </div>
+</div>
+</template>
+
+<template name="mainVideos">
+<div id="{{ _id }}">
+<h3>{{title}}<small> - {{name}}</small></h3>
+<iframe width="100%" height="500px" src="{{url}}?controls=2" frameborder="0" allowfullscreen></iframe>
+
+</div>
+</template>

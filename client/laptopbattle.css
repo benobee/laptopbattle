@@ -155,3 +155,18 @@ textarea {
 	font-size:11px;
 	opacity:0.85;
 }
+.comment-box{
+	border-style:none;
+	width: 100%;
+	background: #F5F5F5;
+	padding:5px;
+	margin-bottom:5px;
+}
+.spinner{
+	position:fixed;
+	left:50%;
+	right:50%;
+	top:50%;
+	margin:auto;
+	z-index:2000000000;
+}

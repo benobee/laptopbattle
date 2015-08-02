@@ -1,0 +1,19 @@
+<body>  
+  <div>{{> navbar}}</div>
+  <div>{{> notifications}}</div>
+</body>
+
+<template name="notifications">
+  {{#if Template.subscriptionsReady}}
+    <!-- This is displayed when all data is ready. -->
+    {{#each notifications}}
+      {{> notification}}
+    {{/each}}
+  {{else}}
+    <div class="spinner">{{>spinner}}</div>
+  {{/if}}
+</template>
+
+
+
+

@@ -62,33 +62,7 @@
 	background: black;
 	transition: .5s ease;
 }
-CSS
-.sliding-u-l-r {
-    text-decoration: none;
-    display: inline-block;
-    border-bottom: 3px solid transparent;    
-    width: 0px;
-    transition: 0.5s ease;
-    white-space: nowrap;
-    height: 25px;
-}
 
-/* LEFT TO RIGHT */
-.sliding-u-l-r {
-	display: inline-block;
-}
-.sliding-u-l-r:after {
-	content: '';
-	display: block;
-	height: 3px;
-	width: 0;
-	background: transparent;
-	transition: width .5s ease, background-color .5s ease;
-}
-.sliding-u-l-r:hover:after {
-	width: 100%;
-	background: red;
-}
 .video-ui{
 	position:relative;
 	margin-top:10px;
@@ -170,4 +144,32 @@ textarea {
 	margin:auto;
 	z-index:2000000000;
 	background:red;
+}
+
+CSS
+.sliding-u-l-r {
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 3px solid transparent;    
+    width: 0px;
+    transition: 0.5s ease;
+    white-space: nowrap;
+    height: 25px;
+}
+
+/* LEFT TO RIGHT */
+.sliding-u-l-r {
+	display: inline-block;
+}
+.sliding-u-l-r:after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 0;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+.sliding-u-l-r:hover:after {
+	width: 100%;
+	background: red;
 }

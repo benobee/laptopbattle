@@ -9,11 +9,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-         <a class="navbar-brand" href="home"><span class="fa fa-laptop"></span> Laptop Battle</a>
+         <a class="navbar-brand" href="{{pathFor 'home'}}"><span class="fa fa-laptop"></span> Laptop Battle</a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
       {{#if currentUser}}
-        <a class="navbar-left navbar-text" href="profile">My Profile</a>
+        <a class="navbar-left navbar-text" href="{{pathFor 'profile'}}">My Profile</a>
         {{/if}}
         <div class="navbar-right navbar-text">      
         {{> loginButtons}}

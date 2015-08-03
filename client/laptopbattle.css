@@ -169,4 +169,5 @@ textarea {
 	top:50%;
 	margin:auto;
 	z-index:2000000000;
+	background:red;
 }

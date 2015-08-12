@@ -3,11 +3,15 @@ Router.configure({
 });
 
 Router.route('/', function () {
-  this.render('home');
+    this.render('home');
 });
 
 Router.map(function(){
-	this.route('home', {path:'/home'});
-	this.route('profile', {path:'/profile'});
+	this.route('home', {
+		path:'/home'
+	});
+	this.route('profile', {
+		path:'/profile'
+	});
 });
 

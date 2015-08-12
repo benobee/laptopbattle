@@ -1,3 +1,5 @@
+//spinner
+
 Meteor.Spinner.options = {
     lines: 13, // The number of lines to draw
     length: 10, // The length of each line
@@ -17,3 +19,8 @@ Meteor.Spinner.options = {
     left: 'auto' // Left position relative to parent in px
 };
 
+//
+
+Accounts.config = {
+    sendVerificationEmail : true
+}

@@ -1,18 +1,12 @@
 <template name="navbar">
-  <nav class="navbar navbar-inverse lb-navbar" style="border-radius:0px">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-         <a class="navbar-brand" href="{{pathFor 'home'}}"><span class="fa fa-laptop"></span> Laptop Battle</a>
-      </div>
+  
+  <nav class="navbar navbar-inverse hidden-xs" style="border-radius:0px">
+    <div class="ui container">
+
+      <a class="navbar-brand " href="{{pathFor 'home'}}"><span class="fa fa-laptop"></span> Laptop Battle</a>
+
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      {{#if currentUser}}
+        {{#if currentUser}}
         <a class="navbar-left navbar-text" href="{{pathFor 'profile'}}">My Profile</a>
         {{/if}}
         <div class="navbar-right navbar-text">      
@@ -21,4 +15,29 @@
       </div>
     </div>
   </nav>
+
+  <nav class="navbar navbar-inverse visible-xs lb-navbar" style="border-radius:0px">
+    <div class="container">
+      <a class="navbar-brand" href="{{pathFor 'home'}}"><span class="fa fa-laptop fa-2x"></span></a> 
+      <div class="visible-xs navbar-button pull-right">
+        <button type="button" id="bars"><span class="fa fa-bars fa-2x"></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lb-navbar-menu container">
+
+      <h1 style="color:white;margin-left:15px">Laptop Battle</h1>
+      <ul>
+        {{#if currentUser}}
+        <li><a class="navbar-left navbar-text" href="{{pathFor 'profile'}}">My Profile</a></li>
+
+        {{/if}}
+        <li><div class="navbar-right navbar-text">      
+        {{> loginButtons}}
+        </div></li>
+      </ul>
+
+  </div>
+
 </template>

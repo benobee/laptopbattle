@@ -15,6 +15,7 @@ blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
+coffeescript@1.0.6
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
@@ -70,9 +71,9 @@ retry@1.0.3
 richsilv:semantic-ui-modal@1.1.1
 routepolicy@1.0.5
 sacha:spin@2.3.1
-semantic:ui@2.0.7
+semantic:ui@2.0.8
 semantic:ui-css@1.9.3
-semantic:ui-data@2.0.7
+semantic:ui-data@2.0.8
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3

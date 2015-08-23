@@ -23,6 +23,10 @@ Template.profile.helpers({
     } 
 });
 
+Template.profile.rendered = function () {
+  $('#spinner-wrapper').hide();
+};
+
 Template.profile.events({
 
     'submit form': function(e) {

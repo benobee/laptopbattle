@@ -24,3 +24,11 @@ Meteor.Spinner.options = {
 Accounts.config = {
     sendVerificationEmail : true
 }
+
+Accounts.onLogin(function(){
+  
+  Session.set("id",Meteor.user()._id);
+  Session.set("name",Meteor.user().profile['name']);
+  Session.set("image",Meteor.user().services.google.picture);
+
+});

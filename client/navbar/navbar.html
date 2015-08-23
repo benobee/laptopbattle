@@ -1,43 +1,70 @@
 <template name="navbar">
   
-  <nav class="navbar navbar-inverse hidden-xs" style="border-radius:0px">
+<div class="container fluid lb-navbar"> 
+  <nav>
     <div class="ui container">
-
-      <a class="navbar-brand " href="{{pathFor 'home'}}"><span class="fa fa-laptop"></span> Laptop Battle</a>
-
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-        {{#if currentUser}}
-        <a class="navbar-left navbar-text" href="{{pathFor 'profile'}}">My Profile</a>
-        {{/if}}
-        <div class="navbar-right navbar-text">      
-        {{> loginButtons}}
-        </div>
+      <div>
+        <button id="toggleSidebar"><i class="sidebar icon"></i> Menu</button>
       </div>
     </div>
   </nav>
+</div>
+</template>
 
-  <nav class="navbar navbar-inverse visible-xs lb-navbar" style="border-radius:0px">
-    <div class="container">
-      <a class="navbar-brand" href="{{pathFor 'home'}}"><span class="fa fa-laptop fa-2x"></span></a> 
-      <div class="visible-xs navbar-button pull-right">
-        <button type="button" id="bars"><span class="fa fa-bars fa-2x"></span></button>
-      </div>
-    </div>
-  </nav>
+<template name="sidebarLeft">
+<div class="ui sidebar inverted vertical menu" id="menu">
+  <a class="item" href="{{pathFor 'home'}}"><span class="fa fa-laptop"></span> Laptop Battle</a>
+  
+{{#if currentUser}}
+  <a class="item" href="{{pathFor 'profile'}}">My Profile</a>
+{{/if}}
 
-  <div class="lb-navbar-menu container">
-
-      <h1 style="color:white;margin-left:15px">Laptop Battle</h1>
-      <ul>
-        {{#if currentUser}}
-        <li><a class="navbar-left navbar-text" href="{{pathFor 'profile'}}">My Profile</a></li>
-
-        {{/if}}
-        <li><div class="navbar-right navbar-text">      
-        {{> loginButtons}}
-        </div></li>
-      </ul>
-
+  <div class="item">      
+    {{> loginButtons}}
   </div>
+
+{{#if currentUser}}
+  <div class="item"><i class="add circle icon"></i> Add Video</div>
+  <div class="item">
+      <form id="battleUpload">      
+      <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
+      <input class="lb-input" name="url" id="url" placeholder="Video URL Link" type="link" required/>
+      <button id="uploadVideo" type="submit" class="lb-button lb-upload"><span class="fa fa-upload"></span> Upload Video</button>
+      </form>
+  </div>
+{{/if}}
+
+</div>
+</template>
+
+<template name="sidebarRight">
+
+    <div id="commentSidebar" class="ui sidebar right comment wide">
+
+        <div id="commentList{{_id}}" class="comments" style="margin-bottom:150px">
+            <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
+            <div  style="margin-bottom:30px">
+              {{#if currentUser}}
+              <form method="post" id="commentForm">
+              <input id="post" class="comment-box" type="text" required/>
+              <button class="pull-right lb-button-post" id="addComment" type="submit">ADD COMMENT</button>
+              </form>
+              {{/if}}
+            </div>
+
+<!-- Display Comments -->
+          {{#each comment}}
+            <div class="post">
+              {{post}}
+            <div class="post-info">
+              {{name}}
+              {{date}}
+              </div>
+            </div>
+          {{/each}}
+
+        </div>
+
+    </div>
 
 </template>

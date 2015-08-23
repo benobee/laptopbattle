@@ -1,0 +1,33 @@
+bot{
+	position: fixed;
+	right:0px;
+	padding-right:50px;
+	bottom:0px;
+	transition: 0.8s;
+	transform: translateY(150%);
+	z-index: 9999999999999;
+}
+bot img{
+	width:250px;
+	height:250px;
+}
+.spinner-wrapper{
+	width:100%;
+	top:0px;
+	position: fixed;
+	height:100%;
+	background:white;
+	z-index:2000000000;
+}
+.spinner{
+	position:fixed;
+	left:50%;
+	right:50%;
+	top:50%;
+	margin:auto;
+	z-index:2000000000;
+}
+#content{
+	margin-top:50px;
+	margin-bottom:50px;
+}

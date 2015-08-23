@@ -1,0 +1,29 @@
+<template name="videoPage">
+<div class="videoPage slide">
+<div id="videoPageContainer" class="ui container fluid">
+<div id="sidebarRight" class="ui right fixed menu">
+    <button id="battleComment" class="ui icon button"><span class="fa fa-comment-o fa-5x"></span></button>
+</div>
+<button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
+
+<h2>{{url.title}}</h2>
+<h4>{{url.name}}</h4>
+
+  <div class="ui container">
+    <div>
+        <div id="player"></div>
+<!--     <iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{url.url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+
+    <div id="timeline">
+      <div id="video-controls" class="ui icon buttons">
+        <button id="play" class="button"><i class="play icon"></i></button>
+        <button id="pause" class="button"><i class="pause icon"></i></button>
+        <button id="stop" class="button"><i class="stop icon"></i></button>   
+      </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</template>

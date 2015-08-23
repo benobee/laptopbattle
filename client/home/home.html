@@ -1,106 +1,37 @@
 <template name="home">
-  <div id="spinner-wrapper" class="spinner-wrapper">
-    <div class="spinner">
-      {{> spinner}} 
-    </div>
+
+<div class="ui container">
+  <div class="ui grid stackable">
+   
+          {{#each videos}}
+
+          <div class="four wide column video-wrapper-container" id="main{{_id}}">
+          {{> mainVideos}}           
+          </div>
+
+          {{/each}}
+
   </div>
-<div class="ui container">
-  <h2></h2>
-</div>
-<div class="ui container">
-
-<div class="nav navbar">
-{{#if currentUser}}
-<button id="close-video" style="display:none" class="add-video">Close</button>
-<button id="add-video" class="add-video"><span class="fa fa-plus-circle"></span> ADD VIDEO</button>
-<div id="add-modal-wrapper">
-
-  <form id="battleUpload">
-  <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
-  <input class="lb-input" name="url" id="url" placeholder="Video URL Link" type="link" required/>
-  <button id="uploadVideo" type="submit" class="lb-button lb-upload"><span class="fa fa-upload"></span> Upload Video</button>
-  </form>
-</div>
-{{/if}}
 </div>
 
-<div class="ui grid stackable">
-
-        {{#each videos}}
-        <div class="four wide column video-wrapper-container" id="main{{_id}}">
-        {{> mainVideos}}
-          
-          <div class="hidden-xs" style="height:75px;"></div>
-
-        </div>
-
-        {{/each}}
-
-</div>
-</div>
 {{> videoPage}}
 </template>
 
 <template name="mainVideos">
-<div class="main-video info-display" id="controls{{ _id }}">
-
-<iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe>
-
-<div class="likes"><span class="fa fa-heart"></span> {{count}} votes</div>
-
-<div class="info-display" id="title"><h4>{{title}}</h4><h6>{{name}}</h6></div>
-
-<div class="video-ui-main">
-    {{#if currentUser}}
-    <button id="like" class="ui icon large button"><span style="color:{{liked}}" class="fa fa-heart fa-2x"></span></button>
-    {{/if}}
-    <!-- <button id="comment" class="ui icon large button"><span class="fa fa-comment"></span></button> -->
-    <button id="expand" class="button pull-right"><span class="fa fa-expand fa-2x"></span></button>    
-</div>
-
-</div>
-</template>
-
-<template name="videoPage">
-<div class="videoPage slide">
-<div class="container-fluid">
-
-<button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
-
-<h3>{{url.title}}</h3>
-<h6>{{url.name}}</h6>
-  <div class="row">
-    <div class="col-md-8">
-    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{url.url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="col-md-4">
-
-        <div id="commentList{{_id}}" class="comments" style="margin-bottom:150px">
-            <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
-            <div  style="margin-bottom:30px">
-              {{#if currentUser}}
-              <form method="post" id="commentForm">
-              <input id="post" class="comment-box" type="text" required/>
-              <button class="pull-right lb-button-post" id="addComment" type="submit">ADD COMMENT</button>
-              </form>
-              {{/if}}
-            </div>
-            {{#each comment}}
-            <div class="post">
-            {{post}}
-              <div class="post-info">
-              {{name}}
-              {{date}}
-              </div>
-            </div>
-            {{/each}}
-          </div>
-
-    </div>
+  <div class="main-video info-display" id="controls{{ _id }}">
+    <iframe class="image" width="100%" height="auto" src="https://www.youtube.com/embed/{{url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe>
+  <div class="likes"><span class="fa fa-heart"></span> {{count}} votes</div>
+  <div class="info-display" id="title"><h3 class="ui header">{{title}}</h3><p>{{name}}</p></div>
+  <div class="video-ui-main">
+      {{#if currentUser}}
+      <button id="like" class="button like"><i style="color:{{liked}}" class="icon heart"></i></button>
+      {{/if}}
+      <!-- <button id="comment" class="ui icon large button"><span class="fa fa-comment"></span></button> -->
+      <button id="expand" class="button expand"><i class="icon comment"></i></button>    
   </div>
-</div>
-</div>
+  </div>
 </template>
+
 
 
 

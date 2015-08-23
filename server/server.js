@@ -24,4 +24,15 @@ Videos.allow({
   },
 });
 
+Router.route('/webhooks/stripe', { where: 'server' })
+  .get(function () {
+    // GET /webhooks/stripe
+  })
+  .post(function () {
+    // POST /webhooks/stripe
+  })
+  .put(function () {
+    // PUT /webhooks/stripe
+  })
+
 

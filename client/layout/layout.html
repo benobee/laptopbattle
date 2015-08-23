@@ -1,9 +1,17 @@
 <template name="layout">
- 
-		{{> navbar}}
-	<div>
+   <div id="spinner-wrapper" class="spinner-wrapper">
+    <div class="spinner">
+      {{> spinner}} 
+    </div>
+  </div>
+{{> sidebarLeft}}
+{{> sidebarRight}}
+<div class="pusher">
+{{> navbar}}
+	<div id="content">
 		{{>yield}}
 	</div>
+</div>
 </template>
 
 

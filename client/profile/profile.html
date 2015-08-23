@@ -1,27 +1,37 @@
 <template name="profile">  
-  <div class="container">
-   <h4>{{userName}}</h4>
-    <div class="row">
-      <div class="col-sm-8">
-        <img src="{{avatar}}" width="150px" alt="avatar"/>
-      </div>
-      <div class="col-sm-4">
-         <form class="pull-right" id="battleUpload">
-           <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
-           <input class="lb-input" name="url" id="url" placeholder="Video URL Link" type="link" required/>
-           <button type="submit" class="lb-button lb-upload"><span class="fa fa-upload"></span> Upload Video</button>
-         </form>
+  <div class="ui container">
+    <div class="ui card">
+        <div class="image">
+          <img src="{{avatar}}" width="150px" alt="avatar"/>
+        </div>
+        <div class="content">
+          <a class="header">{{userName}}</a>
+        </div>
       </div>
    </div>
-   </div>
-   <div class="video-container">
-      <div id="videos" class="video-inner-wrapper row">
+   <div id="videos" class="ui container fluid">
+      <div class="ui stackable four column grid">
 
             {{#each userVideo}}
             {{> video}}
             {{/each}}
             
-      </div>
+      </div>    
    </div>
 </template>
 
+<template name="video">
+<div class="video-wrapper column">
+<div class="lb-video" id="{{ _id }}">
+<p class="name">{{title}}</p>
+
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+<div class="video-ui" style="top:-150px">
+<ul>
+<li><button class="lb-button-ui"><span class="fa fa-trash"></span></button></li>
+</ul>
+</div>
+</div>
+</div>
+</template>

@@ -1,11 +1,3 @@
-Accounts.onLogin(function(){
-  
-  Session.set("id",Meteor.user()._id);
-  Session.set("name",Meteor.user().profile['name']);
-  Session.set("image",Meteor.user().services.google.picture);
-
-});
-
 Template.home.helpers({
     videos: function() {
       return Videos.find({}, {sort: {date: -1}});     
@@ -21,7 +13,9 @@ Template.mainVideos.helpers({
       return Likes.find({'videoId': this._id });
     },
     count: function(){
-      return Likes.find({'videoId': this._id }).count();
+      var count = Likes.find({'videoId': this._id }).count();
+      return count;
+      
     },
     liked: function(){
       if (Likes.find({'videoId': this._id }).count() >= 1){
@@ -34,45 +28,35 @@ Template.mainVideos.helpers({
 });
 
 Template.home.events({
-  'click #expand' : function(e){
-    Session.set("video" , '' );
+
+  'click .button.expand' : function(e){
+    var id = 'controls' + this._id;
+    $('.main-video').transition('fly down');
+    $('.expand').attr("disabled", "disabled");
+    setTimeout('$(".expand").removeAttr("disabled")', 1500);
+    // $('.main-video').not( document.getElementById( id ) ).transition('fly down');
+    // $('#'+id).css('transform','scale(1.05,1.05)');
     Session.set("video" , this._id );
+    Session.set("url" , this.url );
     var x = Session.get('video');
-    $(".videoPage").css('transform','translateY(0%)');
+    var url = Session.get('url');
+    $(".videoPage").fadeIn('fast');
 
-  },
-  'click #add-video' : function(e){
-
-      $('#add-modal-wrapper').slideToggle();
-      $('#add-video').hide();
-      $('#close-video').show();
-  },
-  'click #close-video' : function(e){
-      $('#add-modal-wrapper').slideToggle();
-      $('#add-video').show();
-      $('#close-video').hide();
-  },
-  'submit form': function(e) {
-
-      var url = $('#url').val();
-      var res = url.split("=");
-
-      e.preventDefault();
-      Videos.insert({
-
-        'id': Meteor.user()._id,
-        'name': Meteor.user().profile.name,
-        'url': res[1],
-        'date': new Date(),
-        'title': $('#title').val()
-
-      });
-
-      $("#battleUpload")[0].reset();
-
-      $('#add-modal-wrapper').hide('slow');
-      $('#add-video').show();
-      $('#close-video').hide();
+    onYouTubeIframeAPIReady = function () {
+        player = new YT.Player("player", {
+            height: "auto", 
+            width: "100%", 
+            videoId: url, 
+            events: {
+                onReady: function (event) {
+                    // event.target.playVideo();
+                    // $('#'+id).css('transform','scale(1,1)').transition('fade');
+                    $(".videoPage").css('transform','translateY(0%)'); 
+                }
+            }
+        });
+    };
+    YT.load();
     },
     'click #like': function(e){
 
@@ -87,42 +71,4 @@ Template.home.events({
     }
 });
 
-Template.videoPage.helpers({
-  id:function(){
-    var id = Session.get('video');
-    return id; 
-  },
-  url:function(){
-    var id = Session.get('video');
-    return Videos.findOne(id);
-  },
-  comment: function(){
-    // var id = Session.get('video');
-    return Comments.find({'videoId': Session.get('video') });
-  },
-  date: function(){
-    return moment(this.date).fromNow();
-  }
-});
 
-Template.videoPage.events({
-    'click #addComment': function(e){
-      var id = Session.get('video');
-      console.log(id);
-    e.preventDefault();
-
-    Comments.insert({
-
-      'videoId' : id,
-      'name': Meteor.user().profile.name,
-      'post': $( '#post' ).val(),
-      'date': new Date()
-
-    });
-
-    $( "#commentForm" )[0].reset();
-  },
-  'click .closeButton': function(e){
-   $(".videoPage").css('transform','translateY(100%)');       
-  }
-})

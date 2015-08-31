@@ -2,17 +2,3 @@
 	padding:10px;
 	background:#EBEBEB;
 }
-#toggleSidebar{
-	font-family: 'Roboto Condensed', sans-serif;	
-	font-size: 20px;
-	border-style:none;
-	border-radius:4px;
-	padding-left: 10px;
-	padding-right: 10px;
-	opacity:0.6;
-	transition: 0.48s;
-	-ms-transition: 0.48s;
-   	-webkit-transition: 0.48s;
-	background:#EDEDED;
-	height:50px;
-}

@@ -37,34 +37,5 @@
 </div>
 </template>
 
-<template name="sidebarRight">
 
-    <div id="commentSidebar" class="ui sidebar right comment wide">
 
-        <div id="commentList{{_id}}" class="comments" style="margin-bottom:150px">
-            <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
-            <div  style="margin-bottom:30px">
-              {{#if currentUser}}
-              <form method="post" id="commentForm">
-              <input id="post" class="comment-box" type="text" required/>
-              <button class="pull-right lb-button-post" id="addComment" type="submit">ADD COMMENT</button>
-              </form>
-              {{/if}}
-            </div>
-
-<!-- Display Comments -->
-          {{#each comment}}
-            <div class="post">
-              {{post}}
-            <div class="post-info">
-              {{name}}
-              {{date}}
-              </div>
-            </div>
-          {{/each}}
-
-        </div>
-
-    </div>
-
-</template>

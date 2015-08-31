@@ -1,29 +1,71 @@
 <template name="videoPage">
 <div class="videoPage slide">
-<div id="videoPageContainer" class="ui container fluid">
+<div class="ui container fluid">
+
 <div id="sidebarRight" class="ui right fixed menu">
     <button id="battleComment" class="ui icon button"><span class="fa fa-comment-o fa-5x"></span></button>
 </div>
 <button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
-
+<div class="ui container">
 <h2>{{url.title}}</h2>
 <h4>{{url.name}}</h4>
+<h4>Duration: {{duration}}</h4>
+<h4>Playback time: {{time}}</h4>
+<div id="player" class="player"></div>
 
-  <div class="ui container">
-    <div>
-        <div id="player"></div>
-<!--     <iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{url.url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
-
-    <div id="timeline">
-      <div id="video-controls" class="ui icon buttons">
-        <button id="play" class="button"><i class="play icon"></i></button>
-        <button id="pause" class="button"><i class="pause icon"></i></button>
-        <button id="stop" class="button"><i class="stop icon"></i></button>   
+    <div class="timeline">
+    <div id="slider"></div>
+      <div class="video-controls">
+        <button id="play" class="bot button"><i class="ui big play icon"></i></button>
+        <button id="pause" class="bot button"><i class="ui big pause icon"></i></button>
+        <button id="stop" class="bot button"><i class="ui big stop icon"></i></button>
+        <div class="volumeContainer">
+        <div class="volumeControl" id="slider-volume"></div>
+        <button id="vol" class="bot button"><i class="ui big volume up icon icon"></i></button>
+      </div>   
       </div>
-    </div>
+
     </div>
 
   </div>
 </div>
 </div>
+</template>
+
+<template name="sidebarRight">
+    <div id="commentSidebar" class="ui sidebar right comment wide">
+        <div id="commentList{{_id}}" class="comments" style="margin-bottom:150px">
+            <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
+            <div class="" style="margin-bottom:30px">
+              {{#if currentUser}}
+              <form method="post" id="commentForm">
+              <input id="post" class="comment-box" type="text" required/>
+              <button class="pull-right lb-button-post" id="addComment" type="submit">ADD COMMENT</button>
+              </form>
+              {{/if}}
+            </div>
+
+<!-- Display Comments -->
+            {{>allComments}}
+        </div>
+    </div>
+</template>
+
+<template name="allComments">
+        <div class="allComments">
+          {{#each comment}}
+            {{>post}}
+          {{/each}}
+        </div>
+</template>
+
+<template name="post">
+  <div class="fade post" id="comment{{_id}}">
+        {{post}}
+      <div class="post-info">
+        {{time}}
+        {{name}}
+        {{date}}
+      </div>
+  </div>
 </template>

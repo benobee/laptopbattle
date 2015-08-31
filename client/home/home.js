@@ -34,8 +34,6 @@ Template.home.events({
     $('.main-video').transition('fly down');
     $('.expand').attr("disabled", "disabled");
     setTimeout('$(".expand").removeAttr("disabled")', 1500);
-    // $('.main-video').not( document.getElementById( id ) ).transition('fly down');
-    // $('#'+id).css('transform','scale(1.05,1.05)');
     Session.set("video" , this._id );
     Session.set("url" , this.url );
     var x = Session.get('video');
@@ -44,13 +42,15 @@ Template.home.events({
 
     onYouTubeIframeAPIReady = function () {
         player = new YT.Player("player", {
-            height: "auto", 
-            width: "100%", 
-            videoId: url, 
-            events: {
+            height     : "auto", 
+            width      : "100%",
+            controls   : 2,
+            showinfo   : 0,
+            videoId    : url, 
+            events     : {
                 onReady: function (event) {
-                    // event.target.playVideo();
-                    // $('#'+id).css('transform','scale(1,1)').transition('fade');
+                    var d = player.getDuration('player');
+                    Session.set("duration", d);  
                     $(".videoPage").css('transform','translateY(0%)'); 
                 }
             }

@@ -26,6 +26,19 @@ Template.videoPage.onRendered(function (){
       value: 85,
       slide: function( event, ui ) {
         $( "#amount" ).val( ui.value );
+
+        if (ui.value <= 100 && ui.value >= 26){ 
+        player.setVolume(ui.value);
+        $('#vol').html('<i class="ui big volume up icon icon"></i>');
+        }
+        else if (ui.value <= 25 && ui.value >= 1){
+        player.setVolume(ui.value);
+        $('#vol').html('<i class="ui big volume down icon icon"></i>');
+        }
+        else{
+        $('#vol').html('<i class="ui big volume off icon icon"></i>');  
+        player.setVolume(ui.value);
+        }
       }
     });
     $( "#amount" ).val( $( "#slider-volume" ).slider( "value" ) );
@@ -73,7 +86,7 @@ Template.videoPage.events({
     Meteor.setInterval(function(){
     var time = player.getCurrentTime();
     var s = Session.get('duration');
-
+    
     $( "#slider" ).slider({
       range: "max",
       min: 0,
@@ -91,6 +104,8 @@ Template.videoPage.events({
   },
   'click #stop': function(e){
     player.stopVideo();
+    $('#pause').hide();
+    $('#play').show();
   },
   'mouseenter .volumeContainer': function(e){
     $('#slider-volume').css('opacity','1');
@@ -112,7 +127,7 @@ Template.allComments.helpers({
     return Videos.findOne(id);
   },
   comment: function(){
-    return Comments.find({'videoId': Session.get('video') ,'time': { $lt: Session.get('time') }}, {sort: {time: 1}});
+    return Comments.find({'videoId': Session.get('video') ,'time': { $lt: Session.get('time') }}, {sort: {time: -1}, limit: 8});
   }
 });
 
@@ -151,11 +166,15 @@ Template.sidebarRight.onRendered(function () {
   $('#commentSlider')
   .sidebar('setting', 'transition', 'overlay')
   .sidebar()
+  .sidebar({
+    closable: false
+  })
   ;
 });
 
 Template.post.onRendered(function (){
-  
-    $('.post').css('opacity','1').css('transform','translateX(0)'); 
-    
+  var $post = $(this.find('.post'))
+  Meteor.defer(function() {
+    $post.removeClass('loading');
+  });
 });

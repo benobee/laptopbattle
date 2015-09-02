@@ -11,20 +11,19 @@
 <h4>{{url.name}}</h4>
 <h4>Duration: {{duration}}</h4>
 <h4>Playback time: {{time}}</h4>
+<div id="thumb"></div>
 <div id="player" class="player"></div>
-
     <div class="timeline">
     <div id="slider"></div>
       <div class="video-controls">
         <button id="play" class="bot button"><i class="ui big play icon"></i></button>
         <button id="pause" class="bot button"><i class="ui big pause icon"></i></button>
         <button id="stop" class="bot button"><i class="ui big stop icon"></i></button>
-        <div class="volumeContainer">
+      <div class="volumeContainer">
         <div class="volumeControl" id="slider-volume"></div>
         <button id="vol" class="bot button"><i class="ui big volume up icon icon"></i></button>
       </div>   
       </div>
-
     </div>
 
   </div>
@@ -60,7 +59,7 @@
 </template>
 
 <template name="post">
-  <div class="fade post" id="comment{{_id}}">
+  <div class="post loading" id="comment{{_id}}">
         {{post}}
       <div class="post-info">
         {{time}}

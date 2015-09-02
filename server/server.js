@@ -35,4 +35,3 @@ Router.route('/webhooks/stripe', { where: 'server' })
     // PUT /webhooks/stripe
   })
 
-

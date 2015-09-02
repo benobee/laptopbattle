@@ -44,11 +44,14 @@ Template.home.events({
         player = new YT.Player("player", {
             height     : "auto", 
             width      : "100%",
-            controls   : 2,
+            controls   : 0,
+            autohide   : 1,
             showinfo   : 0,
             videoId    : url, 
             events     : {
                 onReady: function (event) {
+
+                    // $('#thumb').append('<img style="width:100%;max-height:400px" src="http://img.youtube.com/vi/'+url+'/0.jpg"/>');
                     var d = player.getDuration('player');
                     Session.set("duration", d);  
                     $(".videoPage").css('transform','translateY(0%)'); 

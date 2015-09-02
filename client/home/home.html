@@ -17,14 +17,13 @@
 
 <template name="mainVideos">
   <div class="main-video info-display" id="controls{{ _id }}">
-    <iframe class="image" width="100%" height="auto" src="https://www.youtube.com/embed/{{url}}?controls=2&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    <img class="image" width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
   <div class="likes"><span class="fa fa-heart"></span> {{count}} votes</div>
   <div class="info-display" id="title"><h3 class="ui header">{{title}}</h3><p>{{name}}</p></div>
   <div class="video-ui-main">
       {{#if currentUser}}
       <button id="like" class="button like"><i style="color:{{liked}}" class="icon heart"></i></button>
       {{/if}}
-      <!-- <button id="comment" class="ui icon large button"><span class="fa fa-comment"></span></button> -->
       <button id="expand" class="button expand"><i class="icon comment"></i></button>    
   </div>
   </div>

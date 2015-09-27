@@ -19,12 +19,7 @@ Meteor.Spinner.options = {
     left: 'auto' // Left position relative to parent in px
 };
 
-//
-
-Accounts.config = {
-    sendVerificationEmail : true
-}
-
+//when user logs in with particular service, trigger events
 Accounts.onLogin(function(){
   
   Session.set("id",Meteor.user()._id);

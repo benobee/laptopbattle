@@ -1,7 +1,7 @@
 <template name="home">
 <div class="ui container">
   <div class="ui grid stackable">
-   
+
           {{#each videos}}
 
           <div class="four wide column video-wrapper-container" id="main{{_id}}">
@@ -24,7 +24,7 @@
       {{#if currentUser}}
       <button id="like" class="button like"><i style="color:{{liked}}" class="icon heart"></i></button>
       {{/if}}
-      <button id="expand" class="button expand"><i class="icon comment"></i></button>    
+      <button id="expand" class="button expand"><i class="icon play"></i></button>    
   </div>
   </div>
 </template>

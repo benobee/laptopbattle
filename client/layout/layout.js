@@ -1,3 +1,4 @@
+//initialize the sidebar
  Template.layout.events({
    'click #battleComment': function(e){
     $('.ui.sidebar.right.comment')

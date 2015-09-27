@@ -1,3 +1,4 @@
+//initiailze the nav sidebar
 Template.navbar.events({
 	'click #toggleSidebar' : function(){
      $('#menu')
@@ -6,6 +7,7 @@ Template.navbar.events({
   	}
 });
 
+//sidebar form handling
 Template.sidebarLeft.events({
     'submit #battleUpload': function(e) {
 
@@ -22,7 +24,7 @@ Template.sidebarLeft.events({
         'title': $('#title').val()
 
       });
-
+      //reset the form
       $("#battleUpload")[0].reset();
       $('#add-modal-wrapper').hide('slow');
       $('#add-video').show();

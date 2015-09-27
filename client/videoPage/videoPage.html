@@ -2,40 +2,46 @@
 <div class="videoPage slide">
 <div class="ui container fluid">
 
-<div id="sidebarRight" class="ui right fixed menu">
-    <button id="battleComment" class="ui icon button"><span class="fa fa-comment-o fa-5x"></span></button>
+<div class="videoTitle">
+  <div class="ui right">
+    <button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
+  </div> 
+  <h2>{{url.title}}</h2>
+  <h4>{{url.name}}</h4>
 </div>
-<button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
-<div class="ui container">
-<h2>{{url.title}}</h2>
-<h4>{{url.name}}</h4>
-<h4>Duration: {{duration}}</h4>
-<h4>Playback time: {{time}}</h4>
-<div id="thumb"></div>
-<div id="player" class="player"></div>
-    <div class="timeline">
-    <div id="slider"></div>
+
+<div class="videoContainer">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <div id="thumb"></div>
+      <div id="player" class="player"></div>
+      <div class="timeline">
+      <div id="slider"></div>
       <div class="video-controls">
-        <button id="play" class="bot button"><i class="ui big play icon"></i></button>
-        <button id="pause" class="bot button"><i class="ui big pause icon"></i></button>
-        <button id="stop" class="bot button"><i class="ui big stop icon"></i></button>
-      <div class="volumeContainer">
-        <div class="volumeControl" id="slider-volume"></div>
-        <button id="vol" class="bot button"><i class="ui big volume up icon icon"></i></button>
-      </div>   
+          <button id="play" class="bot button"><i class="ui big play icon"></i></button>
+          <button id="pause" class="bot button"><i class="ui big pause icon"></i></button>
+          <button id="stop" class="bot button"><i class="ui big stop icon"></i></button>
+          <div class="volumeContainer">         
+          <button id="vol" class="bot button"><i class="ui big volume up icon icon"></i></button>
+          <div class="volumeControl" id="slider-volume"></div>
+          </div>
+      </div>
       </div>
     </div>
-
+    <div class="four wide column">
+      {{> sidebarRight}}
+    </div>
   </div>
+</div>
+
 </div>
 </div>
 </template>
 
 <template name="sidebarRight">
-    <div id="commentSidebar" class="ui sidebar right comment wide">
-        <div id="commentList{{_id}}" class="comments" style="margin-bottom:150px">
-            <h3 style="opacity:0.45" class="hidden-xs">Comments</h3>
-            <div class="" style="margin-bottom:30px">
+    <div id="commentSidebar" class="commentInput">
+        <div id="commentList{{_id}}" class="comments">
+            <div>
               {{#if currentUser}}
               <form method="post" id="commentForm">
               <input id="post" class="comment-box" type="text" required/>
@@ -51,18 +57,17 @@
 </template>
 
 <template name="allComments">
-        <div class="allComments">
-          {{#each comment}}
-            {{>post}}
-          {{/each}}
-        </div>
+  <div class="allComments">
+      {{#each comment}}
+        {{>post}}
+      {{/each}}
+  </div>
 </template>
 
 <template name="post">
   <div class="post loading" id="comment{{_id}}">
         {{post}}
-      <div class="post-info">
-        {{time}}
+      <div class="post-info" data="{{time}}">
         {{name}}
         {{date}}
       </div>

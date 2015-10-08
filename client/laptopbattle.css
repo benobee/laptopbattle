@@ -1,6 +1,9 @@
 /* CSS declarations go here */
 #body{
 	font-family: 'Roboto Mono';
+	transition: 0.48s;
+	-ms-transition: 0.48s;
+   	-webkit-transition: 0.48s;
 }
 button:focus{
 	outline:0 !important;
@@ -15,7 +18,7 @@ button{
 	list-style-type: none;
 }
 .lb-input{
-	height:50px;
+	height:44px;
 	width:100%;
 	font-size: 18px;
 	margin-bottom:10px;
@@ -29,6 +32,7 @@ button{
 }
 .lb-input:focus{
 	background: #F5F5F5;
+	color:black;
 }
 .lb-button{
 	font-size: 24px;
@@ -42,11 +46,9 @@ button{
 	color:black;
 	background:#EDEDED;
 }
-
-
-
-
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 
 

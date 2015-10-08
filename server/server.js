@@ -1,7 +1,6 @@
 if (Meteor.isServer) {
 
   Meteor.startup(function () {
-  	//run code on startup
 
   });
 }
@@ -24,14 +23,16 @@ Videos.allow({
   },
 });
 
-Router.route('/webhooks/stripe', { where: 'server' })
-  .get(function () {
-    // GET /webhooks/stripe
-  })
-  .post(function () {
-    // POST /webhooks/stripe
-  })
-  .put(function () {
-    // PUT /webhooks/stripe
-  })
+Meteor.publish("videos", function(){
+  return Videos.find();
+});
+
+Meteor.publish("likes", function(){
+  return Likes.find();
+});
+
+Meteor.publish("comments", function(){
+  return Comments.find();
+});
+
 

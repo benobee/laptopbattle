@@ -13,7 +13,6 @@
 <div class="videoContainer">
   <div class="ui grid">
     <div class="twelve wide column">
-      <div id="thumb"></div>
       <div id="player" class="player"></div>
       <div class="timeline">
       <div id="slider"></div>
@@ -39,7 +38,12 @@
 </template>
 
 <template name="sidebarRight">
-    <div id="commentSidebar" class="commentInput">
+  <div class="ui grid stackable">
+    <div class="column sixteen wide" style="height:350px;overflow-y:auto;overflow-x:hidden">
+        {{>playList}}
+    </div>
+    <div class="column sixteen wide" style="height:350px;overflow-y:auto;overflow-x:hidden">
+      <div id="commentSidebar" class="commentInput">
         <div id="commentList{{_id}}" class="comments">
             <div>
               {{#if currentUser}}
@@ -53,7 +57,24 @@
 <!-- Display Comments -->
             {{>allComments}}
         </div>
+      </div>
     </div>
+  </div>
+</template>
+
+<template name="playList">
+  <div id="playListItems" class="ui fluid vertical menu inverted">
+
+      {{#each playList}}
+      <a href="?id={{this._id}}&url={{url}}" id="playList-{{_id}}" name="{{this._id}}" class="item {{activeVideo}}">
+          <div class="segment inverted">
+            <h4 class="header">{{title}}</h4>
+            <div class="post-info">{{name}}</div>
+          </div>
+      </a>           
+      {{/each}}
+
+  </div>
 </template>
 
 <template name="allComments">

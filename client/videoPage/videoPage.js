@@ -1,12 +1,9 @@
 Template.videoPage.helpers({
   id(){
-
-    //get the id of video, set the session
     var id = Session.get('video');
     return id; 
   },
-  url(){
-
+  url(){   
     //find the video object for the id
     var id = Session.get('video');
     return Videos.findOne(id);
@@ -18,7 +15,7 @@ Template.videoPage.helpers({
 });
 
 Template.videoPage.onRendered(function (){
-
+    
     //initialize and configure volume slider 
     $( "#slider-volume" ).slider({
       range: "min",
@@ -44,7 +41,7 @@ Template.videoPage.onRendered(function (){
     });
     $( "#amount" ).val( $( "#slider-volume" ).slider( "value" ) );
 
-var s = Session.get('duration');
+    var s = Session.get('duration');
 
     //initialize playback slider
     $( "#slider" ).slider({
@@ -62,33 +59,25 @@ var s = Session.get('duration');
 Template.videoPage.events({
   
   'click .closeButton': function(e){
-    
-    //handle video close events
-    $(".videoPage").fadeOut('slow');
-    $(".videoPage").css('transform','translateY(100%)');
 
-    //wait for video to be closed in order to show main videos again
-    $(".videoPage").promise().done(function(){
-    
-    //fade in main videos
-    $('.main-video').transition('fade');
+  location.hash = "";    
+    $(".videoPage").fadeOut().promise().done(function(){
+        $('#spinner-wrapper').hide();
+        //kill the youtube player
+        player.destroy();
+    });
 
     //reset the session variables
     Session.set("video" , '' );
     Session.set('time', '');
     Session.set('duration', '');
 
-    //kill the youtube player
-    player.destroy();
-
     //reset the play / pause button
     $('#pause').hide();
-    $('#play').show();
-    });       
+    $('#play').show();   
   },
   'click #play': function(e){
     player.playVideo();
- 
   },
   //handle the video controls
   'click #pause': function(e){
@@ -113,17 +102,44 @@ Template.videoPage.events({
   }
 });
 
+//get the play List
+Template.playList.helpers({
+  playList(){
+    //create playlist
+    var playList = Videos.find({}, {sort: {date: -1}});  
+    return playList;
+  },
+  activeVideo(){
+    var id = Session.get('video');
+    if(id == this._id){
+      return "active blue";
+    }
+    else{
+      return "video-queue";
+    }
+  }
+})
+
+Template.playList.events({
+  'click .item'(e){
+    Session.set('video', $(e.currentTarget).find('href').context.name);
+    var search = $(e.currentTarget).find('href').context.search;
+    var url = search.split('=');
+    player.loadVideoById(url[2]);
+  }
+});
+
 //get the comments for a video
 Template.allComments.helpers({
-  id:function(){
+  id(){
     var id = Session.get('video');
     return id;
   },
-  url:function(){
+  url(){
     var id = Session.get('video');
     return Videos.findOne(id);
   },
-  comment: function(){
+  comment(){
     return Comments.find({'videoId': Session.get('video') ,'time': { $lt: Session.get('time') }}, {sort: {time: -1}, limit: 10});
   }
 });
@@ -141,7 +157,7 @@ Template.post.helpers({
 //new comment form
 Template.sidebarRight.events({
     
-    'submit #commentForm': function(e){
+    'submit #commentForm'(e){
       var time = player.getCurrentTime();
       console.log(time);
       var id = Session.get('video');
@@ -161,7 +177,6 @@ Template.sidebarRight.events({
     }
 });
 
-//on new post animate from right to left
 Template.sidebarRight.onRendered(function () {
   $('#commentSlider')
   .sidebar('setting', 'transition', 'overlay')
@@ -177,7 +192,7 @@ Template.post.onRendered(function (){
   var $post = $(this.find('.post'))
   Meteor.defer(function() {
     $post.removeClass('loading').transition('hide').transition({
-    animation  : 'fly left',
-    duration   : '1.2s' }).promise();
+    animation  : 'fade left',
+    duration   : '0.5s' }).promise();
   });
 });

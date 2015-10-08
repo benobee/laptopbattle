@@ -1,18 +1,14 @@
 //load all videos and populate on the page
+
 Template.home.helpers({
     videos() {
       return Videos.find({}, {sort: {date: -1}});     
     }
 });
 
-// spinner show before loading
-Template.mainVideos.rendered = function () {
-  $('#spinner-wrapper').hide();
-};
-
 //handle video card interactions
 Template.mainVideos.helpers({
-    like() {       
+    vote() {       
       return Likes.find({'videoId': this._id });
     },
     count(){
@@ -21,7 +17,7 @@ Template.mainVideos.helpers({
       var count = Likes.find({'videoId': this._id }).count();
       return count;      
     },
-    liked(){
+    voted(){
 
       //set color of the vote button
       if (Likes.find({'videoId': this._id }).count() >= 1){
@@ -34,52 +30,64 @@ Template.mainVideos.helpers({
 });
 
 Template.home.events({
+    'click .button.playVideo' : function(e){
+      Session.set("video" , this._id );
+      Session.set("url" , this.url );
 
-  'click .button.expand'(e){
-
-    //build id
-    var id = 'controls' + this._id;
-
-    //bring up video page
-    $('.main-video').transition('fly down');
-
-    //fix button from being click twice before page video page is open
-    $('.expand').attr("disabled", "disabled");
-    setTimeout('$(".expand").removeAttr("disabled")', 1500);
-
-    //set session id for the selected video and fade in the video page
-    Session.set("video" , this._id );
-    Session.set("url" , this.url );
-    var x = Session.get('video');
-    var url = Session.get('url');
-    $(".videoPage").fadeIn('fast');
+    $.when( $('#spinner-wrapper').fadeIn() ).done(function(){
 
     //get youtube player ready
+    
     onYouTubeIframeAPIReady = function () {
         player = new YT.Player("player", {
-            height     : "auto", 
+            height     : "auto",
+            modestbranding : 1, 
             width      : "100%",
             controls   : 0,
+            rel        : 0,
+            disablekb  : 1,
+            enablejsapi: 1,
             autohide   : 1,
             showinfo   : 0,
-            videoId    : url, 
+            videoId    : Session.get('url'), 
             events     : {
-                onReady(event) {;
+                onReady(event) {
+
+                    $('#spinner-wrapper').fadeOut();
+                    $('.videoPage').show();  
                     var d = player.getDuration('player');
                     Session.set("duration", d);  
-                    $(".videoPage").css('transform','translateY(0%)');
-                    player.playVideo(); 
+                    player.playVideo();
+
                 },
                 onStateChange(event){
+
                   if (event.data == 0){
                     player.stopVideo();
+                    player.clearVideo();
                     player.seekTo(0, true);
                     $('#pause').hide();
                     $('#play').show();
+
+                    var next = $('#playListItems').find('.active').next().attr('href');
+                    if(next !== undefined){
+                      var nextSession = $('#playListItems').find('.active').next().attr('name');
+                      Session.set('video', nextSession);
+                      var search = $('#playListItems').find('.active').next().attr('href');
+                      var url = search.split('=');
+                      player.loadVideoById(url[2]);
+                    }
+                    else{                     
+                      var nextSession = $('#playListItems').find('.item').first().attr('name');                     
+                      Session.set('video', nextSession);
+                      var search = $('#playListItems').find('.item').first().attr('href');
+                      var url = search.split('=');
+                      player.loadVideoById(url[2]);
+                    }
                   }
                   else if(event.data == 1){
 
-                     $('#play').hide();
+                      $('#play').hide();
                       $('#pause').show();
                       $('#pause').css('opacity','1');
                       
@@ -109,18 +117,20 @@ Template.home.events({
     };
     //load youtube player
     YT.load();
-    },
-    'click #like'(e){
-      //vote for the video
-      Likes.insert({
-
-      'videoId' : this._id,
-      'userId' : Meteor.user()._id,
-      'name': Meteor.user().profile.name,
-      'date': new Date()
-
     });
+        
+    //fix button from being click twice before page video page is open
+    $('.playVideo').attr("disabled", "disabled");
+    setTimeout('$(".playVideo").removeAttr("disabled")', 1500);
+    },
+    'click #vote'(e){
+      //vote for the video
+
+      Meteor.call("likes", this._id, Meteor.user()._id, Meteor.user().profile.name);
+
     }
 });
 
-
+Template.mainVideos.onRendered(function (){
+  $('#spinner-wrapper').fadeOut();
+});

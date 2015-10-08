@@ -1,8 +1,5 @@
 <template name="layout">
    <div id="spinner-wrapper" class="spinner-wrapper">
-   <div class="load-bot">
-   <h1 class="header">Laptop Battle</h1>
-   </div>
     <div class="spinner">
       {{> spinner}} 
     </div>
@@ -10,9 +7,9 @@
 {{> sidebarLeft}}
 <div class="pusher">
 {{> navbar}}
-	<div id="content">
-		{{>yield}}
-	</div>
+<div id="content">
+{{> yield}}
+</div>
 </div>
 </template>
 

@@ -1,34 +1,37 @@
 <template name="home">
-<div class="ui container">
-  <div class="ui grid stackable">
+<div id="mainVideos" class="ui container">
+        <div class="ui four stackable cards">
 
-          {{#each videos}}
+                {{#each videos}}
 
-          <div class="four wide column video-wrapper-container" id="main{{_id}}">
-          {{> mainVideos}}           
-          </div>
+                <div class="video card" id="main{{_id}}">
+                  {{> mainVideos}}           
+                </div>
 
-          {{/each}}
+                {{/each}}
 
-  </div>
+        </div>
 </div>
-{{> videoPage}}
+<div id="videoPage">{{>videoPage}}</div>
 </template>
 
 <template name="mainVideos">
-  <div class="main-video info-display" id="controls{{ _id }}">
-    <img class="image" width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
-  <div class="likes"><span class="fa fa-heart"></span> {{count}} votes</div>
-  <div class="info-display" id="title"><h3 class="ui header">{{title}}</h3><p>{{name}}</p></div>
-  <div class="video-ui-main">
-      {{#if currentUser}}
-      <button id="like" class="button like"><i style="color:{{liked}}" class="icon heart"></i></button>
-      {{/if}}
-      <button id="expand" class="button expand"><i class="icon play"></i></button>    
-  </div>
+  <div class="main-video" id="controls{{ _id }}">
+    <div class="image">
+      <img width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
+    </div>
+    <div class="content info">
+      <div class="votes"><span class="fa fa-heart"></span> {{count}} votes</div>
+      <div class="info-display" id="title"><h3 class="ui header">{{title}}</h3></div>
+      <div class="video-ui">
+          {{#if currentUser}}
+          <button id="vote" class="button vote"><i style="color:{{voted}}" class="icon heart"></i></button>
+          {{/if}}
+          <button id="playVideo" class="button playVideo"><i class="icon play"></i></button>    
+      </div>
+    </div>
   </div>
 </template>
-
 
 
 

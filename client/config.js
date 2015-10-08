@@ -27,3 +27,11 @@ Accounts.onLogin(function(){
   Session.set("image",Meteor.user().services.google.picture);
 
 });
+
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+});
+
+Meteor.subscribe("videos");
+Meteor.subscribe("comments");
+Meteor.subscribe("likes");

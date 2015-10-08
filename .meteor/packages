@@ -4,31 +4,22 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-insecure
-nemo64:bootstrap
 iron:router
 accounts-google
 accounts-ui
 fortawesome:fontawesome
 momentjs:moment
 accounts-facebook
-renaldo:youtube-api
 miro:preloader
 sacha:spin
-http
 mrt:cheerio
 underscore
-adrianliaw:youtube-iframe-api
-accounts-password
 richsilv:semantic-ui-modal
 tmeasday:publish-counts
 flemay:less-autoprefixer
 coffeescript
 semantic:ui
 mizzao:jquery-ui
-autopublish
-mjn:famous
-gadicohen:famous-views
 standard-minifiers
 meteor-base
 mobile-experience
@@ -44,3 +35,8 @@ ejson
 spacebars
 check
 ecmascript
+monbro:iron-router-breadcrumb
+accounts-password
+bojicas:howler2
+adrianliaw:youtube-iframe-api
+insecure

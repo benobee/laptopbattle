@@ -118,7 +118,7 @@ Template.playList.helpers({
       return "video-queue";
     }
   }
-})
+});
 
 Template.playList.events({
   'click .item'(e){

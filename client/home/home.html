@@ -1,16 +1,16 @@
 <template name="home">
+<div id="banners" class="ui container">
+{{> banners}}
+</div>
 <div id="mainVideos" class="ui container">
-        <div class="ui four stackable cards">
+<div class="ui four stackable cards">
+  {{#each videos}}
+  <div class="video card" id="main{{_id}}">
+    {{> mainVideos}}           
+  </div>
+  {{/each}}
+</div>
 
-                {{#each videos}}
-
-                <div class="video card" id="main{{_id}}">
-                  {{> mainVideos}}           
-                </div>
-
-                {{/each}}
-
-        </div>
 </div>
 <div id="videoPage">{{>videoPage}}</div>
 </template>
@@ -33,5 +33,11 @@
   </div>
 </template>
 
-
+<template name="banners">
+<div class="owl-carousel">
+  <div><div class="banner" style="background-image: url('img/kittens1.jpg')"></div></div>
+  <div><div class="banner" style="background-image: url('img/kittens2.jpg')"></div></div>
+  <div><div class="banner" style="background-image: url('img/kittens3.jpg')"></div></div>
+</div>
+</template>
 

@@ -6,19 +6,24 @@ Template.home.helpers({
     }
 });
 
+Template.home.onRendered(function(){
+  $(".owl-carousel").owlCarousel({
+    items : 1,
+    autoPlay : true
+  });
+});
+
 //handle video card interactions
 Template.mainVideos.helpers({
     vote() {       
       return Likes.find({'videoId': this._id });
     },
     count(){
-
       //show count of votes per video
       var count = Likes.find({'videoId': this._id }).count();
       return count;      
     },
     voted(){
-
       //set color of the vote button
       if (Likes.find({'videoId': this._id }).count() >= 1){
         return '#C20000';
@@ -125,12 +130,11 @@ Template.home.events({
     },
     'click #vote'(e){
       //vote for the video
-
-      Meteor.call("likes", this._id, Meteor.user()._id, Meteor.user().profile.name);
-
+      Meteor.call("votes", this._id, Meteor.user()._id, Meteor.user().profile.name);
     }
 });
 
 Template.mainVideos.onRendered(function (){
   $('#spinner-wrapper').fadeOut();
+
 });

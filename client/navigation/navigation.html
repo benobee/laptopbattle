@@ -1,41 +1,32 @@
-<template name="navbar">
-  
-<div class="container fluid lb-navbar"> 
+<template name="navbar"> 
   <nav>
-    <div class="ui menu container">
+    <div class="ui container menu">
       <div class="left menu">
         <div id="toggleSidebar" class="ui icon item">
           <i class="sidebar large icon"></i>
         </div>
-        <a class="item" href="{{pathFor 'home'}}">Laptop Battle</a>
-        <a class="item" href="#">Leaderboard</a>
-      </div>
-      <div class="right menu">
-        <div class="item">
-
-            {{> loginButtons}}
-
-        </div>
+        <div class="item"><i class="ui laptop icon"></i>Laptop Battle</div>
       </div>
     </div>
   </nav>
-</div>
 </template>
 
 <template name="sidebarLeft">
 <div class="ui sidebar inverted vertical menu" id="menu">
 <div class="segment inverted">
-  <div id="closeMenu" class="ui button item icon" style="margin-bottom:50px">
-    <i class="sidebar large icon"></i>
+  <div id="closeMenu" class="ui button item icon">
+    <i class="large remove icon"></i>
   </div>
+</div>
+<div class="item login">
+{{> loginButtons}}
 </div>     
 {{#if currentUser}}
-
   <div id="videoUploadForm" class="ui segment raised inverted">
   <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
       <form id="battleUpload">      
       <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
-      <input class="lb-input" name="url" id="url" placeholder="Video URL Link" type="link" required/>
+      <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
       <button id="uploadVideo" type="submit" class="ui button inverted teal"><span class="fa fa-upload"></span> Upload Video</button>
       </form>
   </div>
@@ -47,6 +38,7 @@
 </template>
 
 <template name="myVideos">
+<div id="myVideos">
 <div class="ui menu inverted">
   <div class="left menu inverted" style="margin-bottom:40px">
     <div class="item"><h4>My Videos</h4></div>
@@ -61,19 +53,23 @@
 {{#each userVideo}}
 <div class="ui menu inverted">
   <div class="left menu inverted">
-    <div class="item title">{{title}}</div>
+    <div class="item title"><input class="updateTitle" id="updateTitle" value="{{title}}" /></div>
   </div>
   <div class="right menu inverted">
-    <div class="ui icon item lb-button-ui">
+    <div class="ui icon item lb-button-ui deleteVideo">
       <i class="trash icon"></i>
+    </div>
+    <div class="messageConfirm">
+      <div class="ui buttons">
+        <button class="ui button delete">Delete</button>
+        <div class="or"></div>        
+        <button class="ui button cancel">Cancel</button>
+      </div>
     </div>
   </div>
 </div>
 {{/each}}
-
+</div>
 </template>
-
-
-
 
 

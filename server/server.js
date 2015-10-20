@@ -1,10 +1,3 @@
-if (Meteor.isServer) {
-
-  Meteor.startup(function () {
-
-  });
-}
-
 Comments.allow({
   insert: function(userId, doc){
     return userId;
@@ -34,5 +27,6 @@ Meteor.publish("likes", function(){
 Meteor.publish("comments", function(){
   return Comments.find();
 });
+
 
 

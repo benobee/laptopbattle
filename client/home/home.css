@@ -153,3 +153,13 @@
 	-ms-transition: 0.48s;
    	-webkit-transition: 0.48s;
 }
+.banner{
+	height:320px;
+	width:100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#banners{
+	margin-bottom:20px;
+}

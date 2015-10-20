@@ -6,7 +6,6 @@
 
 iron:router
 accounts-google
-accounts-ui
 fortawesome:fontawesome
 momentjs:moment
 accounts-facebook
@@ -37,6 +36,7 @@ check
 ecmascript
 monbro:iron-router-breadcrumb
 accounts-password
-bojicas:howler2
 adrianliaw:youtube-iframe-api
 insecure
+accounts-ui
+richsilv:owl-carousel

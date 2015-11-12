@@ -73,8 +73,7 @@ Template.myVideos.events({
         else{
           //$('#menu').sidebar('toggle');
         }        
-     });
-     
+     });     
     },
     'click #addVideo'(e){
       $('#videoUploadForm').transition('drop');

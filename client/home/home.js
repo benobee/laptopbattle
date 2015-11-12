@@ -1,32 +1,36 @@
 //load all videos and populate on the page
-
 Template.home.helpers({
-    videos() {
-      return Videos.find({}, {sort: {date: -1}});     
-    }
+  videos() {    
+      var videos = Videos.find({}, {sort: {date: -1}});
+      return videos;     
+  }
 });
 
-Template.home.onRendered(function(){
-  $(".owl-carousel").owlCarousel({
-    items : 1,
-    autoPlay : true
-  });
-});
+// Template.home.onRendered(function(){
+//   $(".owl-carousel").owlCarousel({
+//     items : 1,
+//     autoPlay : true
+//   });
+// });
 
-//handle video card interactions
+//handle video card user interactions
 Template.mainVideos.helpers({
-    vote() {       
-      return Likes.find({'videoId': this._id });
-    },
     count(){
       //show count of votes per video
-      var count = Likes.find({'videoId': this._id }).count();
-      return count;      
+      if (this.votes.length == 1){
+        return this.votes.length + " " + "vote";  
+      }
+      else{
+        return this.votes.length + " " + "votes";
+      }           
     },
     voted(){
-      //set color of the vote button
-      if (Likes.find({'videoId': this._id }).count() >= 1){
-        return '#C20000';
+      var voteList = _.map(this.votes, function(user){
+        return user[0].userId;
+      });
+      var voted = _.contains(voteList, Meteor.userId());
+      if (voted == true){
+        return '#F82262';
       }
       else{
         return '';
@@ -35,14 +39,12 @@ Template.mainVideos.helpers({
 });
 
 Template.home.events({
-    'click .button.playVideo' : function(e){
-      Session.set("video" , this._id );
-      Session.set("url" , this.url );
+    'click .card' : function(e){
+    Session.set("video" , this._id );
+    Session.set("url" , this.url );
 
     $.when( $('#spinner-wrapper').fadeIn() ).done(function(){
-
-    //get youtube player ready
-    
+    //get youtube player ready    
     onYouTubeIframeAPIReady = function () {
         player = new YT.Player("player", {
             height     : "auto",
@@ -57,13 +59,11 @@ Template.home.events({
             videoId    : Session.get('url'), 
             events     : {
                 onReady(event) {
-
                     $('#spinner-wrapper').fadeOut();
                     $('.videoPage').show();  
                     var d = player.getDuration('player');
                     Session.set("duration", d);  
                     player.playVideo();
-
                 },
                 onStateChange(event){
 
@@ -128,13 +128,14 @@ Template.home.events({
     $('.playVideo').attr("disabled", "disabled");
     setTimeout('$(".playVideo").removeAttr("disabled")', 1500);
     },
-    'click #vote'(e){
-      //vote for the video
-      Meteor.call("votes", this._id, Meteor.user()._id, Meteor.user().profile.name);
+    'click .extra.content.vote'(e){
+    //vote for the video
+    e.stopPropagation();
+
+    Meteor.call("votes", this._id, Meteor.user()._id);
     }
 });
 
 Template.mainVideos.onRendered(function (){
   $('#spinner-wrapper').fadeOut();
-
 });

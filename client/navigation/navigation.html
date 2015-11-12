@@ -1,14 +1,14 @@
-<template name="navbar"> 
-  <nav>
-    <div class="ui container menu">
-      <div class="left menu">
-        <div id="toggleSidebar" class="ui icon item">
+<template name="navbar">
+<nav class="top header">
+  <div class="ui menu left inverted"> 
+    <div id="toggleSidebar" class="navbar element icon button">
           <i class="sidebar large icon"></i>
-        </div>
-        <div class="item"><i class="ui laptop icon"></i>Laptop Battle</div>
-      </div>
     </div>
-  </nav>
+    <div class="navbar element logo">
+        <img class="image" src="img/logoWhite.png" alt="Laptop Battle"/>
+    </div>
+  </div>
+</nav>
 </template>
 
 <template name="sidebarLeft">
@@ -22,52 +22,50 @@
 {{> loginButtons}}
 </div>     
 {{#if currentUser}}
-  <div id="videoUploadForm" class="ui segment raised inverted">
-  <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
+  <div id="videoUploadForm" class="ui segment raised inverted upload">
+      <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
       <form id="battleUpload">      
-      <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
-      <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
-      <button id="uploadVideo" type="submit" class="ui button inverted teal"><span class="fa fa-upload"></span> Upload Video</button>
+        <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
+        <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
+        <button id="uploadVideo" type="submit" class="dark button"><span class="fa fa-upload"></span> Upload Video</button>
       </form>
   </div>
-
 {{> myVideos}}
-
 {{/if}}
 </div>
 </template>
 
 <template name="myVideos">
 <div id="myVideos">
-<div class="ui menu inverted">
-  <div class="left menu inverted" style="margin-bottom:40px">
-    <div class="item"><h4>My Videos</h4></div>
-  </div>
-  <div class="right menu inverted">
-    <div class="item">
-    <button id="addVideo" class="inverted teal ui button">
-      <i class="add sign icon"></i>Add</button>
+  <div class="ui menu inverted">
+    <div class="left menu inverted" style="margin-bottom:40px">
+      <div class="item"><h4>My Videos</h4></div>
     </div>
-  </div>
-</div>
-{{#each userVideo}}
-<div class="ui menu inverted">
-  <div class="left menu inverted">
-    <div class="item title"><input class="updateTitle" id="updateTitle" value="{{title}}" /></div>
-  </div>
-  <div class="right menu inverted">
-    <div class="ui icon item lb-button-ui deleteVideo">
-      <i class="trash icon"></i>
-    </div>
-    <div class="messageConfirm">
-      <div class="ui buttons">
-        <button class="ui button delete">Delete</button>
-        <div class="or"></div>        
-        <button class="ui button cancel">Cancel</button>
+    <div class="right menu inverted">
+      <div class="item">
+      <button id="addVideo" class="dark button">
+        <i class="add sign icon"></i>Add</button>
       </div>
     </div>
   </div>
-</div>
+  {{#each userVideo}}
+  <div class="ui menu inverted">
+    <div class="left menu inverted">
+      <div class="item title"><input class="updateTitle" id="updateTitle" value="{{title}}" /></div>
+    </div>
+    <div class="right menu inverted">
+      <div class="ui icon item lb-button-ui deleteVideo">
+        <i class="trash icon"></i>
+      </div>
+      <div class="messageConfirm">
+        <div class="ui buttons">
+          <button class="ui button delete">Delete</button>
+          <div class="or"></div>        
+          <button class="ui button cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {{/each}}
 </div>
 </template>

@@ -24,19 +24,7 @@ Template.videoPage.onRendered(function (){
       value: 85,
       slide( event, ui ) {
         $( "#amount" ).val( ui.value );
-
-        if (ui.value <= 100 && ui.value >= 26){ 
-        player.setVolume(ui.value);
-        $('#vol').html('<i class="ui big volume up icon icon"></i>');
-        }
-        else if (ui.value <= 25 && ui.value >= 1){
-        player.setVolume(ui.value);
-        $('#vol').html('<i class="ui big volume down icon icon"></i>');
-        }
-        else{
-        $('#vol').html('<i class="ui big volume off icon icon"></i>');  
-        player.setVolume(ui.value);
-        }
+        player.setVolume(ui.value);      
       }
     });
     $( "#amount" ).val( $( "#slider-volume" ).slider( "value" ) );
@@ -112,7 +100,7 @@ Template.playList.helpers({
   activeVideo(){
     var id = Session.get('video');
     if(id == this._id){
-      return "active blue";
+      return "active active-video";
     }
     else{
       return "video-queue";

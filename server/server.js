@@ -20,10 +20,6 @@ Meteor.publish("videos", function(){
   return Videos.find();
 });
 
-Meteor.publish("likes", function(){
-  return Likes.find();
-});
-
 Meteor.publish("comments", function(){
   return Comments.find();
 });

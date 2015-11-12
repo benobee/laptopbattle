@@ -1,43 +1,50 @@
 <template name="home">
-<div id="banners" class="ui container">
-{{> banners}}
-</div>
-<div id="mainVideos" class="ui container">
-<div class="ui four stackable cards">
-  {{#each videos}}
-  <div class="video card" id="main{{_id}}">
-    {{> mainVideos}}           
+<!--   <div id="banners" class="ui container">
+  {{> banners}}
+  </div> -->
+  <div id="mainVideos" class="ui container">
+  <div class="ui four stackable cards">
+    {{#each videos}}
+      {{> mainVideos}}           
+    {{/each}}
   </div>
-  {{/each}}
-</div>
-
-</div>
-<div id="videoPage">{{>videoPage}}</div>
+  </div>
+  <div id="videoPage">{{>videoPage}}</div>
 </template>
 
-<template name="mainVideos">
-  <div class="main-video" id="controls{{ _id }}">
-    <div class="image">
-      <img width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
-    </div>
-    <div class="content info">
-      <div class="votes"><span class="fa fa-heart"></span> {{count}} votes</div>
-      <div class="info-display" id="title"><h3 class="ui header">{{title}}</h3></div>
-      <div class="video-ui">
-          {{#if currentUser}}
-          <button id="vote" class="button vote"><i style="color:{{voted}}" class="icon heart"></i></button>
-          {{/if}}
-          <button id="playVideo" class="button playVideo"><i class="icon play"></i></button>    
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="banners">
+<!-- <template name="banners">
 <div class="owl-carousel">
   <div><div class="banner" style="background-image: url('img/kittens1.jpg')"></div></div>
   <div><div class="banner" style="background-image: url('img/kittens2.jpg')"></div></div>
   <div><div class="banner" style="background-image: url('img/kittens3.jpg')"></div></div>
 </div>
+</template> -->
+
+<template name="mainVideos">
+  <div class="ui card link" id="controls{{ _id }}">
+    <div class="image">
+      <img width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
+    </div>
+    <div class="content info">
+      <h3 class="ui header">{{title}}</h3>
+    </div>
+    <div class="extra content vote">
+      <div class="ui float left">
+          {{#if count}}
+          <div class="votes"><span style="color:{{voted}}" class="fa fa-heart"></span> {{count}}</div>
+          {{else}}
+          <div class="votes">no votes</div>
+          {{/if}}
+      </div>
+      <div class="ui float right">   
+          {{#if currentUser}}
+          <div id="vote" class="button vote"><i class="thumbs up icon"></i>
+          </div>
+          {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
+
+
 

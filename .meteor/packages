@@ -16,8 +16,6 @@ underscore
 richsilv:semantic-ui-modal
 tmeasday:publish-counts
 flemay:less-autoprefixer
-coffeescript
-semantic:ui
 mizzao:jquery-ui
 standard-minifiers
 meteor-base
@@ -40,3 +38,4 @@ adrianliaw:youtube-iframe-api
 insecure
 accounts-ui
 richsilv:owl-carousel
+semantic:ui

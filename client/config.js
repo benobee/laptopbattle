@@ -1,5 +1,4 @@
 //spinner
-
 Meteor.Spinner.options = {
     lines: 13, // The number of lines to draw
     length: 10, // The length of each line
@@ -20,16 +19,12 @@ Meteor.Spinner.options = {
 };
 
 //when user logs in with particular service, trigger events
-Accounts.onLogin(function(){
-  
-  Session.set("id",Meteor.user()._id);
-  Session.set("name",Meteor.user().profile['name']);
-  Session.set("image",Meteor.user().services.google.picture);
+Accounts.onLogin(function(){ 
 
 });
 
 Accounts.ui.config({
-    passwordSignupFields: "USERNAME_ONLY"
+    passwordSignupFields: "USERNAME_AND_EMAIL"
 });
 
 Meteor.subscribe("videos");

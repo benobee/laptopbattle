@@ -92,9 +92,9 @@ Template.home.events({
                   }
                   else if(event.data == 1){
 
-                      $('#play').hide();
-                      $('#pause').show();
-                      $('#pause').css('opacity','1');
+                      // $('#play').hide();
+                      // $('#pause').show();
+                      // $('#pause').css('opacity','1');
                       
                       //set durations and set session
                       var duration = player.getDuration();
@@ -103,15 +103,15 @@ Template.home.events({
                       //create a constant broadcast of the video position
                       Meteor.setInterval(function(){
                       var time = player.getCurrentTime();
-                      var s = Session.get('duration');
+                      // var s = Session.get('duration');
     
                       //create the range of the playback slider on new interval
-                      $( "#slider" ).slider({
-                        range: "max",
-                        min: 0,
-                        max: s,
-                        value: time
-                      });
+                      // $( "#slider" ).slider({
+                      //   range: "max",
+                      //   min: 0,
+                      //   max: s,
+                      //   value: time
+                      // });
 
                     Session.set('time', time);
                     }, 125);    

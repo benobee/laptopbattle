@@ -40,11 +40,12 @@ button{
 	background:#440047;
 }
 div[class^="navbar element"]{
-	padding:40px;
+	padding-top:23px;
+	padding-left:30px;
 	color:white;
 }
 .navbar.menu{
-	height:80px;
+	min-height:50px;
 	background: none;
 	position:relative;
 }
@@ -56,9 +57,10 @@ div[class^="navbar element"]{
 	border-bottom-color:#F82262;
 }
 .navbar.logo{
-	padding-top:35px;
-	padding-left:40px;
-	width:150px;
+	padding-top:20px;
+	padding-left:30px;
+	padding-bottom:10px;
+	width:110px;
 }
 .float.right{
 	float:right;

@@ -1,73 +1,102 @@
 <template name="navbar">
-<nav class="top header">
-  <div class="ui menu left inverted"> 
-    <div id="toggleSidebar" class="navbar element icon button">
-          <i class="sidebar large icon"></i>
+  <nav class="top header">
+    <div class="ui menu inverted">
+      <div class="menu">
+        <div class="logo"> 
+          <img src="img/logo-glad.png" alt="Laptop Battle"/>
+        </div>
+        <a href="#" id="toggleSidebar" class="item">
+            <i class="sidebar large icon"></i>Menu
+        </a>
+        <a href="#" class="item">
+           <i class="trophy large icon"></i>Leaderboard
+        </a>
+      </div>
+      <div class="right menu">
+        {{#if currentUser}}
+          {{>game}}
+        {{/if}}
+      </div>
     </div>
-    <div class="navbar element logo">
-        <img class="image" src="img/logo.png" alt="Laptop Battle"/>
-    </div>
-  </div>
-</nav>
+  </nav>
+</template>
+
+<template name="game">
+<div class="float right item info">
+        <div class="ui statistic">
+          <div class="value">
+            1
+          </div>
+          <div class="label">
+            Your Rank
+          </div>
+        </div>
+</div>
+<div class="float right item info">
+        <div class="ui statistic">
+          <div class="value">
+            5,550
+          </div>
+          <div class="label">
+            Battle Points
+          </div>
+        </div>    
+</div>
 </template>
 
 <template name="sidebarLeft">
-<div class="ui sidebar inverted vertical menu" id="menu">
-<div class="segment inverted">
-  <div id="closeMenu" class="ui button item icon">
-    <i class="large remove icon"></i>
-  </div>
-</div>
-<div class="item login">
-{{> loginButtons}}
-</div>     
-{{#if currentUser}}
-  <div id="videoUploadForm" class="ui segment raised inverted upload">
-      <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
-      <form id="battleUpload">      
-        <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
-        <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
-        <button id="uploadVideo" type="submit" class="dark button"><span class="fa fa-upload"></span> Upload Video</button>
-      </form>
-  </div>
-{{> myVideos}}
-{{/if}}
-</div>
+    <div class="segment inverted">
+      <div id="closeMenu" class="ui button item icon">
+        <i class="large remove icon"></i>
+      </div>
+    </div>
+    <div class="item login">
+    {{> loginButtons}}
+    </div>     
+    {{#if currentUser}}
+    <div id="videoUploadForm" class="ui segment raised inverted upload">
+        <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
+        <form id="battleUpload">      
+          <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
+          <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
+          <button id="uploadVideo" type="submit" class="dark button"><span class="fa fa-upload"></span> Upload Video</button>
+        </form>
+    </div>
+    {{> myVideos}}
+    {{/if}}
 </template>
 
 <template name="myVideos">
-<div id="myVideos">
-  <div class="ui menu inverted">
-    <div class="left menu inverted" style="margin-bottom:40px">
-      <div class="item"><h4>My Videos</h4></div>
-    </div>
-    <div class="right menu inverted">
-      <div class="item">
-      <button id="addVideo" class="dark button">
-        <i class="add sign icon"></i>Add</button>
+  <div id="myVideos">
+    <div class="ui menu inverted">
+      <div class="left menu inverted" style="margin-bottom:40px">
+        <div class="item"><h4>My Videos</h4></div>
       </div>
-    </div>
-  </div>
-  {{#each userVideo}}
-  <div class="ui menu inverted">
-    <div class="left menu inverted">
-      <div class="item title"><input class="updateTitle" id="updateTitle" value="{{title}}" /></div>
-    </div>
-    <div class="right menu inverted">
-      <div class="ui icon item lb-button-ui deleteVideo">
-        <i class="trash icon"></i>
-      </div>
-      <div class="messageConfirm">
-        <div class="ui buttons">
-          <button class="ui button delete">Delete</button>
-          <div class="or"></div>        
-          <button class="ui button cancel">Cancel</button>
+      <div class="right menu inverted">
+        <div class="item">
+        <button id="addVideo" class="dark button">
+          <i class="add sign icon"></i>Add</button>
         </div>
       </div>
     </div>
+    <div class="ui menu inverted vertical fluid">
+    {{#each userVideo}}
+      <a class="item">
+          <div class="segment inverted float left">
+            <h5 class="header">{{title}}</h5>
+          </div>
+          <div class="admin icon float right">
+            <i class="large setting icon"></i>
+          </div>
+      </a>
+    {{/each}}
+    </div>
+    <div class="videoAdminPanel">      
+      <h4 class="title float left">Title</h4>
+      <i class="large remove icon float right"></i>
+      <input class="updateTitle lb-input" id="updateTitle"/>     
+    </div>
   </div>
-{{/each}}
-</div>
 </template>
 
 

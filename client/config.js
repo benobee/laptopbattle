@@ -18,15 +18,6 @@ Meteor.Spinner.options = {
     left: 'auto' // Left position relative to parent in px
 };
 
-//when user logs in with particular service, trigger events
-Accounts.onLogin(function(){ 
-
-});
-
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
 });
-
-Meteor.subscribe("videos");
-Meteor.subscribe("comments");
-Meteor.subscribe("likes");

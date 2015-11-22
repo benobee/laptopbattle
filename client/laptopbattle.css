@@ -1,14 +1,19 @@
 /* CSS declarations go here */
 .body{
-	background:#08000A;
+	background:none !important;
+	min-height:100vh;
+}
+.allVideos{
+	margin-top:50px;
+	margin-bottom:50px;
 }
 .content{
-	margin-top:50px;
 	background:none;
-	margin-bottom:50px;
 }
 .pusher{
 	background:#F2F2F2 !important;
+	min-height:100vh;
+	z-index: 999;
 }
 button:focus{
 	outline:0 !important;
@@ -33,19 +38,36 @@ button{
 	max-width: 380px;
 	width:100%;	
 }
+#myVideos .ui.menu.inverted.vertical.fluid .item{
+	height:35px;
+	width:100%;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+	border-bottom-color:#52055C;
+}
+.admin.icon.float.right:hover{
+	transform: translateX(10px);
+}
+.admin.icon{
+	opacity:0;
+	transition:0.2s;
+	-webkit-transition: 0.2s;
+	transform: translateX(50px);
+}
+.ui.menu.inverted.vertical.fluid .item:hover .admin.icon{
+	opacity: 1;
+	transform: translateX(0px);
+}
 .ui.segment.raised.inverted.upload{
 	background:#440047;
 }
 .ui.menu.inverted{
 	background:#440047;
 }
-div[class^="navbar element"]{
-	padding-top:23px;
-	padding-left:30px;
-	color:white;
-}
 .navbar.menu{
-	min-height:50px;
+	min-height:60px;
 	background: none;
 	position:relative;
 }
@@ -55,25 +77,6 @@ div[class^="navbar element"]{
 	border-bottom-style:solid;
 	border-bottom-width:4px;
 	border-bottom-color:#F82262;
-}
-.navbar.logo{
-	padding-top:20px;
-	padding-left:30px;
-	padding-bottom:10px;
-	width:110px;
-}
-.float.right{
-	float:right;
-}
-.float.left{
-	float:left;
-}
-.float.right:after{
-	overflow: auto
-}
-.image{
-	width:100%;
-	height:auto;
 }
 .lb-input{
 	height:44px;
@@ -87,6 +90,15 @@ div[class^="navbar element"]{
 	transition: background 0.48s;
 	-ms-transition: background 0.48s;
    	-webkit-transition: background 0.48s;
+}
+.float.right{
+	float: right;
+}
+.float.left{
+	float:left;
+}
+.float.right:after{
+	margin:auto;
 }
 .lb-input:focus{
 	background: #F5F5F5;
@@ -118,20 +130,17 @@ h1, h2, h3, h4, h5, h6, p{
 .dark.purple.background{
 	background:#08000A;
 }
-.space.background{
-	background-image: url('img/space.jpg');
-	background-size: cover;
-	background-position: center;
-}
 .spinner-wrapper{
 	width:100%;
 	top:0px;
 	position: fixed;
+	background-color: #440047;
 	height:100%;
-	background-image: url('img/splash.jpg');
-	background-size: cover;
-	z-index:2000000000;
+	background-image: url('img/logo-glad.png');
+	background-size: 35%;
+	z-index:9000000000;
 	background-position: center;
+	background-repeat: no-repeat;
 }
 .spinner{
 	position:fixed;
@@ -139,7 +148,7 @@ h1, h2, h3, h4, h5, h6, p{
 	right:50%;
 	top:50%;
 	margin:auto;
-	z-index:2000000000;
+	z-index:9000000000;
 	transition: 0.48s;
 	-ms-transition: 0.48s;
    	-webkit-transition: 0.48s;
@@ -168,7 +177,8 @@ h1, h2, h3, h4, h5, h6, p{
 #videoUploadForm{
 	display:none;
 	z-index: 9999;
-	top:40px;
+	top:0;
+	padding-top:40px;
 	position:absolute;
 	height:100%;
 }
@@ -243,9 +253,13 @@ h1, h2, h3, h4, h5, h6, p{
 	background:#45FCFF !important;
 	color:#333333 !important;
 }
-.text-besides-image{
-	font-size: 18px;
-	font-family: 'Roboto Condensed', sans-serif;
+.logo{
+	padding:15px;
+	width:90px;
+}
+.logo img{
+	width:100%;
+	height:auto;
 }
 .updateTitle:focus{
 	transition: 0.4s;
@@ -336,4 +350,36 @@ h1, h2, h3, h4, h5, h6, p{
 #banners{
 	margin-bottom:20px;
 }
-
+[data-voted="1"] .votes span{
+	color: #F82262;
+}
+.videoAdminPanel{
+	display:none;
+	position: absolute;
+	z-index: 9999;
+	background:#370C3D;
+	padding:15px;
+	width:100%;
+	border-radius: 4px;
+	left:0;
+	min-height:150px;
+	box-shadow: 10px 5px 15px #1A091C;
+}
+.videoAdminPanel .title{
+	font-size:16px;
+	color:#C095CC
+}
+.item.info{
+	font-size:0.6em;
+	background:#290F38 !important;
+	color:white;
+	border-left-style:solid;
+	border-color:#F82262;
+	border-width: 1px;
+}
+.ui.statistic .value{
+	color:#F82262;
+}
+.ui.statistic .label{
+	color:white;
+}

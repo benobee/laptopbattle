@@ -1,0 +1,75 @@
+<template name="battleVideo">
+  <div class="videoPage">
+    <div class="ui container fluid">
+      <div class="videoTitle">
+        <div class="ui right">
+          <button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
+        </div>
+      </div>
+      <div class="videoContainer">
+        <div class="ui grid stackable">
+          <div class="twelve wide column">
+            <div id="player" class="player"></div>
+          </div>
+          <div class="four wide column">
+            {{> sidebarRight}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sidebarRight">
+  <div class="ui grid stackable">
+    <div class="column sixteen wide video sidebar playlist">
+        {{>playList}}
+    </div>
+    <div class="column sixteen wide video sidebar comments">
+      <div id="commentSidebar" class="commentInput">
+        <div id="commentList{{_id}}">
+            <div>
+              {{#if currentUser}}
+              <form method="post" id="commentForm">
+              <input id="post" class="comment-box" type="text" required/>
+              <button class="pull-right lb-button-post" id="addComment" type="submit">Comment</button>
+              </form>
+              {{/if}}
+            </div>
+<!-- Display Comments -->
+            {{>allComments}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="playList">
+  <div id="playListItems" class="ui fluid vertical menu inverted">
+      {{#each playList}}
+      <a href="?id={{this._id}}&url={{url}}" id="playList-{{_id}}" name="{{this._id}}" class="item {{activeVideo}}">
+          <div class="segment inverted">
+            <p class="header">{{title}}</p>
+          </div>
+      </a>           
+      {{/each}}
+  </div>
+</template>
+
+<template name="allComments">
+  <div class="allComments">
+      {{#each comment}}
+        {{>post}}
+      {{/each}}
+  </div>
+</template>
+
+<template name="post">
+  <div class="post loading" id="comment{{_id}}">
+        {{post}}
+      <div class="post-info" data="{{time}}">
+        {{name}}
+        {{date}}
+      </div>
+  </div>
+</template>

@@ -3,13 +3,13 @@ Router.configure({
 });
 
 Router.route('/', function () {
-    this.render('home');   
+    this.render('battleHome');   
 });
 
-Router.route('/home', function () {
-	this.render('home');
+Router.route('/battleHome', function () {
+	this.render('battleHome');
 });
 
-Router.route('/instrument', function () {
-	this.render('instrument');
+Router.route('/battleVideo', function () {
+	this.render('battleVideo');
 });

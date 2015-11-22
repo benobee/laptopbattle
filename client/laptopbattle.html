@@ -13,7 +13,22 @@
 </head>
 <body class="body"></body>
 
-
+<template name="layout">
+    <div id="spinner-wrapper" class="spinner-wrapper">
+	    <div class="spinner">
+	      {{> spinner}} 
+	    </div>
+    </div>
+    <div class="ui sidebar inverted vertical menu" id="menu">
+		{{> sidebarLeft}}
+	</div>
+	<div class="pusher">
+		{{> navbar}}
+		<div class="content">
+		{{> yield}}
+		</div>
+	</div>
+</template>
 
 
 

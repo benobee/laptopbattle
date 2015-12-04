@@ -1,6 +1,8 @@
 //UI
 var LaptopBattle = (function(){
 
+
+
 //menu related events and methods
 var menu = {
     init: function(){
@@ -9,11 +11,11 @@ var menu = {
               closable: true,  
               transition: 'overlay',
               onShow: function(){
-                LaptopBattle.menu.toggleMenuClose();       
+                LaptopBattle.menu.toggleMenuClose();
               },
               onHide: function(){
                 LaptopBattle.menu.toggleMenuClose();
-                LaptopBattle.menu.hideVideoAdminPanel();
+                $('.videoAdminPanel').find().hide();
               }
           });
     },
@@ -36,17 +38,39 @@ var menu = {
           }, 100);
         }    
     },
-    hideVideoAdminPanel : function(){
+    adminPanel: {
+      isVisible: function(){
+        return $('.videoAdminPanel').transition('is visible');
+      },
+      toggle: function(element, title){
+        $('#updateTitle').val(title);
+        var visible = LaptopBattle.menu.adminPanel.isVisible();
 
-    },
-    openVideoAdminPanel: function(element){
-
+        if(visible == false){
+          var adminPanel = $('.videoAdminPanel');
+          $(element).append(adminPanel);
+          $('.videoAdminPanel').transition('drop');
+        } else {
+          var adminPanel = $('.videoAdminPanel');
+          $(adminPanel).transition({
+            animation: 'drop',
+            duration : '50ms',
+            allowRepeats: true,
+            onStart : function(){
+              $(adminPanel).transition('drop');          
+            },
+            onComplete : function(){            
+              $(element).append(adminPanel);
+            }
+          });       
+        }
+      }     
     }
 }
 
 //video related events and methods
 var video = {
-    play: function(){
+     play: function(){
       $.when( $( '#spinner-wrapper').fadeIn() ).done(function(){
       onYouTubeIframeAPIReady = function () {
         player = new YT.Player("player", {
@@ -63,8 +87,8 @@ var video = {
             events     : LaptopBattle.video.eventSettings
                 
         });
-      };
-        LaptopBattle.video.load();
+      }
+      LaptopBattle.video.load();
       });
     },
     load : function(){
@@ -82,8 +106,6 @@ var video = {
       onReady : function onReady(event) {
                     $('#spinner-wrapper').fadeOut();
                     $('.videoPage').show();  
-                    var duration = player.getDuration('player');
-                    Session.set("duration", duration);
       },
       onStateChange: function onStateChange(event){
 
@@ -99,52 +121,62 @@ var video = {
                       var search = $('#playListItems').find('.active').next().attr('href');
                       var url = search.split('=');
                       player.loadVideoById(url[2]);
-                    }
-                    else{                     
+                    } else{                     
                       var nextSession = $('#playListItems').find('.item').first().attr('name');                     
                       Session.set('video', nextSession);
                       var search = $('#playListItems').find('.item').first().attr('href');
                       var url = search.split('=');
                       player.loadVideoById(url[2]);
                     }
-                  }
-                  else if(event.data == 1){
+                  } else if(event.data == 1){
                       
+                      //initialize playback slider
+                      $('#slider').fadeIn();
+
                       //set durations and set session
                       $('#commentSidebar').fadeIn();
                       var duration = player.getDuration();
-                      Session.set('duration', duration);
+                      Session.set('duration', duration);                 
 
                       //create a constant broadcast of the video position
                       Meteor.setInterval(function(){
                       var time = player.getCurrentTime();
+                      var duration = Session.get('duration');
+                      Session.set('time', time);
+                      $("#progress").val( $( "#slider" ).slider( "value", time ));                     
+                      }, 125);
 
-                    Session.set('time', time);
-                    }, 125);    
+                      $( "#slider" ).slider({
+                        range: "max",
+                        min: 0,
+                        max: duration,
+                        slide( event, ui ) {
+                          $( "#progress" ).val( ui.value );
+                          player.seekTo(ui.value, true);
+                        }
+                      });
+                      
                   } 
-      }        
+      }      
     },
     resetSessions : function(){
         Session.set("video" , '' );
         Session.set('time', '');
-        Session.set('duration', '');
     },
-    scrollToActive: function(){
-        var container = $('#playListItems');
-        var active = $('#playListItems').find('.active');
-        console.log(container, active, $('#playListItems').height() );
-
-
+    getTickPosition:function(tick){
+      var duration = Session.get("duration");
+      var position = tick.time / duration * 100;
+      return position;
     }
 }
 
-//expose API to window
-return{
+//expose API to window for global use
+return {
   menu : menu,
   video: video
 }
 
-})()
+})();
 
 window.LaptopBattle = LaptopBattle;
 

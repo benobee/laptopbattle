@@ -1,7 +1,7 @@
 Template.navbar.events({
 	'click #toggleSidebar' : function(){
      LaptopBattle.menu.toggleSidebar();
-  	}
+  }
 });
 
 Template.navbar.onRendered( function(){
@@ -22,7 +22,7 @@ Template.sidebarLeft.events({
       });  
     });
     },
-    'click #closeUploadForm' : function(e){
+    'click #closeUploadForm' : function(){
       LaptopBattle.menu.toggleUploadForm();
     },
     'click #closeMenu' : function(){
@@ -32,17 +32,24 @@ Template.sidebarLeft.events({
 
 Template.myVideos.helpers({
     userVideo: function() {
-      return Videos.find();
-        var id = Session.get("id");
-
-        if (Videos.find({id: id})){           
-           return Videos.find({id: id});
-        }
+      if(Accounts.admin == true){
+        return Videos.find();
+      } else {
+        return Videos.find({id: Meteor.userId()});
+      }      
     },
+    user : function() {
+      if(this.id == Meteor.userId()){
+         return true;
+      } else {
+         return false;
+      }
+    }
 });
 
 Template.myVideos.events({
-    'click .delete': function(){
+    'click .admin .trash': function(e){
+     e.stopPropagation(); 
      Meteor.call('deleteVideo', this._id);     
     },
     'click #addVideo' : function(){
@@ -53,15 +60,16 @@ Template.myVideos.events({
       var value = $(e.currentTarget).val();
       Meteor.call('updateTitle', this._id, value);   
     },
-    'click .admin.icon' : function(){
-      var id = // parent id of element
-      LaptopBattle.menu.openVideoAdminPanel(id);    
+    'click #videoList .item ' : function(e){
+      e.stopPropagation();
+      var title = this.title;
+      LaptopBattle.menu.adminPanel.toggle(e.currentTarget, title);    
     },
     'click .videoAdminPanel' : function(e){
+      e.stopPropagation();
       $(e.currentTarget).transition('drop');
-      LaptopBattle.menu.hideVideoAdminPanel();
     },
     'click .videoAdminPanel input' : function(e){
-       e.stopPropagation();
+      e.stopPropagation();
     }
 });

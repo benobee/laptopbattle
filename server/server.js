@@ -1,21 +1,3 @@
-// Comments.allow({
-//   insert: function(userId, doc){
-//     return userId;
-//   },
-//   remove: function(userId, doc){
-//     return userId;
-//   },
-// });
-
-// Videos.allow({
-//   insert: function(userId, doc){
-//     return userId;
-//   },
-//   remove: function(userId, doc){
-//     return userId;
-//   },
-// });
-
 Meteor.publish("videos", function(){
   return Videos.find();
 });
@@ -31,6 +13,7 @@ Meteor.publish("points", function(){
 Meteor.publish("levels", function(){
   return Levels.find();
 });
+
 
 
 

@@ -2,12 +2,19 @@
   <!--   <div id="banners" class="ui container">
   {{> banners}}
   </div> -->
-
   <div id="mainVideos" class="ui container allVideos">
   <div class="ui four stackable cards">
-      {{#each videos}}
+      {{#if videos.length}}
+
+      {{#each videos.content}}
         {{> mainVideos}}           
       {{/each}}
+
+      {{else}}
+
+      <div><h1>no videos</h1></div>
+
+      {{/if}}
   </div>
   </div>
 </template>

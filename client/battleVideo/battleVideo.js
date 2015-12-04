@@ -1,32 +1,32 @@
-Template.battleVideo.helpers({
-  id : function(){
-    var id = Session.get('video');
-    return id; 
-  },
-  url : function(){   
-    //find the video object for the id
-    var id = Session.get('video');
-    return Videos.findOne(id);
-  },
-  duration : function(){   
-    var s = Session.get('duration');
-    return moment.duration(Math.floor(s * 1000)).asMinutes() + ' minutes';
-  }
-});
-
 Template.battleVideo.onRendered(function(){
+  var shareURL = (function(){
+    return {
+      parse : function(){
+        return window.location.search.substring(1).split("&");
+      },
+      url : function(){
+        var url = this.parse();
+        var split = url[1].split("=");
+        return split[1]; 
+      },
+      _id : function(){
+        var id = this.parse();
+        var split = id[0].split("=");
+        return split[1]; 
+      }
+    }
+  })();
+  if(shareURL.url()){   
+    Session.set("video", shareURL._id());
+    Session.set("url", shareURL.url());
+  }
   LaptopBattle.video.play();
-  LaptopBattle.video.scrollToActive();
 });
 
 Template.battleVideo.events({  
   'click .closeButton': function(){
     Router.go('/');
     LaptopBattle.video.destroy();
-  },
-  'click .post': function(e){
-    var x = $(this);
-    player.seekTo(x[0].time, true);
   }
 });
 
@@ -77,28 +77,79 @@ Template.post.helpers({
   },
   time : function(){
     return this.time;
-  }
+  },   
+  admin : function(){
+    if(this.userId == Meteor.user()._id){
+       return true;
+    } else {
+       return false;
+    }
+  } 
 });
+
+Template.post.events({
+  'click .post .marker': function(){
+    player.seekTo(this.time, true);
+  },
+  'click .post .trash': function(){
+    Meteor.call("deleteComment", this._id);
+  }
+})
 
 //new comment form
 Template.sidebarRight.events({   
     'submit #commentForm'(e){
       e.preventDefault();
-      var time = player.getCurrentTime();
-      var id = Session.get('video');
-      var user = Meteor.user().profile.name;
-      var val = $( '#post' ).val();
-      Meteor.call('addComment', id, user, val, time);
-      $( "#commentForm" )[0].reset();
+
+      var comment = {
+        'videoTime' : player.getCurrentTime(),
+        '_id'       : Session.get('video'),
+        'userId'    : Meteor.user()._id,
+        'user'      : Meteor.user().profile.name,
+        'val'       : $( '#post' ).val(),
+        'addComment'  : function(){
+          Meteor.call('addComment', this._id, this.userId, this.user, this.val, this.videoTime);
+          $( "#commentForm" )[0].reset();
+        }
+      };
+      comment.addComment();      
     }
 });
 
 //on new post animate from right to left removing the css class "loading"
 Template.post.onRendered(function (){
-  var $post = $(this.find('.post'))
+  var $post = $(this.find('.post'));
   Meteor.defer(function() {
     $post.removeClass('loading').transition('hide').transition({
-    animation  : 'fade left',
-    duration   : '0.5s' }).promise();
+      animation  : 'fade left',
+      duration   : '0.5s' }).promise();
   });
 });
+
+Template.timeline.helpers({
+  comment: function(){
+    var id = Session.get('video');
+    return Comments.find({'videoId': id});
+  }
+});
+
+Template.tick.events({
+  'click .timeline.tick': function(){
+    player.seekTo(this.time, true);
+  },
+  'mouseenter .timeline.tick': function(e){
+    $(e.currentTarget).popup("show");
+  }
+});
+
+Template.tick.helpers({
+  videoFrame: function(){  
+    var duration = Session.get("duration");
+    this.position = LaptopBattle.video.getTickPosition(this);
+    if(duration !== null){
+      $('#timeline').css("opacity",1);
+      return this.position; 
+    }
+  }  
+});
+

@@ -8,6 +8,9 @@
         <a href="#" id="toggleSidebar" class="item">
             <i class="sidebar large icon"></i>Menu
         </a>
+        <a href="/" class="item">
+           <i class="video play large icon"></i>Battles
+        </a>
         <a href="#" class="item">
            <i class="trophy large icon"></i>Leaderboard
         </a>
@@ -79,24 +82,30 @@
         </div>
       </div>
     </div>
-    <div class="ui menu inverted vertical fluid">
+    <div id="videoList" class="ui menu inverted vertical fluid">
+    {{#if userVideo}}
     {{#each userVideo}}
       <a class="item">
           <div class="segment inverted float left">
             <h5 class="header">{{title}}</h5>
           </div>
+          {{#if user}}
           <div class="admin icon float right">
             <i class="large setting icon"></i>
+            <i class="large trash icon"></i>
           </div>
+          {{/if}}
       </a>
     {{/each}}
+    {{else}}
+      <div class="item">No Videos</div>
+    {{/if}}
     </div>
     <div class="videoAdminPanel">      
       <h4 class="title float left">Title</h4>
       <i class="large remove icon float right"></i>
-      <input class="updateTitle lb-input" id="updateTitle"/>     
+      <input class="updateTitle lb-input" id="updateTitle"/>
     </div>
   </div>
 </template>
-
 

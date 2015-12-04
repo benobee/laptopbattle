@@ -11,12 +11,9 @@ momentjs:moment
 accounts-facebook
 miro:preloader
 sacha:spin
-mrt:cheerio
 underscore
-richsilv:semantic-ui-modal
 tmeasday:publish-counts
 flemay:less-autoprefixer
-mizzao:jquery-ui
 standard-minifiers
 meteor-base
 mobile-experience
@@ -39,4 +36,5 @@ insecure
 accounts-ui
 richsilv:owl-carousel
 semantic:ui
-natestrauser:jquery-scrollto
+d3js:d3
+mizzao:jquery-ui

@@ -1,14 +1,10 @@
 //load all videos and populate on the page
 Template.battleHome.helpers({
-  videos : function() {
-      var videos = Videos.find({}, {sort: {date: -1}});
-      return videos;
-  },
-  windowWidth : function(){
-      var width = $(window).resize(function(width) {
-        return width.currentTarget.innerWidth;
-      });    
-      return width;
+  videos : {
+      'content' : Videos.find({}, {sort: {date: -1}}),
+      'length'  : function(){
+        return this.content.count();
+      }
   }
 });
 // Template.home.onRendered(function(){
@@ -24,11 +20,9 @@ Template.mainVideos.helpers({
       //show count of votes per video
       if(this.votes == undefined){
         return "no votes";
-      }
-      else if (this.votes.length == 1){
+      } else if (this.votes.length == 1){
         return this.votes.length + " " + "vote";  
-      }
-      else {
+      } else {
         return this.votes.length + " " + "votes";
       }           
     },
@@ -49,7 +43,7 @@ Template.battleHome.events({
     'click .card' : function(){
       Session.set("url" , this.url);
       Session.set("video" , this._id);
-      Router.go('/battleVideo');
+      Router.go('/battle?id='+ this._id + '&url=' + this.url);
     },
     'click .extra.content.vote'(e){
       //vote for the video
@@ -65,4 +59,5 @@ Template.battleHome.events({
 
 Template.mainVideos.onRendered(function (){
   $('#spinner-wrapper').fadeOut();
+  Session.set('duration', null);
 });

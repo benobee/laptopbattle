@@ -2,13 +2,14 @@
   <div class="videoPage">
     <div class="ui container fluid">
       <div class="videoTitle">
-        <div class="ui right">
+<!--         <div class="ui right">
           <button id="close" class="closeButton"><span class="fa fa-close fa-2x"></span></button>
-        </div>
+        </div> -->
       </div>
       <div class="videoContainer">
         <div class="ui grid stackable">
           <div class="twelve wide column">
+            {{>timeline}}         
             <div id="player" class="player"></div>
           </div>
           <div class="four wide column">
@@ -18,6 +19,24 @@
       </div>
     </div>
   </div>
+</template>
+
+<template name="timeline">
+<div class="timeline-wrapper">
+  <div id="timeline" class="timeline container">
+    <div class="timeline comments" width="100%">
+    {{#each comment}}
+      {{>tick}}
+    {{/each}}
+    </div>
+  </div>
+  <div id="slider"></div>
+  <input id="progress" type="text" style="display:none;visibilty:hidden"/>
+</div>
+</template>
+
+<template name="tick">
+  <div class="timeline tick" data-position="top center" data-content="{{this.post}}" style="left:{{videoFrame}}%"></div>
 </template>
 
 <template name="sidebarRight">
@@ -31,7 +50,7 @@
             <div>
               {{#if currentUser}}
               <form method="post" id="commentForm">
-              <input id="post" class="comment-box" type="text" required/>
+              <input id="post" class="comment-box" type="text" autocomplete="off" required/> 
               <button class="pull-right lb-button-post" id="addComment" type="submit">Comment</button>
               </form>
               {{/if}}
@@ -67,6 +86,12 @@
 <template name="post">
   <div class="post loading" id="comment{{_id}}">
         {{post}}
+      <div class="float right adminPanel">
+      <i class="marker small icon"></i>
+      {{#if admin}}
+        <i class="trash small icon"></i>
+      {{/if}}
+      </div>
       <div class="post-info" data="{{time}}">
         {{name}}
         {{date}}

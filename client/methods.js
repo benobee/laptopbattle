@@ -1,8 +1,6 @@
 //UI
 var LaptopBattle = (function(){
 
-
-
 //menu related events and methods
 var menu = {
     init: function(){
@@ -11,13 +9,18 @@ var menu = {
               closable: true,  
               transition: 'overlay',
               onShow: function(){
-                LaptopBattle.menu.toggleMenuClose();
+                //do stuff
               },
               onHide: function(){
-                LaptopBattle.menu.toggleMenuClose();
                 $('.videoAdminPanel').find().hide();
+                $('#videoUploadForm').hide();
+                $('#loginForm').show();
+                $('#createAccountForm').hide();
               }
           });
+    },
+    hideSidebar : function(){
+      $('#menu').sidebar('hide');
     },
     toggleSidebar : function(){
         $('#menu').sidebar('toggle');
@@ -25,18 +28,6 @@ var menu = {
     toggleUploadForm: function(){
         $('#videoUploadForm').transition('drop');
         $('#addVideo').transition('drop');
-    },
-    toggleMenuClose: function(){
-        var opacity = $('#closeMenu').css('opacity');
-        if (opacity == 1){
-          $('#closeMenu').animate({
-            opacity: 0
-          }, 100);
-        } else {
-          $('#closeMenu').animate({
-            opacity: 1
-          }, 100);
-        }    
     },
     adminPanel: {
       isVisible: function(){
@@ -105,7 +96,8 @@ var video = {
     eventSettings: {
       onReady : function onReady(event) {
                     $('#spinner-wrapper').fadeOut();
-                    $('.videoPage').show();  
+                    $('.videoPage').show();
+                    player.playVideo();  
       },
       onStateChange: function onStateChange(event){
 
@@ -170,8 +162,28 @@ var video = {
     }
 }
 
-//expose API to window for global use
+var user = {
+  onLogIn : function (){
+    Tracker.autorun(function(){
+       if(Meteor.userId()){
+        LaptopBattle.menu.hideSidebar();
+         $.when( $('.spinner-wrapper').fadeIn() ).done(function(){           
+            Router.go('/battles');
+         });
+         
+       } else {         
+          $.when( LaptopBattle.menu.hideSidebar() ).done(function(){
+          Router.go('/');
+          $('.spinner-wrapper').fadeOut();
+         });
+           
+       }  
+    });
+  }
+}
+
 return {
+  user : user,
   menu : menu,
   video: video
 }

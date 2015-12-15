@@ -5,10 +5,8 @@
 # but you can also edit it by hand.
 
 iron:router
-accounts-google
 fortawesome:fontawesome
 momentjs:moment
-accounts-facebook
 miro:preloader
 sacha:spin
 underscore

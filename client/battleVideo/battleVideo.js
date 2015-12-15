@@ -101,11 +101,17 @@ Template.sidebarRight.events({
     'submit #commentForm'(e){
       e.preventDefault();
 
+      if(Meteor.user().username){
+        var name = Meteor.user().username;
+      } else {
+        var name = Meteor.user().profile.name;
+      }
+
       var comment = {
         'videoTime' : player.getCurrentTime(),
         '_id'       : Session.get('video'),
         'userId'    : Meteor.user()._id,
-        'user'      : Meteor.user().profile.name,
+        'user'      : name,
         'val'       : $( '#post' ).val(),
         'addComment'  : function(){
           Meteor.call('addComment', this._id, this.userId, this.user, this.val, this.videoTime);

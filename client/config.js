@@ -18,6 +18,6 @@ Meteor.Spinner.options = {
     left: 'auto' // Left position relative to parent in px
 };
 
-Accounts.ui.config({
-    passwordSignupFields: "USERNAME_AND_EMAIL"
-});
+// Accounts.ui.config({
+//     passwordSignupFields: "USERNAME_AND_EMAIL"
+// });

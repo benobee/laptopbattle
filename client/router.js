@@ -2,17 +2,16 @@ Router.configure({
 	layoutTemplate:'layout'
 });
 
-// Router.route('/', function() {
-// 	
-// });
-
 Router.route('/', function(){
-	this.render('battleHome');
+	this.render('home');
 });
 
-Router.route('/battleHome', function () {
+Router.route('/home', function(){
+	this.render('home');
+});
+
+Router.route('/battles', function () {
 	this.render('battleHome');
-	$('#spinner-wrapper').fadeOut();
 });
 
 Router.route('/battle', function () {
@@ -21,10 +20,6 @@ Router.route('/battle', function () {
 
 Router.configure({
 	action: function () {
-    // render all templates and regions for this route
-    this.render();
-	},
-	onStop:function(){
-		$('#spinner-wrapper').fadeOut();
+	    this.render();
 	}
 });

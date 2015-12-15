@@ -6,14 +6,16 @@
           <img src="img/logo-glad.png" alt="Laptop Battle"/>
         </div>
         <a href="#" id="toggleSidebar" class="item">
-            <i class="sidebar large icon"></i>Menu
+            <i class="sidebar large icon"></i>{{signInTitle}}
         </a>
-        <a href="/" class="item">
+        {{#if currentUser }} <!-- don't show the navbar unless user logs in --> 
+        <a href="battles" class="item">
            <i class="video play large icon"></i>Battles
         </a>
         <a href="#" class="item">
            <i class="trophy large icon"></i>Leaderboard
         </a>
+        {{/if}}
       </div>
       <div class="right menu">
         {{#if currentUser}}
@@ -54,7 +56,7 @@
       </div>
     </div>
     <div class="item login">
-    {{> loginButtons}}
+    {{> userAccount}}
     </div>     
     {{#if currentUser}}
     <div id="videoUploadForm" class="ui segment raised inverted upload">
@@ -109,3 +111,27 @@
   </div>
 </template>
 
+<template name="userAccount">
+<div class="boxTitle">{{title}}</div>
+<div class="ui-box">
+{{#if currentUser}}
+  <div class="signOut">
+   <button class="dark button" id="signOut">Sign Out</button>
+  </div>
+{{else}}
+  <form class="login" id="loginForm">
+   <input class="lb-input" placeholder="username" type="text" id="username">
+   <input class="lb-input" type="password" placeholder="password" id="password">
+   <button class="dark button" id="login">Login</button>
+   <button class="text button right" id="create">Create Account</button>
+  </form>
+
+  <form class="createAccount" id="createAccountForm">
+   <input class="lb-input" type="text" placeholder="username" id="createUsername" autocomplete="off">
+   <input class="lb-input" type="email" placeholder="email" id="createEmail" autocomplete="off">
+   <input class="lb-input" type="password" placeholder="password" id="createPassword" autocomplete="off">
+   <button class="dark button" id="createAccount">Create Account</button>
+  </form>
+{{/if}}
+</div>
+</template>

@@ -45,12 +45,12 @@ Template.battleHome.events({
       Session.set("video" , this._id);
       Router.go('/battle?id='+ this._id + '&url=' + this.url);
     },
-    'click .extra.content.vote'(e){
+    'click .extra.content.vote' : function(e){
       //vote for the video
       e.stopPropagation();
       Meteor.call("vote", this._id, Meteor.user()._id);
     },
-    'click .extra.content.voted'(e){
+    'click .extra.content.voted' : function(e){
       //remove vote for the video
       e.stopPropagation();
       Meteor.call("removeVote", this._id, Meteor.user()._id);
@@ -58,6 +58,6 @@ Template.battleHome.events({
 });
 
 Template.mainVideos.onRendered(function (){
-  $('#spinner-wrapper').fadeOut();
   Session.set('duration', null);
+  $('#spinner-wrapper').fadeOut();
 });

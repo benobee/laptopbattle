@@ -12,7 +12,7 @@
         <a href="battles" class="item">
            <i class="video play large icon"></i>Battles
         </a>
-        <a href="#" class="item">
+        <a href="leaderboard" class="item">
            <i class="trophy large icon"></i>Leaderboard
         </a>
         {{/if}}
@@ -27,20 +27,22 @@
 </template>
 
 <template name="game">
+{{#if rank}}
 <div class="float right item info">
         <div class="ui statistic">
           <div class="value">
-            1
+            {{rank}}
           </div>
           <div class="label">
             Your Rank
           </div>
         </div>
 </div>
+{{/if}}
 <div class="float right item info">
         <div class="ui statistic">
           <div class="value">
-            5,550
+            {{points}}
           </div>
           <div class="label">
             Battle Points
@@ -49,29 +51,28 @@
 </div>
 </template>
 
-<template name="sidebarLeft">
-    <div class="segment inverted">
-      <div id="closeMenu" class="ui button item icon">
-        <i class="large remove icon"></i>
-      </div>
-    </div>
+<template name="sidebar">
     <div class="item login">
-    {{> userAccount}}
-    </div>     
-    {{#if currentUser}}
-    <div id="videoUploadForm" class="ui segment raised inverted upload">
+      {{> userAccount}}
+      <div id="profileContent"></div>
+    </div>  
+    <div class="sidebarContent">   
+      {{#if currentUser}}
+      {{> myVideos}}
+      {{/if}}
+    </div>
+</template>
+
+<template name="myVideos">
+<div id="myVideosContainer">
+  <div id="videoUploadForm" class="ui segment raised inverted upload">
         <div id="closeUploadForm" class="ui right icon"><i class="large remove icon" style="margin-bottom:35px"></i></div>
         <form id="battleUpload">      
           <input class="lb-input" name="title" id="title" placeholder="Title" type="text" required/>
           <input class="lb-input" name="url" id="url" placeholder="Youtube URL" type="link" required/>
           <button id="uploadVideo" type="submit" class="dark button"><span class="fa fa-upload"></span> Upload Video</button>
         </form>
-    </div>
-    {{> myVideos}}
-    {{/if}}
-</template>
-
-<template name="myVideos">
+  </div>
   <div id="myVideos">
     <div class="ui menu inverted">
       <div class="left menu inverted" style="margin-bottom:40px">
@@ -109,18 +110,22 @@
       <input class="updateTitle lb-input" id="updateTitle"/>
     </div>
   </div>
+</div>
 </template>
 
 <template name="userAccount">
-<div class="boxTitle">{{title}}</div>
-<div class="ui-box">
 {{#if currentUser}}
-  <div class="signOut">
-   <button class="dark button" id="signOut">Sign Out</button>
-  </div>
+{{>profileHeader}}
 {{else}}
+<div class="profile">
+  <div class="header">Sign In</div>
+</div>
+{{/if}}
+
+{{#unless currentUser}}
+<div class="ui-box">
   <form class="login" id="loginForm">
-   <input class="lb-input" placeholder="username" type="text" id="username">
+   <input class="lb-input" placeholder="email" type="text" id="email">
    <input class="lb-input" type="password" placeholder="password" id="password">
    <button class="dark button" id="login">Login</button>
    <button class="text button right" id="create">Create Account</button>
@@ -132,6 +137,72 @@
    <input class="lb-input" type="password" placeholder="password" id="createPassword" autocomplete="off">
    <button class="dark button" id="createAccount">Create Account</button>
   </form>
-{{/if}}
 </div>
+{{/unless}}
+
+</template>
+
+<template name="profileHeader">
+<div id="profileHeader">
+  <div class="ui pointing dropdown">
+    <div class="profile">
+      <div class="image"><img id="avatar" src="avatars/avatar-default.png"></div>
+      <div class="header">{{title}}</div>
+    </div>
+    <div class="menu">
+      <a href="#profile" class="item" id="editProfile">Edit Profile</a>
+      <a href="#account" class="item" id="editProfile">Account Settings</a>
+      <div class="item signOut" id="signOut">Sign Out</div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="dashboard">
+  <div class="battleInfo">
+      {{#if rank}}
+      <div class="ui statistic">
+          <div class="value">
+            {{rank}}
+          </div>
+          <div class="label">
+            Your Rank
+          </div>
+      </div>
+      {{/if}}
+      {{#if points}}
+      <div class="ui statistic">
+          <div class="value">
+            {{points}}
+          </div>
+          <div class="label">
+            Battle Points
+          </div>
+      </div>
+      {{/if}}
+      <div class="ui statistic">
+          <div class="value">
+            {{activeBattles}}
+          </div>
+          <div class="label">
+            Active Battles
+          </div>
+      </div>  
+  </div>
+</template>
+
+<template name="profileSettings">
+<div id="profileSettings">
+  <form>
+    <label for="avatarImage">Avatar</label>
+    <input id="avatarImage" accept="image/*" type="file" class="lb-input">
+    <label for="changeUsername">Username</label>
+    <input type="text" id="newUsername" class="lb-input">
+    <button id="updateSettings" class="dark button">Update Settings</button>
+  </form>
+</div>
+</template>
+
+<template name="accountSettings">
+
 </template>

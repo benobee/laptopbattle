@@ -43,21 +43,28 @@ Template.battleHome.events({
     'click .card' : function(){
       Session.set("url" , this.url);
       Session.set("video" , this._id);
+      Session.set("videoUserId" , this.id);
       Router.go('/battle?id='+ this._id + '&url=' + this.url);
     },
     'click .extra.content.vote' : function(e){
       //vote for the video
       e.stopPropagation();
       Meteor.call("vote", this._id, Meteor.user()._id);
+      Meteor.call("addPoints", this._id, this.id, "vote");
     },
     'click .extra.content.voted' : function(e){
       //remove vote for the video
       e.stopPropagation();
-      Meteor.call("removeVote", this._id, Meteor.user()._id);
+      Meteor.call("removeVote", this._id, Meteor.user()._id );
+      Meteor.call("removePoints", Meteor.userId(), this._id, this.id);
     }
 });
 
+Template.battleHome.onRendered(function(){
+  $('#spinner-wrapper').fadeOut();
+})
+
 Template.mainVideos.onRendered(function (){
   Session.set('duration', null);
-  $('#spinner-wrapper').fadeOut();
+  
 });

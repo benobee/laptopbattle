@@ -10,6 +10,10 @@ Router.route('/home', function(){
 	this.render('home');
 });
 
+Router.route('/leaderboard', function () {
+	this.render('leaderboard');
+});
+
 Router.route('/battles', function () {
 	this.render('battleHome');
 });

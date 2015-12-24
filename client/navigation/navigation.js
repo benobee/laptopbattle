@@ -1,3 +1,26 @@
+Template.game.helpers({
+  'points':function(){
+    if(Meteor.user().pointCount){
+      return Meteor.user().pointCount;
+    } else {
+      return '0';
+    }    
+  },
+  rank: function(){
+    var users = Meteor.users.find({}, {sort: {pointCount: -1}}).fetch();
+    var id = Meteor.userId();
+
+    for(var i in users){
+      if(users[i]._id == id && users[i].pointCount > 0){
+        var index = parseInt(i);
+        var rank = index + 1;
+
+        return rank;
+      }      
+    }
+  }
+});
+
 Template.navbar.events({
 	'click #toggleSidebar' : function(){
      LaptopBattle.menu.toggleSidebar();
@@ -10,17 +33,16 @@ Template.navbar.helpers({
       return Meteor.user().username;
     } else {
       return 'Sign In';
-    }
-    
+    }   
   }
 });
 
-Template.navbar.onRendered( function(){
+Template.navbar.onRendered(function(){
   LaptopBattle.menu.init();
 });
 
 //sidebar form handling
-Template.sidebarLeft.events({
+Template.sidebar.events({
     'submit #battleUpload': function(e) {
       e.preventDefault();
 
@@ -40,9 +62,6 @@ Template.sidebarLeft.events({
     },
     'click #closeUploadForm' : function(){
       LaptopBattle.menu.toggleUploadForm();
-    },
-    'click #closeMenu' : function(){
-      LaptopBattle.menu.toggleSidebar();
     }
 });
 
@@ -96,11 +115,12 @@ Template.userAccount.events({
     e.preventDefault();
     $('.spinner-wrapper').fadeIn();
     $('#menu').sidebar('hide');
-    var user = $('#username').val();
+    var user = $('#email').val();
     var password = $('#password').val();
     Meteor.loginWithPassword(user, password, function(error, success){
       if(error){
         console.log(error);
+        $('.spinner-wrapper').fadeOut();
       } else {
         LaptopBattle.user.onLogIn();
       }
@@ -108,6 +128,7 @@ Template.userAccount.events({
   },
   'click #signOut':function(e){
     e.preventDefault();
+
     $('#menu').sidebar('hide');
     $('.spinner-wrapper').fadeIn();
     Meteor.logout(function(){
@@ -132,7 +153,10 @@ Template.userAccount.events({
   }
 });
 
-Template.userAccount.helpers({
+
+//--------------profile------------//
+
+Template.profileHeader.helpers({
   title: function(){
     if( Meteor.user()){
       return Meteor.user().username;
@@ -140,4 +164,68 @@ Template.userAccount.helpers({
       return 'Sign In';
     }
   }
+});
+
+Template.profileHeader.events({
+  'click #editProfile':function(e){
+    $('#profileContent').html('');
+    var parentNode = document.getElementById('profileContent');
+    Blaze.render(Template.profileSettings, parentNode);
+  },
+  'click #profileHeader .profile':function(){
+    $('#profileContent').html('');
+    var parentNode = document.getElementById('profileContent');
+    Blaze.render(Template.dashboard, parentNode);
+  }
+});
+
+Template.profileHeader.onRendered(function(){
+  $('.ui.pointing.dropdown').dropdown({
+    on: 'hover'
+  });
+  $('#profileContent').html('');
+  var parentNode = document.getElementById('profileContent');
+  Blaze.render(Template.dashboard, parentNode);
+});
+
+Template.dashboard.helpers({
+  activeBattles: function(){
+    return Videos.find().count();
+  },
+  rank: function(){
+    var users = Meteor.users.find({}, {sort: {pointCount: -1}}).fetch();
+    var id = Meteor.userId();
+
+    for(var i in users){
+      if(users[i]._id == id && users[i].pointCount > 0){
+        var index = parseInt(i);
+        var rank = index + 1;
+
+        return rank;
+      }      
+    }
+  },
+  points: function(){
+    if(Meteor.user().pointCount){
+      return Meteor.user().pointCount;
+    } else {
+      return '0';
+    }  
+  }
+});
+
+Template.profileSettings.events({
+  'click #updateSettings':function(e){
+    e.preventDefault();
+    var newUsername = $('#newUsername').val();
+    Meteor.call('changeUsername', newUsername, function(){
+      $('#profileSettings').html('');
+     var parentNode = document.getElementById('profileContent');
+     Blaze.render(Template.dashboard, parentNode);
+    });    
+  }
+});
+
+Template.profileSettings.onRendered(function(){
+  $('#newUsername').val(Meteor.user().username);
 });

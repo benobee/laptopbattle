@@ -8,11 +8,8 @@ var menu = {
               dimPage: true,
               closable: true,  
               transition: 'overlay',
-              onShow: function(){
-                //do stuff
-              },
               onHide: function(){
-                $('.videoAdminPanel').find().hide();
+                $('.videoAdminPanel').hide();
                 $('#videoUploadForm').hide();
                 $('#loginForm').show();
                 $('#createAccountForm').hide();
@@ -27,7 +24,14 @@ var menu = {
     },  
     toggleUploadForm: function(){
         $('#videoUploadForm').transition('drop');
-        $('#addVideo').transition('drop');
+    },
+    sidebar: {
+      toggle : function(){
+        $('#menu').sidebar('toggle');
+      },
+      render:function(template){
+        $('#profileMenuContent').html(template);
+      }
     },
     adminPanel: {
       isVisible: function(){

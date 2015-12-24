@@ -1,0 +1,27 @@
+<template name="leaderboard">
+<div id="leaderboard" class="ui container">
+  <div class="ui grid">
+    <div class="two wide column">
+      <h1>rank</h1>
+    </div>
+    <div class="eight wide column">
+      <h1>username</h1>
+    </div>
+    <div class="six wide column">
+      <h1>points</h1>
+    </div>
+    {{#each user}}
+    <div class="two wide column">
+      <div class="leaderboard">{{index}}</div>
+    </div>
+    <div class="eight wide column">
+      <div class="leaderboard">{{username}}</div>
+    </div>
+    <div class="six wide column">
+      <div class="leaderboard">{{pointCount}}</div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+</template>
+

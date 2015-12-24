@@ -92,7 +92,7 @@ Template.post.events({
     player.seekTo(this.time, true);
   },
   'click .post .trash': function(){
-    Meteor.call("deleteComment", this._id);
+    Meteor.call("deleteComment", this._id, Session.get("videoUserId"));
   }
 })
 
@@ -106,7 +106,7 @@ Template.sidebarRight.events({
       } else {
         var name = Meteor.user().profile.name;
       }
-
+      var videoUserId = Session.get('videoUserId');
       var comment = {
         'videoTime' : player.getCurrentTime(),
         '_id'       : Session.get('video'),
@@ -114,7 +114,8 @@ Template.sidebarRight.events({
         'user'      : name,
         'val'       : $( '#post' ).val(),
         'addComment'  : function(){
-          Meteor.call('addComment', this._id, this.userId, this.user, this.val, this.videoTime);
+          Meteor.call('addComment', this._id, this.userId, this.user, this.val, this.videoTime, videoUserId);
+
           $( "#commentForm" )[0].reset();
         }
       };

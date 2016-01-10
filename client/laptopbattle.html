@@ -11,24 +11,50 @@
     <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1 user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
-
 </head>
+
 <body class="body"></body>
 
 <template name="layout">
-    <div id="spinner-wrapper" class="spinner-wrapper">
-	    <div class="spinner">
-	      {{> spinner}} 
-	    </div>
-    </div>
-    <div class="ui sidebar inverted vertical menu" id="menu">
-		{{> sidebar}} 
-	</div>
+  {{>loadingSpinner}}
+  <div class="ui sidebar inverted vertical menu" id="menuStart">
+  {{#unless currentUser}}
+    {{> sidebarStart}}
+  {{/unless}} 
+  </div>
+  <div class="pusher">
+    {{#if currentUser}}	
+	  <div id="leftNav">        
+        <div class="ui grid">
+          <div class="two wide column sidebarWrapper">
+              <div class="ui inverted vertical menu" id="menu">        
+                {{> sidebar}}
+              </div>
+          </div>
+          <div class="fourteen wide column rightContent">
+            {{> navbar}}
+            <div class="content">
+            {{> yield}}
+            </div>
+          </div>
+        </div>                    	  
+	  </div>
 
-	<div class="pusher">	
-        {{> navbar}}
-		<div class="content">
-		{{> yield}}
-		</div>
-	</div>
+    {{else}}
+
+    {{> navbar}}
+    <div class="content">
+      {{> yield}}
+    </div>
+
+    {{/if}}
+  </div>
+</template>
+
+<template name="loadingSpinner">
+    <div id="spinner-wrapper" class="spinner-wrapper hide">
+        <div class="spinner">
+          {{> spinner}} 
+        </div>
+    </div>
 </template>

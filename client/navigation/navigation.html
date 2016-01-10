@@ -1,21 +1,25 @@
 <template name="navbar">
-  <nav class="top header">
+  <nav id="mainNav" class="top header">
     <div class="ui menu inverted">
       <div class="menu">
+        {{#unless currentUser}}
         <div class="logo"> 
-          <img src="img/logo-glad.png" alt="Laptop Battle"/>
+          <a href="home"><img src="img/logo-glad.png" alt="Laptop Battle"/></a>
         </div>
         <a href="#" id="toggleSidebar" class="item">
             <i class="sidebar large icon"></i>{{signInTitle}}
         </a>
-        {{#if currentUser }} <!-- don't show the navbar unless user logs in --> 
+        {{else}} <!-- don't show the navbar unless user logs in --> 
         <a href="battles" class="item">
            <i class="video play large icon"></i>Battles
         </a>
         <a href="leaderboard" class="item">
            <i class="trophy large icon"></i>Leaderboard
         </a>
-        {{/if}}
+        <a href="rules" class="item">
+           <i class="file text large icon"></i>Rules
+        </a>
+        {{/unless}}
       </div>
       <div class="right menu">
         {{#if currentUser}}
@@ -40,14 +44,33 @@
 </div>
 {{/if}}
 <div class="float right item info">
-        <div class="ui statistic">
-          <div class="value">
-            {{points}}
-          </div>
-          <div class="label">
-            Battle Points
-          </div>
-        </div>    
+  <div class="ui statistic">
+    <div class="value">
+      {{points}}
+    </div>
+    <div class="label">
+       Battle Points
+    </div>
+  </div>    
+</div>
+</template>
+
+<template name="sidebarStart">
+<div class="sidebarWrapper">
+  <div class="profile">
+    <div class="header">Sign In</div>
+  </div>
+  <div class="ui-box">
+    <form class="login" id="loginForm">
+     <input class="lb-input" placeholder="email" type="text" id="email">
+     <input class="lb-input" type="password" placeholder="password" id="password">
+     <button class="dark button" id="login">Login</button>
+     <button class="text button right" id="create">Create Account</button>
+    </form>
+    <div class="hiddenForm">
+    {{>createAccount}}
+    </div>
+  </div>
 </div>
 </template>
 
@@ -115,31 +138,17 @@
 
 <template name="userAccount">
 {{#if currentUser}}
-{{>profileHeader}}
-{{else}}
-<div class="profile">
-  <div class="header">Sign In</div>
-</div>
+  {{>profileHeader}}
 {{/if}}
+</template>
 
-{{#unless currentUser}}
-<div class="ui-box">
-  <form class="login" id="loginForm">
-   <input class="lb-input" placeholder="email" type="text" id="email">
-   <input class="lb-input" type="password" placeholder="password" id="password">
-   <button class="dark button" id="login">Login</button>
-   <button class="text button right" id="create">Create Account</button>
-  </form>
-
+<template name="createAccount">
   <form class="createAccount" id="createAccountForm">
    <input class="lb-input" type="text" placeholder="username" id="createUsername" autocomplete="off">
    <input class="lb-input" type="email" placeholder="email" id="createEmail" autocomplete="off">
    <input class="lb-input" type="password" placeholder="password" id="createPassword" autocomplete="off">
    <button class="dark button" id="createAccount">Create Account</button>
   </form>
-</div>
-{{/unless}}
-
 </template>
 
 <template name="profileHeader">
@@ -158,7 +167,7 @@
 </div>
 </template>
 
-<template name="dashboard">
+<!-- <template name="dashboard">
   <div class="battleInfo">
       {{#if rank}}
       <div class="ui statistic">
@@ -189,7 +198,7 @@
           </div>
       </div>  
   </div>
-</template>
+</template> -->
 
 <template name="profileSettings">
 <div id="profileSettings">

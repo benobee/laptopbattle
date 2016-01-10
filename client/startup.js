@@ -5,5 +5,11 @@ Meteor.startup(function(){
 			console.log(error);
 		}
 	});
-	
+	if (Meteor.isClient){
+      Tracker.autorun(function(){
+        if(Meteor.userId() == null){      
+          Router.go('/');           
+        }  
+      });
+	}	
 });

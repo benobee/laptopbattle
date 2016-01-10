@@ -1,7 +1,3 @@
-Template.leaderboard.onRendered(function(){
-  $('.spinner-wrapper').hide();
-});
-
 Template.leaderboard.helpers({
 	'user':function(){
 	   var users = Meteor.users.find({ pointCount: { $gt: 0 } }, {sort: {pointCount: -1}});

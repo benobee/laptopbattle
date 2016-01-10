@@ -41,6 +41,7 @@ Template.mainVideos.helpers({
 
 Template.battleHome.events({
     'click .card' : function(){
+      $('.spinner-wrapper').removeClass('hide');
       Session.set("url" , this.url);
       Session.set("video" , this._id);
       Session.set("videoUserId" , this.id);
@@ -60,11 +61,6 @@ Template.battleHome.events({
     }
 });
 
-Template.battleHome.onRendered(function(){
-  $('#spinner-wrapper').fadeOut();
-})
-
 Template.mainVideos.onRendered(function (){
   Session.set('duration', null);
-  
 });

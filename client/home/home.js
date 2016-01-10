@@ -1,4 +1,9 @@
+Template.join.events({
+	'click #rules':function(){
+		$('.ui.long.modal').modal('show');
+	}
+});
+
 Template.home.onRendered(function(){
-	$('#spinner-wrapper').fadeOut();
-	LaptopBattle.user.onLogIn();	
+	$('.spinner-wrapper').addClass('hide');
 });

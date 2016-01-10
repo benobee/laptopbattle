@@ -8,7 +8,6 @@
   </div>
     {{>about}}
     {{>join}}
-    {{>contact}}
   </div>
   <div class="footer">
     {{>footer}}
@@ -24,17 +23,17 @@
 <template name="about">
 <div id="about" class="page">
 <h2>About</h2>
+
 <div class="paragraph">
 <img src="img/poster1.png" class="image right">
-<p>Laptop Battle exploded into the universe of next level audio nerdery in 2002. Events began taking off in Seattle, Bristol, Italy, Germany, New Zealand, Japan, and many other U.S. cities.</p>  
+<p>Laptop Battle exploded into the universe of next level audio nerdery in 2002. Events began taking off in Seattle, Bristol, Italy, Germany, New Zealand, Japan, and many other U.S. cities. Our goal is to help artists forge a pathway and gain skill, appreciation, recognition, audience, and feedback through the platform.</p>  
 </div>
+
 <div class="paragraph">
 <img src="img/poster2.png" class="image left">
 <p>Over a decade since it’s beginnings, much ground remains to be covered in the realm of computer music performance. Now, it’s time to connect in the virtual world, offering a higher level of inclusion and interaction than ever before.</p>
 </div>
-<div class="paragraph punchline">
-<p>Are you ready to play?</p>
-</div>
+
 </div>
 <div class="line"></div>
 </template>
@@ -44,34 +43,76 @@
 <h2>Join the Battle</h2>
 
 <div class="paragraph">
-<img src="img/bot.png" class="image right">
-<p>We aim to create a platform that allows talented artists to rise to the top. The music industry is a hob knob circus full of social engineering and plastic people.</p>
-<p>Our goal is to help artists forge a pathway and gain skill, appreciation, recognition, audience, and feedback through the platform.</p>
+<p>We aim to create a platform that allows talented artists to rise to the top. Anyone can submit a video to enter the monthly competition or participate on the website.</p>
+<p></p>
 </div>
 
 <div class="paragraph">
-<img src="img/sam.png" class="image left">
-<p>Anyone can submit a video to enter the monthly competition or participate on the website. There’s several ways to build points across the system, such as submitting videos for the monthly battle, leaving feedback/comments, challenging and winning head-to-head battles.</p>
+<p>There are several ways to build points across the system. Submitting videos for the monthly battle, leaving feedback/comments, challenging and winning head-to-head battles. To learn more about the competition, check out the <a id="rules">rules.</a></p>
 </div>
-<div class="paragraph punchline">
-<p>To learn more about the competition, check out the rules.</p>
+
+<div class="punchline">Are you ready to play?</div>
+  <div class="image-wrapper">
+    <img src="img/sam.png">
+  </div>
 </div>
-<!-- <button class="action button">RULES</button> -->
-
+<div class="ui long modal">
+<div class="header">RULES</div>
+<div class="content">
+  {{>rules}}
 </div>
-<div class="line"></div>
-</template>
-
-<template name="contact">
-<div id="contact" class="page">
-<h2>Contact</h2>
-
 </div>
 </template>
 
 <template name="footer">
 <div class="footer">
 <div class="footer-content">
+  <div class="ui container">
+    <h2>REQUEST EARLY INVITE</h2>
+    <form style="width:350px;margin:auto;margin-top:8em">
+    <input type="text" class="lb-input" placeholder="email">
+    <input type="submit" class="lb-input dark">
+    </form>
+  </div>
 </div>
+</div>
+</template>
+
+<template name="rules">
+
+<div id="rules">
+
+<p>At the end of each battle, a panel of judges will select a Champion and announce the runners up.
+
+Battle Points are used to create a status for contestants and drive positive feedback. Battle Points help us determine which videos to watch and provide incentive for constructive commenting.</p>
+
+<h3>Battle Points</h3>
+
+<p>You can earn points in a few ways:
+<ul>
+<li>Video Hearts - 100 points</li>
+<li>Leave a Comment - 5 points</li>
+</ul>
+</p>
+<h3>Judging</h3>
+
+<p>Videos will be judged in different areas:
+<ul>
+<li>Song</li>
+<li>Performance</li>
+<li>Sound Design</li>
+<li>Style</li>
+<li>Skill Level</li>
+</ul>
+</p>
+<p>Champions will be selected upon a battle’s completion.</p>
+
+<h3>Prizes</h3>
+
+<p>Prizes will be delivered within one month of winner announcement.</p>
+
+<h3>Grudge Matches - beta</h3>
+
+<p>Currently head-to-head battles are hand selected and points system for Grudge Matches is TBD.</p>
 </div>
 </template>

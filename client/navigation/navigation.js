@@ -41,7 +41,16 @@ Template.navbar.onRendered(function(){
   LaptopBattle.menu.init();
 });
 
-//sidebar form handling
+Template.profileHeader.helpers({
+  title: function(){
+    if( Meteor.user()){
+      return Meteor.user().username;
+    } else {
+      return 'Sign In';
+    }
+  }
+});
+
 Template.sidebar.events({
     'submit #battleUpload': function(e) {
       e.preventDefault();
@@ -110,31 +119,44 @@ Template.myVideos.events({
     }
 });
 
-Template.userAccount.events({
+Template.sidebarStart.events({
   'click #login' : function(e){
     e.preventDefault();
-    $('.spinner-wrapper').fadeIn();
-    $('#menu').sidebar('hide');
+    $.when( $('.spinner-wrapper').removeClass('hide') ).then(function(){
     var user = $('#email').val();
     var password = $('#password').val();
+
     Meteor.loginWithPassword(user, password, function(error, success){
       if(error){
         console.log(error);
         $('.spinner-wrapper').fadeOut();
       } else {
-        LaptopBattle.user.onLogIn();
+         $.when( LaptopBattle.menu.hideSidebar() ).done(function(){           
+            Router.go('/battles');
+         });
       }
     });
+    });
+    $('#menuStart').sidebar('hide');
   },
+  'click #create':function(e){
+    e.preventDefault();
+    $('#loginForm').hide();
+    $('.hiddenForm').show();
+  }
+});
+
+Template.userAccount.events({
   'click #signOut':function(e){
     e.preventDefault();
 
-    $('#menu').sidebar('hide');
+    $('#menuStart').sidebar('hide');
     $('.spinner-wrapper').fadeIn();
-    Meteor.logout(function(){
-      LaptopBattle.user.onLogIn();
-    });
-  },
+    Meteor.logout();
+  }
+});
+
+Template.createAccount.events({
   'click #createAccount':function(e){
     e.preventDefault();
     var username = $('#createUsername').val();
@@ -145,24 +167,6 @@ Template.userAccount.events({
     Accounts.createUser({ 'username': username, 'email': email, 'password': password }, function(){
       LaptopBattle.user.onLogIn();
     });
-  },
-  'click #create':function(e){
-    e.preventDefault();
-    $('#loginForm').hide();
-    $('#createAccountForm').show();
-  }
-});
-
-
-//--------------profile------------//
-
-Template.profileHeader.helpers({
-  title: function(){
-    if( Meteor.user()){
-      return Meteor.user().username;
-    } else {
-      return 'Sign In';
-    }
   }
 });
 
@@ -188,31 +192,31 @@ Template.profileHeader.onRendered(function(){
   Blaze.render(Template.dashboard, parentNode);
 });
 
-Template.dashboard.helpers({
-  activeBattles: function(){
-    return Videos.find().count();
-  },
-  rank: function(){
-    var users = Meteor.users.find({}, {sort: {pointCount: -1}}).fetch();
-    var id = Meteor.userId();
+// Template.dashboard.helpers({
+//   activeBattles: function(){
+//     return Videos.find().count();
+//   },
+//   rank: function(){
+//     var users = Meteor.users.find({}, {sort: {pointCount: -1}}).fetch();
+//     var id = Meteor.userId();
 
-    for(var i in users){
-      if(users[i]._id == id && users[i].pointCount > 0){
-        var index = parseInt(i);
-        var rank = index + 1;
+//     for(var i in users){
+//       if(users[i]._id == id && users[i].pointCount > 0){
+//         var index = parseInt(i);
+//         var rank = index + 1;
 
-        return rank;
-      }      
-    }
-  },
-  points: function(){
-    if(Meteor.user().pointCount){
-      return Meteor.user().pointCount;
-    } else {
-      return '0';
-    }  
-  }
-});
+//         return rank;
+//       }      
+//     }
+//   },
+//   points: function(){
+//     if(Meteor.user().pointCount !== null){
+//       return Meteor.user().pointCount;
+//     } else {
+//       return '0';
+//     }  
+//   }
+// });
 
 Template.profileSettings.events({
   'click #updateSettings':function(e){

@@ -6,9 +6,8 @@ a:link{
 	overflow-y:auto;
 	overflow-x:hidden;
 	background:black;
-	z-index:2000000000;
    	display:none;
-   	min-height: 100vh;
+   	min-height: 120vh;
 }
 .video.sidebar{
 	height:40vh;
@@ -18,10 +17,6 @@ a:link{
 	display:none;
 }
 @media screen and (max-width: 500px){
-	.videoPage{
-		padding-left:0px;
-		padding-right:0px;
-	}
 	.player{
 		height:255px;
 	}
@@ -30,28 +25,16 @@ a:link{
 	}
 }
 @media screen and (min-width: 501px) and (max-width: 800px){
-	.videoPage{
-		padding-left:10px;
-		padding-right:10px;
-	}
 	.player{
 		height:300px;
 	}
 }
 @media screen and (min-width: 801px) and (max-width: 1200px){
-	.videoPage{
-		padding-left:20px;
-		padding-right:15px;
-	}
 	.player{
 		height:450px;
 	}
 }
 @media screen and (min-width: 1201px) {
-	.videoPage{
-		padding-left:10%;
-		padding-right:25px;
-	}
 	.player{
 		height:600px;
 	}

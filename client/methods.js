@@ -4,7 +4,7 @@ var LaptopBattle = (function(){
 //menu related events and methods
 var menu = {
     init: function(){
-        $('#menu').sidebar({
+        $('#menuStart').sidebar({
               dimPage: true,
               closable: true,  
               transition: 'overlay',
@@ -12,22 +12,22 @@ var menu = {
                 $('.videoAdminPanel').hide();
                 $('#videoUploadForm').hide();
                 $('#loginForm').show();
-                $('#createAccountForm').hide();
+                $('.hiddenForm').hide();
               }
           });
     },
     hideSidebar : function(){
-      $('#menu').sidebar('hide');
+      $('#menuStart').sidebar('hide');
     },
     toggleSidebar : function(){
-        $('#menu').sidebar('toggle');
+        $('#menuStart').sidebar('toggle');
     },  
     toggleUploadForm: function(){
         $('#videoUploadForm').transition('drop');
     },
     sidebar: {
       toggle : function(){
-        $('#menu').sidebar('toggle');
+        $('#menuStart').sidebar('toggle');
       },
       render:function(template){
         $('#profileMenuContent').html(template);
@@ -98,12 +98,12 @@ var video = {
       LaptopBattle.video.resetSessions();
     },
     eventSettings: {
-      onReady : function onReady(event) {
+      onReady : function (event) {
                     $('#spinner-wrapper').fadeOut();
                     $('.videoPage').show();
                     player.playVideo();  
       },
-      onStateChange: function onStateChange(event){
+      onStateChange: function (event){
 
                   if (event.data == 0){
                     player.stopVideo();
@@ -166,28 +166,7 @@ var video = {
     }
 }
 
-var user = {
-  onLogIn : function (){
-    Tracker.autorun(function(){
-       if(Meteor.userId()){
-        LaptopBattle.menu.hideSidebar();
-         $.when( $('.spinner-wrapper').fadeIn() ).done(function(){           
-            Router.go('/battles');
-         });
-         
-       } else {         
-          $.when( LaptopBattle.menu.hideSidebar() ).done(function(){
-          Router.go('/');
-          $('.spinner-wrapper').fadeOut();
-         });
-           
-       }  
-    });
-  }
-}
-
 return {
-  user : user,
   menu : menu,
   video: video
 }

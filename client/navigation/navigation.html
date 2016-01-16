@@ -103,8 +103,9 @@
       </div>
       <div class="right menu inverted">
         <div class="item">
-        <button id="addVideo" class="dark button">
-          <i class="add sign icon"></i>Add</button>
+          <div id="addVideo" class="dark button" data-content="Upload Videos to the Battlefield">
+            <i class="add sign icon"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -115,22 +116,11 @@
           <div class="segment inverted float left">
             <h5 class="header">{{title}}</h5>
           </div>
-          {{#if user}}
-          <div class="admin icon float right">
-            <i class="large setting icon"></i>
-            <i class="large trash icon"></i>
-          </div>
-          {{/if}}
       </a>
     {{/each}}
     {{else}}
       <div class="item">No Videos</div>
     {{/if}}
-    </div>
-    <div class="videoAdminPanel">      
-      <h4 class="title float left">Title</h4>
-      <i class="large remove icon float right"></i>
-      <input class="updateTitle lb-input" id="updateTitle"/>
     </div>
   </div>
 </div>
@@ -166,39 +156,6 @@
   </div>
 </div>
 </template>
-
-<!-- <template name="dashboard">
-  <div class="battleInfo">
-      {{#if rank}}
-      <div class="ui statistic">
-          <div class="value">
-            {{rank}}
-          </div>
-          <div class="label">
-            Your Rank
-          </div>
-      </div>
-      {{/if}}
-      {{#if points}}
-      <div class="ui statistic">
-          <div class="value">
-            {{points}}
-          </div>
-          <div class="label">
-            Battle Points
-          </div>
-      </div>
-      {{/if}}
-      <div class="ui statistic">
-          <div class="value">
-            {{activeBattles}}
-          </div>
-          <div class="label">
-            Active Battles
-          </div>
-      </div>  
-  </div>
-</template> -->
 
 <template name="profileSettings">
 <div id="profileSettings">

@@ -74,6 +74,10 @@ Template.sidebar.events({
     }
 });
 
+Template.myVideos.onRendered(function(){
+  $('.dark.button').popup();
+});
+
 Template.myVideos.helpers({
     userVideo: function() {
       if(Accounts.admin == true){
@@ -93,29 +97,20 @@ Template.myVideos.helpers({
 
 Template.myVideos.events({
     'click .admin .trash': function(e){
-     e.stopPropagation(); 
-     Meteor.call('deleteVideo', this._id);     
+      e.stopPropagation(); 
+      Meteor.call('deleteVideo', this._id);     
     },
     'click #addVideo' : function(){
       LaptopBattle.menu.toggleUploadForm();
     },
-    'change #updateTitle' : function(e){
-      e.preventDefault();
-      var value = $(e.currentTarget).val();
-      Meteor.call('updateTitle', this._id, value);
-      $(".videoAdminPanel").transition('drop');
-    },
     'click #videoList .item ' : function(e){
-      e.stopPropagation();
-      var title = this.title;
-      LaptopBattle.menu.adminPanel.toggle(e.currentTarget, title);    
-    },
-    'click .videoAdminPanel' : function(e){
-      e.stopPropagation();
-      $(e.currentTarget).transition('drop');
-    },
-    'click .videoAdminPanel input' : function(e){
-      e.stopPropagation();
+
+        $('.spinner-wrapper').removeClass('hide');
+        Session.set("url" , this.url);
+        Session.set("video" , this._id);
+        Session.set("videoUserId" , this.id);
+        Router.go('/battle?id='+ this._id + '&url=' + this.url);
+  
     }
 });
 
@@ -191,32 +186,6 @@ Template.profileHeader.onRendered(function(){
   var parentNode = document.getElementById('profileContent');
   Blaze.render(Template.dashboard, parentNode);
 });
-
-// Template.dashboard.helpers({
-//   activeBattles: function(){
-//     return Videos.find().count();
-//   },
-//   rank: function(){
-//     var users = Meteor.users.find({}, {sort: {pointCount: -1}}).fetch();
-//     var id = Meteor.userId();
-
-//     for(var i in users){
-//       if(users[i]._id == id && users[i].pointCount > 0){
-//         var index = parseInt(i);
-//         var rank = index + 1;
-
-//         return rank;
-//       }      
-//     }
-//   },
-//   points: function(){
-//     if(Meteor.user().pointCount !== null){
-//       return Meteor.user().pointCount;
-//     } else {
-//       return '0';
-//     }  
-//   }
-// });
 
 Template.profileSettings.events({
   'click #updateSettings':function(e){

@@ -23,38 +23,6 @@ Template.battleVideo.onRendered(function(){
   LaptopBattle.video.play();
 });
 
-Template.battleVideo.events({  
-  'click .closeButton': function(){
-    Router.go('/');
-    LaptopBattle.video.destroy();
-  }
-});
-
-//get the play List
-Template.playList.helpers({
-  playList : function(){
-    //create playlist
-    return Videos.find({}, {sort: {date: -1}});  
-  },
-  activeVideo : function(){  
-    var id = Session.get('video');
-    if (id == this._id) {
-      return "active active-video";
-    } else {
-      return "video-queue";
-    }
-  }
-});
-
-Template.playList.events({
-  'click .item' : function(e){
-    Session.set('video', $(e.currentTarget).find('href').context.name);
-    var search = $(e.currentTarget).find('href').context.search;
-    var url = search.split('=');
-    player.loadVideoById(url[2]);
-  }
-});
-
 //get the comments for a video
 Template.allComments.helpers({
   id : function(){

@@ -5,13 +5,9 @@ a:link{
 	width:100%;
 	overflow-y:auto;
 	overflow-x:hidden;
-	background:black;
+	background:#140A17;
    	display:none;
    	min-height: 120vh;
-}
-.video.sidebar{
-	height:40vh;
-	overflow: scroll;
 }
 #commentSidebar{
 	display:none;

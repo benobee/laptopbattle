@@ -154,12 +154,22 @@ button{
 	border-style:solid;
 }
 .dark.button{
+	border-style:solid;
+	border-width:2px;
 	border-color: #F82262;
 	color:#F82262;
 	background:none;
-	border-radius:4px;
-	min-height:30px;
-	padding:10px;
+	border-radius:1.25em;
+	height:2.5em;
+	width:2.5em;
+	cursor:pointer;
+	cursor:hand;
+	padding:0.5em;
+	opacity:0.6;
+	transition:0.4s;
+}
+.dark.button:hover{
+	opacity:1;
 }
 #menuStart .ui.inverted.vertical.menu{
 	width:100%;
@@ -205,13 +215,12 @@ button{
 	border-bottom-color:#52055C;
 }
 .admin.icon.float.right:hover{
-	transform: translateX(10px);
+	opacity: 1;
 }
 .admin.icon{
 	opacity:0;
 	transition:0.2s;
 	-webkit-transition: 0.2s;
-	transform: translateX(50px);
 }
 
 .ui.menu.inverted.vertical.fluid .item:hover .admin.icon{

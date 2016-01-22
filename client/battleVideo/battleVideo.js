@@ -1,6 +1,22 @@
+Template.createAccount.events({
+  'click #accountSubmit':function(e){
+    e.preventDefault();
+      
+    var username = $('#createName').val();
+    var password = $('#createPassword').val();
+
+    Accounts.createUser({ 
+      'username': username, 
+      'password': password 
+    });
+
+  }
+});
+
 Template.battleVideo.onRendered(function(){
   var shareURL = (function(){
     return {
+      state: false,
       parse : function(){
         return window.location.search.substring(1).split("&");
       },
@@ -16,11 +32,20 @@ Template.battleVideo.onRendered(function(){
       }
     }
   })();
-  if(shareURL.url()){   
+  if(shareURL.state == true){  
+
     Session.set("video", shareURL._id());
     Session.set("url", shareURL.url());
+    LaptopBattle.video.play();
+
+  } else {
+
+    Session.set("url" , 'MV_cCzI17eE');
+    Session.set("video" , 'TRCqnzKsGvwb8TsLD');
+    LaptopBattle.video.play();
+
   }
-  LaptopBattle.video.play();
+  
 });
 
 //get the comments for a video
@@ -47,10 +72,14 @@ Template.post.helpers({
     return this.time;
   },   
   admin : function(){
-    if(this.userId == Meteor.user()._id){
+    if(Meteor.user()){
+
+      if(this.userId == Meteor.user()._id){
        return true;
-    } else {
+      } else {
        return false;
+      }
+
     }
   } 
 });

@@ -1,23 +1,44 @@
 <template name="home">
+<div>
   {{>splash}}
-<div class="site-wrapper">
-  <div class="site-inner">
-    <div class="tag">
-    <h1>Elevate Electronic Music Performance</h1>  
-    <div class="line"></div>
-  </div>
-    {{>about}}
-    {{>join}}
+  <div class="site-wrapper">
+    <div class="site-inner">
+      {{>battleVideo}}     
+    </div>
   </div>
   <div class="footer">
-    {{>footer}}
+    <div class="ui container">
+      {{>footer}}
+      {{>logos}}
+    </div>
   </div>
 </div>
 </template>
 
+<template name="logos">
+  <div id="logos" class="ui container fluid">
+    <div class="ui equal width grid stackable">
+       <div class="column">
+        <img src="img/Ableton.png" alt="Ableton">
+       </div>
+       <div class="column">
+         <img src="img/CreativeLive.png" alt="Creative Live">
+       </div>
+       <div class="column">
+         <img src="img/iZotope.png" alt="iZotope">
+       </div>
+       <div class="column">
+         <img src="img/KeithMcMillen.png" alt="Keith Mcmillen">
+       </div>
+       <div class="column">
+         <img src="img/Mackie.png" alt="Mackie">
+       </div>
+    </div>
+  </div>
+</template>
+
 <template name="splash">
-<div class="coverImage">	
-</div>
+<div class="coverImage"></div>
 </template>
 
 <template name="about">
@@ -65,14 +86,11 @@
 </template>
 
 <template name="footer">
-<div class="footer">
+<div id="footer" class="footer">
 <div class="footer-content">
   <div class="ui container">
-    <h2>REQUEST EARLY INVITE</h2>
-    <form style="width:350px;margin:auto;margin-top:8em">
-    <input type="text" class="lb-input" placeholder="email">
-    <input type="submit" class="lb-input dark">
-    </form>
+    <h2>Wanna Join?</h2>
+    <p>Email us at <a href="mailto:contact@laptopbattle.com">contact@laptopbattle.com</a></p>
   </div>
 </div>
 </div>

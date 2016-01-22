@@ -1,3 +1,17 @@
+#logos img{
+	width:100%;
+}
+#footer{
+	margin-top:2em;
+}
+#footer p{
+	text-align:center;
+	font-size:2.5em;
+	color:#E22663;
+	opactiy:0.85;
+	padding-top:3em;
+	padding-bottom:3em;
+}
 .site-wrapper p, h1, h2{
 	color:#F82262;
 }
@@ -13,13 +27,6 @@
 }
 .site-wrapper h2{
 	font-size:3.2em;
-}
-.site-inner{
-	margin-left:auto;
-	margin-right:auto;
-	max-width:90em;
-	padding-left:2.5em;
-	padding-right:2.5em;
 }
 .site-wrapper{
 	border-top-style:solid;
@@ -93,16 +100,16 @@ a{
 }
 .footer-content{
 	padding:15px;
-	min-height:50em;
-	background:#E22663;
+	min-height:30em;
 }
+
 .footer-content h2{
-	color: #440047;
+	color: #E22663;
 	text-align:center;
 	font-size:5em;
 }
 .coverImage{
-	background-image: url('img/splash.jpg');
+	background-image: url('img/WebCenteredLaptop_Battle_1920x1080-SeattleBattle4.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	min-height:60vh;
@@ -152,6 +159,21 @@ button:focus{
 }
 button{
 	border-style:solid;
+}
+.square.button{
+	border-style:solid;
+	border-width:2px;
+	border-color: #F82262;
+	color:#F82262;
+	background:none;
+	cursor:pointer;
+	cursor:hand;
+	padding:0.5em;
+	opacity:0.6;
+	transition:0.4s;
+}
+.square.button:hover{
+	opacity:1;
 }
 .dark.button{
 	border-style:solid;
@@ -244,6 +266,20 @@ button{
 	border-bottom-style:solid;
 	border-bottom-width:4px;
 	border-bottom-color:#611055;
+}
+.lb-input.small{
+	height:30px;
+	width:100%;
+	font-size: 12px;
+	margin-bottom:10px;
+	padding-left: 10px;
+	background: #DBDBDB;
+	border-style: none;
+	color:black;
+	opacity:0.7;	
+	transition: background 0.48s;
+	-ms-transition: background 0.48s;
+   	-webkit-transition: background 0.48s;
 }
 .lb-input{
 	height:44px;
@@ -493,6 +529,11 @@ h1, h2, h3, h4, h5, h6, p{
 .login-button:hover{
 	background:#45FCFF !important;
 	color:#333333 !important;
+}
+.logo.text{
+	color:#F82262;
+	width:20em;
+	font-family: Prime;
 }
 .logo{
 	padding:15px;

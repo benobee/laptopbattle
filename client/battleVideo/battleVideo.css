@@ -6,11 +6,14 @@ a:link{
 	overflow-y:auto;
 	overflow-x:hidden;
 	background:#140A17;
-   	display:none;
-   	min-height: 120vh;
 }
 #commentSidebar{
-	display:none;
+    border-style:solid;
+    border-color:#500B36;
+    height:43.9em;
+    padding:0.5em;
+    margin-top:0em;
+    overflow:hidden;
 }
 @media screen and (max-width: 500px){
 	.player{

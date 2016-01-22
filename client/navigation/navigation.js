@@ -114,33 +114,6 @@ Template.myVideos.events({
     }
 });
 
-Template.sidebarStart.events({
-  'click #login' : function(e){
-    e.preventDefault();
-    $.when( $('.spinner-wrapper').removeClass('hide') ).then(function(){
-    var user = $('#email').val();
-    var password = $('#password').val();
-
-    Meteor.loginWithPassword(user, password, function(error, success){
-      if(error){
-        console.log(error);
-        $('.spinner-wrapper').fadeOut();
-      } else {
-         $.when( LaptopBattle.menu.hideSidebar() ).done(function(){           
-            Router.go('/battles');
-         });
-      }
-    });
-    });
-    $('#menuStart').sidebar('hide');
-  },
-  'click #create':function(e){
-    e.preventDefault();
-    $('#loginForm').hide();
-    $('.hiddenForm').show();
-  }
-});
-
 Template.userAccount.events({
   'click #signOut':function(e){
     e.preventDefault();
@@ -148,20 +121,6 @@ Template.userAccount.events({
     $('#menuStart').sidebar('hide');
     $('.spinner-wrapper').fadeIn();
     Meteor.logout();
-  }
-});
-
-Template.createAccount.events({
-  'click #createAccount':function(e){
-    e.preventDefault();
-    var username = $('#createUsername').val();
-    var email = $('#createEmail').val();
-    var password = $('#createPassword').val();
-    //console.log(password);
-
-    Accounts.createUser({ 'username': username, 'email': email, 'password': password }, function(){
-      LaptopBattle.user.onLogIn();
-    });
   }
 });
 

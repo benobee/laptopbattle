@@ -1,11 +1,24 @@
+<template name="navbarStatic">
+    <nav id="mainNav" class="top header">
+    <div class="ui menu inverted">
+      <div class="menu">
+        <div class="logo text"> 
+          Laptop Battle
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
 <template name="navbar">
   <nav id="mainNav" class="top header">
     <div class="ui menu inverted">
       <div class="menu">
-        {{#unless currentUser}}
         <div class="logo"> 
           <a href="home"><img src="img/logo-glad.png" alt="Laptop Battle"/></a>
         </div>
+        {{#unless currentUser}}
+        
         <a href="#" id="toggleSidebar" class="item">
             <i class="sidebar large icon"></i>{{signInTitle}}
         </a>
@@ -52,25 +65,6 @@
        Battle Points
     </div>
   </div>    
-</div>
-</template>
-
-<template name="sidebarStart">
-<div class="sidebarWrapper">
-  <div class="profile">
-    <div class="header">Sign In</div>
-  </div>
-  <div class="ui-box">
-    <form class="login" id="loginForm">
-     <input class="lb-input" placeholder="email" type="text" id="email">
-     <input class="lb-input" type="password" placeholder="password" id="password">
-     <button class="dark button" id="login">Login</button>
-     <button class="text button right" id="create">Create Account</button>
-    </form>
-    <div class="hiddenForm">
-    {{>createAccount}}
-    </div>
-  </div>
 </div>
 </template>
 
@@ -130,15 +124,6 @@
 {{#if currentUser}}
   {{>profileHeader}}
 {{/if}}
-</template>
-
-<template name="createAccount">
-  <form class="createAccount" id="createAccountForm">
-   <input class="lb-input" type="text" placeholder="username" id="createUsername" autocomplete="off">
-   <input class="lb-input" type="email" placeholder="email" id="createEmail" autocomplete="off">
-   <input class="lb-input" type="password" placeholder="password" id="createPassword" autocomplete="off">
-   <button class="dark button" id="createAccount">Create Account</button>
-  </form>
 </template>
 
 <template name="profileHeader">

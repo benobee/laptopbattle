@@ -41,18 +41,33 @@
         <div id="commentList{{_id}}">
             <div>
               {{#if currentUser}}
-              <form method="post" id="commentForm">
-              <input id="post" class="comment-box" type="text" autocomplete="off" required/> 
-              <button class="pull-right lb-button-post" id="addComment" type="submit">Comment</button>
-              </form>
+
+                <form method="post" id="commentForm">
+                  <input id="post" class="comment-box" type="text" autocomplete="off" required/> 
+                  <button class="pull-right lb-button-post" id="addComment" type="submit">Comment</button>
+                </form>           
+              
+              {{else}}
+                <h3>Login to Comment</h3>
+                {{>createAccount}}
+
               {{/if}}
             </div>
-<!-- Display Comments -->
+
             {{>allComments}}
+
         </div>
       </div>
     </div>
   </div>
+</template>
+
+<template name="createAccount">
+  <form id="createAccountForm" method="post">
+   <input class="lb-input small" type="text" placeholder="name" id="createName">
+   <input class="lb-input small" type="password" placeholder="password" id="createPassword">
+   <button id="accountSubmit" class="square button">Create Profile</button>
+  </form>
 </template>
 
 <template name="playList">

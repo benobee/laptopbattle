@@ -64,3 +64,5 @@ Template.battleHome.events({
 Template.mainVideos.onRendered(function (){
   Session.set('duration', null);
 });
+
+

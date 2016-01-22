@@ -17,37 +17,11 @@
 
 <template name="layout">
   {{>loadingSpinner}}
-  <div class="ui sidebar inverted vertical menu" id="menuStart">
-  {{#unless currentUser}}
-    {{> sidebarStart}}
-  {{/unless}} 
-  </div>
   <div class="pusher">
-    {{#if currentUser}}	
-	  <div id="leftNav">        
-        <div class="ui grid">
-          <div class="three wide column sidebarWrapper">
-              <div class="ui inverted vertical menu" id="menu">        
-                {{> sidebar}}
-              </div>
-          </div>
-          <div class="thirteen wide column rightContent">
-            {{> navbar}}
-            <div class="content">
-            {{> yield}}
-            </div>
-          </div>
-        </div>                    	  
-	  </div>
-
-    {{else}}
-
-    {{> navbar}}
+      {{> navbarStatic}}
     <div class="content">
       {{> yield}}
     </div>
-
-    {{/if}}
   </div>
 </template>
 

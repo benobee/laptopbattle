@@ -4,8 +4,7 @@ Template.join.events({
 	}
 });
 
-Template.home.onRendered(function(){
-	
+Template.home.onRendered(function(){	
 	$('.spinner-wrapper').addClass('hide');
 });
 

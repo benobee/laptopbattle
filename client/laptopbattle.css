@@ -1,3 +1,12 @@
+.small.text{
+	font-size:1em;
+}
+#mc_embed_signup{
+	margin-top:1.5em;
+	margin-bottom:1.5em;
+	max-width:43em;
+	margin:0 auto;
+}
 #logos img{
 	width:100%;
 }
@@ -6,13 +15,12 @@
 }
 #footer p{
 	text-align:center;
-	font-size:2.5em;
+	font-size:1.2em;
 	color:#E22663;
 	opactiy:0.85;
-	padding-top:3em;
-	padding-bottom:3em;
 }
-.site-wrapper p, h1, h2{
+.site-wrapper p, h1, h2, label{
+	font-family: Prime;
 	color:#F82262;
 }
 .site-wrapper p{

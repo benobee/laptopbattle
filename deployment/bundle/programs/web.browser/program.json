@@ -1,0 +1,434 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "3333ea82663b8087bc0103527329194d2dd0ce31.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/3333ea82663b8087bc0103527329194d2dd0ce31.js?meteor_js_resource=true",
+      "size": 1164994,
+      "hash": "3333ea82663b8087bc0103527329194d2dd0ce31"
+    },
+    {
+      "path": "7c81d967b4c4c90f8e0772b035b38ec1f534cae5.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/7c81d967b4c4c90f8e0772b035b38ec1f534cae5.css?meteor_css_resource=true",
+      "size": 220658,
+      "hash": "7c81d967b4c4c90f8e0772b035b38ec1f534cae5"
+    },
+    {
+      "path": "448875154e50965c5f538dd5dab7d2471acd8c5f.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/448875154e50965c5f538dd5dab7d2471acd8c5f.css?meteor_css_resource=true",
+      "size": 310288,
+      "hash": "448875154e50965c5f538dd5dab7d2471acd8c5f"
+    },
+    {
+      "path": "d88e14da947029ef30d65f2ca335fb8397d46b4f.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/d88e14da947029ef30d65f2ca335fb8397d46b4f.css?meteor_css_resource=true",
+      "size": 96091,
+      "hash": "d88e14da947029ef30d65f2ca335fb8397d46b4f"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.eot",
+      "size": 70807,
+      "hash": "986eed8dca049714e43eeebcb3932741a4bec76d"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.svg",
+      "size": 365616,
+      "hash": "b06b5c8f67fd632cdc62a33b62ae4f74194131b3"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.ttf",
+      "size": 142072,
+      "hash": "6484f1af6b485d5096b71b344e67f4164c33dd1f"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.woff",
+      "size": 83588,
+      "hash": "4a313eb93b959cc4154c684b915b0a31ddb68d84"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/fontawesome-webfont.woff2",
+      "size": 66624,
+      "hash": "638c652d623280a58144f93e7b552c66d1667a11"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/upstream/fonts/FontAwesome.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/upstream/fonts/FontAwesome.otf",
+      "size": 109688,
+      "hash": "42c179eef588854b5ec151bcf6a3f58aa8b79b11"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_flat_0_aaaaaa_40x100.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_flat_0_aaaaaa_40x100.png",
+      "size": 251,
+      "hash": "212a733f69d3e21221433052f072f6f0dce6bcf2"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_flat_75_ffffff_40x100.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_flat_75_ffffff_40x100.png",
+      "size": 247,
+      "hash": "4460a060c9f36d00f20ba600845e231ac547df55"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_glass_55_fbf9ee_1x400.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_glass_55_fbf9ee_1x400.png",
+      "size": 374,
+      "hash": "bc2e8758ff27e862c51d8666b77e0da7ccba520a"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png",
+      "size": 246,
+      "hash": "ba43b3d9f70d7f5afd29a4d37a71c31a7262a8c6"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_glass_75_dadada_1x400.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_glass_75_dadada_1x400.png",
+      "size": 301,
+      "hash": "64ce5d83326c1dcc8fa57dc07a3f10b1dcc4d95b"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_glass_75_e6e6e6_1x400.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_glass_75_e6e6e6_1x400.png",
+      "size": 301,
+      "hash": "7ebe8922da47765828cb099bf6592d7aa68c361a"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_glass_95_fef1ec_1x400.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_glass_95_fef1ec_1x400.png",
+      "size": 371,
+      "hash": "a8d6c48b8671e3e0f9f23c9571b80b5da1d368c5"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-bg_highlight-soft_75_cccccc_1x100.png",
+      "size": 319,
+      "hash": "7919c58573dfcd0aa50532af40df2d1ada90aaea"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-icons_222222_256x240.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-icons_222222_256x240.png",
+      "size": 7006,
+      "hash": "7862b11eb21137bc07ea8d5c3112492739616fc6"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-icons_2e83ff_256x240.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-icons_2e83ff_256x240.png",
+      "size": 4599,
+      "hash": "3c7ba2e72ebfafda0d85407dad212a3226bcc2be"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-icons_454545_256x240.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-icons_454545_256x240.png",
+      "size": 7071,
+      "hash": "d24fbb4bdb30b08cc051fefad60545dee6a75a1e"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-icons_888888_256x240.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-icons_888888_256x240.png",
+      "size": 7092,
+      "hash": "288a718e442a5590aed843d42076199ea2f3967d"
+    },
+    {
+      "path": "packages/mizzao_jquery-ui/images/ui-icons_cd0a0a_256x240.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_jquery-ui/images/ui-icons_cd0a0a_256x240.png",
+      "size": 4599,
+      "hash": "49b25af4955563590c5b9d748b39ea99fc72a4c9"
+    },
+    {
+      "path": "app/avatars/avatar-default.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/avatars/avatar-default.png",
+      "size": 15995,
+      "hash": "6c6a186a60eb467aa14fc9f5c382e4d257831ffe"
+    },
+    {
+      "path": "app/fonts/atari_full.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/atari_full.ttf",
+      "size": 272596,
+      "hash": "94ddadf87c7514fab3c56d6bc01f3dc5c8199c10"
+    },
+    {
+      "path": "app/fonts/prime_regular.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/prime_regular.otf",
+      "size": 21076,
+      "hash": "7653404216f706ac5507075afab455d0f6dabce1"
+    },
+    {
+      "path": "app/img/Ableton.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/Ableton.png",
+      "size": 8027,
+      "hash": "d28b2c2f3e5cd9ece0436d8f7184dcce32799b05"
+    },
+    {
+      "path": "app/img/CreativeLive.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/CreativeLive.png",
+      "size": 4713,
+      "hash": "adaddb6ce586dd88c21abc91b92b990da2445ea7"
+    },
+    {
+      "path": "app/img/KeithMcMillen.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/KeithMcMillen.png",
+      "size": 46916,
+      "hash": "aec27c46efbe8bd9c70db4c97b37cf22681eaabe"
+    },
+    {
+      "path": "app/img/Mackie.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/Mackie.png",
+      "size": 16977,
+      "hash": "a9f57703c8d5a1b75738d1225a1412aa3255c88d"
+    },
+    {
+      "path": "app/img/WebCenteredLaptop_Battle_1920x1080-SeattleBattle4.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/WebCenteredLaptop_Battle_1920x1080-SeattleBattle4.png",
+      "size": 371541,
+      "hash": "1cb620b2703e940b1bb5faa50d93673dba42d517"
+    },
+    {
+      "path": "app/img/collage.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/collage.jpg",
+      "size": 511136,
+      "hash": "bd081739d8a6b8cea9b67d441aa67156bf1a04c0"
+    },
+    {
+      "path": "app/img/iZotope.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/iZotope.png",
+      "size": 11344,
+      "hash": "4c1907804138a53757db5245954efa6ccd2c04a5"
+    },
+    {
+      "path": "app/img/kittens1.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/kittens1.jpg",
+      "size": 803906,
+      "hash": "535705fa78d08a81af0d04ccd27d307dfe59789b"
+    },
+    {
+      "path": "app/img/kittens2.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/kittens2.jpg",
+      "size": 645574,
+      "hash": "cc1fc97a12973d1092777edce0ee4f48729e335c"
+    },
+    {
+      "path": "app/img/kittens3.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/kittens3.jpg",
+      "size": 242851,
+      "hash": "b00019b1d22b22733fb3e507185fafa47cb5213c"
+    },
+    {
+      "path": "app/img/logo-glad.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/logo-glad.png",
+      "size": 161625,
+      "hash": "68ac86cacccba62cd8f41eed76589bf289098c22"
+    },
+    {
+      "path": "app/img/poster1.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/poster1.png",
+      "size": 403468,
+      "hash": "7f70d054fe8d80c6cbb75f355af61486631c60d6"
+    },
+    {
+      "path": "app/img/poster2.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/poster2.png",
+      "size": 281060,
+      "hash": "70ca3f484877514cd2ab2bf8643215c8e699a514"
+    },
+    {
+      "path": "app/img/sam.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sam.png",
+      "size": 13842,
+      "hash": "548abaa9e5ab80259896460b366c61e7cda2d779"
+    },
+    {
+      "path": "app/img/splash.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/splash.jpg",
+      "size": 411325,
+      "hash": "ff0d284876623e1966a59d59cdf3fc009e67a085"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/fonts/icons.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/fonts/icons.eot",
+      "size": 60767,
+      "hash": "3e63fc9b3de4580f1f3bec0631436f755b80f167"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/fonts/icons.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/fonts/icons.svg",
+      "size": 313398,
+      "hash": "26bb1c5ef100a1cd71923f1d5dc29fc797ef4639"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/fonts/icons.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/fonts/icons.ttf",
+      "size": 122092,
+      "hash": "9088143b19979779b2116cef38b661f72d982e19"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/fonts/icons.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/fonts/icons.woff",
+      "size": 71508,
+      "hash": "56ce13e71c2150d81bc972940584915181bd6081"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/fonts/icons.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/fonts/icons.woff2",
+      "size": 56780,
+      "hash": "1075231650f579955905bb2f6527148a8e2b4b16"
+    },
+    {
+      "path": "app/lib/semantic-ui/src/themes/default/assets/images/flags.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/lib/semantic-ui/src/themes/default/assets/images/flags.png",
+      "size": 28123,
+      "hash": "4a552ecb123ded5040ddda01d626103cc65db055"
+    },
+    {
+      "path": "head.html",
+      "where": "internal",
+      "type": "head",
+      "hash": "8cbcd7fef99f3f318ba964c435d0be7a1c65ba2e"
+    }
+  ]
+}

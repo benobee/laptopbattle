@@ -94,17 +94,28 @@ Template.post.events({
 })
 
 //new comment form
-Template.sidebarRight.events({   
-    'submit #commentForm'(e){
+Template.sidebarRight.events({
+  'click #facebookLoginButton'(e){
+
+    Meteor.loginWithFacebook({
+      requestPermissions: ['public_profile', 'email', 'user_friends']
+      }, function (err, data) {
+
+      if (err) 
+        Session.set('errorMessage', err.reason || 'Unknown error');    
+    });
+
+  },  
+  'submit #commentForm'(e){
       e.preventDefault();
 
-      if(Meteor.user().username){
-        var name = Meteor.user().username;
-      } else {
-        var name = Meteor.user().profile.name;
-      }
-      var videoUserId = Session.get('videoUserId');
-      var comment = {
+  if(Meteor.user().username){    
+  var name = Meteor.user().username;
+  } else {
+  var name = Meteor.user().profile.name;
+  }
+  var videoUserId = Session.get('videoUserId');
+  var comment = {
         'videoTime' : player.getCurrentTime(),
         '_id'       : Session.get('video'),
         'userId'    : Meteor.user()._id,
@@ -115,9 +126,9 @@ Template.sidebarRight.events({
 
           $( "#commentForm" )[0].reset();
         }
-      };
-      comment.addComment();      
-    }
+  };
+  comment.addComment();      
+  }
 });
 
 //on new post animate from right to left removing the css class "loading"

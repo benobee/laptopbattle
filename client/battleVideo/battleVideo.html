@@ -49,8 +49,8 @@
               
               {{else}}
                 <h3>Login to Comment</h3>
-                {{>createAccount}}
 
+                <button id="facebookLoginButton" class="square button">Login with Facebook</button>
               {{/if}}
             </div>
 
@@ -72,21 +72,21 @@
 
 <template name="playList">
   <div id="playListItems" class="ui fluid vertical menu inverted">
-      {{#each playList}}
+    {{#each playList}}
       <a href="?id={{this._id}}&url={{url}}" id="playList-{{_id}}" name="{{this._id}}" class="item {{activeVideo}}">
-          <div class="segment inverted">
-            <p class="header">{{title}}</p>
-          </div>
+        <div class="segment inverted">
+          <p class="header">{{title}}</p>
+        </div>
       </a>           
-      {{/each}}
+    {{/each}}
   </div>
 </template>
 
 <template name="allComments">
   <div class="allComments">
-      {{#each comment}}
-        {{>post}}
-      {{/each}}
+    {{#each comment}}
+      {{>post}}
+    {{/each}}
   </div>
 </template>
 

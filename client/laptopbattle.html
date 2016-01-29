@@ -10,7 +10,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1 user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);
+    </script>  
 </head>
 
 <body class="body"></body>
@@ -26,9 +29,9 @@
 </template>
 
 <template name="loadingSpinner">
-    <div id="spinner-wrapper" class="spinner-wrapper hide">
-        <div class="spinner">
-          {{> spinner}} 
-        </div>
+  <div id="spinner-wrapper" class="spinner-wrapper hide">
+    <div class="spinner">
+      {{> spinner}} 
     </div>
+  </div>
 </template>

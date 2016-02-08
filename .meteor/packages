@@ -26,14 +26,13 @@ random
 ejson
 spacebars
 check
-ecmascript
 monbro:iron-router-breadcrumb
 accounts-password
 adrianliaw:youtube-iframe-api
-accounts-ui
 richsilv:owl-carousel
 semantic:ui
 mizzao:jquery-ui
-miro:mailchimp
 service-configuration
 accounts-facebook
+facebook
+ecmascript

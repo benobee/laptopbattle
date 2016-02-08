@@ -1,0 +1,1 @@
+meteor build deployment --architecture os.linux.x86_64

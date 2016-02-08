@@ -70,18 +70,6 @@
   </form>
 </template>
 
-<template name="playList">
-  <div id="playListItems" class="ui fluid vertical menu inverted">
-    {{#each playList}}
-      <a href="?id={{this._id}}&url={{url}}" id="playList-{{_id}}" name="{{this._id}}" class="item {{activeVideo}}">
-        <div class="segment inverted">
-          <p class="header">{{title}}</p>
-        </div>
-      </a>           
-    {{/each}}
-  </div>
-</template>
-
 <template name="allComments">
   <div class="allComments">
     {{#each comment}}

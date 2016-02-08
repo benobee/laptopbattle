@@ -1,8 +1,8 @@
-{ "laptopbattle.com": {
+{ "meteor.laptopbattle.com": {
    "env": {
-      "PORT": 2212, 
+      "PORT": 80, 
    	  "ROOT_URL": "http://www.laptopbattle.com",
-   	  "MONGO_URL": "mongodb://laptopbattle:!battletoplap!@laptopbattle.com:default/localhost"
+   	  "MONGO_URL": "mongodb://laptopbattle:!battletoplap!@localhost:27017/laptopbattle"
      } 
    }
 }

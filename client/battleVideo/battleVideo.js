@@ -19,16 +19,6 @@ Template.battleVideo.onRendered(function(){
       state: false,
       parse : function(){
         return window.location.search.substring(1).split("&");
-      },
-      url : function(){
-        var url = this.parse();
-        var split = url[1].split("=");
-        return split[1]; 
-      },
-      _id : function(){
-        var id = this.parse();
-        var split = id[0].split("=");
-        return split[1]; 
       }
     }
   })();

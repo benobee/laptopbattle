@@ -1,0 +1,50 @@
+<template name="profile">
+	<div class="ui container">
+
+   {{ #if currentUser }}
+
+    <div class="ui segment lb-form">
+
+      <div class="header">Profile Settings</div>
+
+      <div id="profileSettings">
+
+        <form id="settingsForm">
+<!--           <label for="avatarImage">Avatar</label>
+          <input id="avatarImage" accept="image/*" type="file" class="lb-input"> -->
+          <label for="changeUsername">Username</label>
+          <input type="text" value="{{ username }}" class="lb-input username"> 
+        </form>
+
+        {{> sidebar }}
+       
+      </div>
+
+    </div>
+
+    {{/if}}
+
+    <div class="ui segment lb-form">
+
+      {{ #if currentUser }}
+
+          <button class="square button logout">LOG OUT</button>
+
+      {{else}}
+
+      <div class="header">Login</div>     
+      <form id="loginForm">
+        
+        <input placeholder="username" id="name" class="lb-input name" type="text">
+        <input placeholder="password" id="password" class="lb-input password" type="password">
+        <button class="square button login">Log In</button>
+<!--         <button id="signup" class="square button">Sign Up</button> -->
+        <button id="facebookLoginButton" class="square button">Login with Facebook</button>
+        
+      </form>
+
+      {{/if}}
+
+    </div>
+	</div>
+</template>

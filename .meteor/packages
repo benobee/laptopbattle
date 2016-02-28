@@ -36,3 +36,6 @@ service-configuration
 accounts-facebook
 facebook
 ecmascript
+accounts-base
+utilities:avatar
+particle4dev:upload-avatar

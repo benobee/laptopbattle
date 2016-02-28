@@ -1,0 +1,55 @@
+<template name="sidebar">
+    <div class="sidebarContent">
+
+      <div id="myVideosContainer">
+      
+      {{ #if currentUser }}
+
+        <div id="myVideos">
+          <div class="ui segment">
+            <div class="header">Videos</div>
+            <div id="addVideo" class="dark button right" data-content="Upload Videos to the Battlefield">
+              <i class="add sign icon"></i>
+            </div> 
+          </div>
+
+            <div id="videoList" class="ui menu inverted vertical fluid">
+
+              {{ #if userVideo }}
+
+              {{ #each userVideo }}
+
+                <a class="item">
+                    <div class="segment inverted">
+                      <h5 class="header">{{ title }}</h5>
+                    </div>
+                </a>
+
+              {{ /each }}
+
+              {{ else }}
+
+                <div class="item">Submit a video to the battlefield</div>
+
+              {{ /if }}
+
+            </div>
+
+        </div>
+
+      {{ else }}
+
+       <div class="ui segment">
+
+          <p class="message">Wanna Battle? Sign in to participate.</p>
+
+       </div>
+
+      {{ /if }}
+
+      </div>
+
+    </div>
+</template>
+
+

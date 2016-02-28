@@ -1,21 +1,50 @@
-/*******************************
-     User Global Variables
-*******************************/
-// @background : #440047;
-// @brand : #F82262;
-// @lightPurple : #F91AA3;
-// @brandFont : Prime;
+.ui.vertical.menu{
+	width:100%;
+}
 /*///////////////////
 
 FORMS
 
 ///////////////////*/
 
+.forms > .esc{
+	position: absolute;
+	right:0;
+	padding-right:2em;
+	color:#8A768B;
+	cursor: pointer;
+	cursor: hand;
+	opacity:0.8;
+	transition: 0.2s;
+}
+.forms > .esc:hover{
+	opacity:1;
+}
+
+.forms > .esc > .icon{
+	font-size:3em;
+	text-align: center;
+	padding-top:1em;
+}
+.forms > .esc > .desc{
+	margin-top:0.5em;
+}
+.lb-form.upload{
+	padding-top:2em;
+	max-height:15em;
+}
 .ui.segment.lb-form{
 	margin:auto;
 	background: #440047;
+	border: 4px solid #611055;
+	margin-bottom:2em;
 }
-
+.ui.segment.lb-form > .header{
+	color: #F82262;
+}
+.ui.segment p{
+	color: #F82262;
+}
 
 /*///////////////////
 
@@ -23,7 +52,21 @@ RESPONSIVE SETTINGS
 
 ///////////////////*/
 
+
+.ui.sidebar .menu{
+	background:none !important;	
+}
+
 @media screen and (max-width: 500px) {
+	#navbarMobile{
+		display:block;
+	}
+	#mainNav{
+		display:none;
+	}
+	.sidebar.sidebarWrapper{
+		display:none;
+	}
 	.player{
 		height:255px;
 	}
@@ -50,6 +93,15 @@ RESPONSIVE SETTINGS
 
 }
 @media screen and (min-width: 501px ) and (max-width: 800px) {
+	#navbarMobile{
+		display:block;
+	}
+	.sidebar.sidebarWrapper{
+		display:none;
+	}
+	#mainNav{
+		display:none;
+	}
 	.player{
 		height:25em;
 	}
@@ -77,6 +129,9 @@ RESPONSIVE SETTINGS
 	}
 }
 @media screen and (min-width: 801px) and (max-width: 1200px){
+	#navbarMobile{
+		display:none;
+	}
 	.player{
 		height:30em;
 	}
@@ -91,6 +146,9 @@ RESPONSIVE SETTINGS
 	}
 }
 @media screen and (min-width: 1201px ) {
+	#navbarMobile{
+		display:none;
+	}
 	.player{
 		height:43.9em;
 	}
@@ -150,6 +208,9 @@ a:link{
 	z-index: 10;
 	left:0px;
 	right:250px;
+}
+#pageContent > .container{
+	padding:2em;
 }
 .player{
 	width:100%;
@@ -306,22 +367,38 @@ a:link{
 	opacity: 1
 }
 
+
+
 /*/////////////////////
 
 ALL OTHER GLOBAL STYLES
 
 /////////////////////*/
 
+a:focus {outline:0;}
+
+.navbar i{
+	color:white;
+}
+
+#navbarMobile{
+	background:#440047;
+	border-bottom:4px solid #611055;
+}
+.ui.card{
+	border-radius:0;
+	box-shadow: 0px 3px 3px 0px #611055, 0px 0px 0px 3px #611055 !important;
+}
 .ui.modal.login{
 	padding:2em;
+
 }
 .callToAction{
 	height:8em;
 	padding:2em;
-	border-bottom-color:#F82262;
-	border-bottom-width: 4px;
-	border-bottom-style: solid;
-	background:#390D34;
+	border-top: solid 4px #F82262;
+	border-bottom: solid 4px #F82262;
+	background:#440047;
 }
 .action.link{
 	position:absolute;
@@ -355,7 +432,7 @@ ALL OTHER GLOBAL STYLES
 	width:100%;
 }
 #footer{
-	margin-top:2em;
+	padding-top:2em;
 }
 #footer p{
 	text-align:center;
@@ -477,14 +554,12 @@ a{
 	opacity:0.90;
 }
 .body{
-	background:none !important;
-	min-height:100vh;
+	background:#440047 !important;
+	min-height:100vh;	
 }
-.content{
+#pageContent{
 	background:none;
-}
-.content > .container{
-	padding-top:10em;
+	min-height:100vh;
 }
 .lb-form{
 	max-width:35em;
@@ -498,8 +573,19 @@ a{
 	font-size:2em;
 	font-family: Prime;
 }
+.ui.sidebar{
+	background:#290F38;
+	width:20em;	
+}
+.sidebarWrapper{
+	background:#290F38;
+	float:left;
+	height:100vh;
+	display:inline-block;
+	width:15%;
+}
 .pusher{
-	background:#440047 !important;
+	background:#48004c !important;
 	min-height:100vh;
 	z-index: 999;
 }
@@ -523,7 +609,8 @@ button{
 	cursor:hand;
 	padding:0.5em;
 	opacity:0.6;
-	transition:0.2s;
+	font-weight:300;
+	font-family: Prime;
 }
 .square.button:hover{
 	opacity:1;
@@ -557,9 +644,7 @@ button{
 	max-width:280px;
 	height:100%;
 }
-#menuStart .sidebarWrapper{
-	background:#440047;
-}
+
 #leftNav .sidebarWrapper{
 	min-height:120vh;
 	background:#290F38;
@@ -571,7 +656,7 @@ button{
 }
 #menu .sidebarWrapper, .sidebarContent{
 	width:100%;
-	background:none;
+	background:#290F38;
 }
 #menu{
 	background:none;
@@ -619,7 +704,6 @@ button{
 	border-bottom-style:solid;
 	border-bottom-width:4px;
 	border-bottom-color:#611055;
-	position: fixed;
 	z-index: 99;
 }
 .lb-input.small{
@@ -632,25 +716,27 @@ button{
 	border-style: none;
 	color:black;
 	opacity:0.7;	
-	transition: background 0.48s;
-	-ms-transition: background 0.48s;
-   	-webkit-transition: background 0.48s;
+	transition: background 0.2s;
+	-ms-transition: background 0.2s;
+   	-webkit-transition: background 0.2s;
 }
 .lb-input{
+
 	height:44px;
 	width:100%;
 	font-size: 18px;
 	margin-bottom:10px;
 	padding-left: 10px;
-	background: #DBDBDB;
-	border-style: none;
+	background: #440047;
+	border: solid #611055 2px;
 	border-radius: 2px;
-	color:black;
+	color:#F81C57;
 	opacity:0.7;	
-	transition: background 0.48s;
-	-ms-transition: background 0.48s;
-   	-webkit-transition: background 0.48s;
+	transition: background 0.2s;
+	-ms-transition: background 0.2s;
+   	-webkit-transition: background 0.2s;
 }
+
 .float.right{
 	float: right;
 }
@@ -660,10 +746,31 @@ button{
 .float.right:after{
 	margin:auto;
 }
+.ui.segment{
+	background:none;
+}
+.header, .item{
+	font-family: Prime;
+	color: #F82262;
+}
+#addVideo{
+	position:absolute;
+	right:0.5em;
+	top:0.4em;
+}
+#myVideos > .header{
+	position:absolute;
+	left:0;
+	padding-left:1em;
+}
+#myVideos > .ui.menu{
+	width:100%;
+}
 .lb-input:focus{
-	background: #F5F5F5;
-	color:black;
+	background: #611055;
+	color:white;
 	opacity:0.8;
+	outline:0 !important;
 }
 .ui-box{
 	padding-bottom:3em;
@@ -687,10 +794,7 @@ button{
 .ui-box .text.button.right{
 	float:right;
 }
-#profileHeader{
-	margin-top:0.5em;
-	margin-bottom:2em;
-}
+
 .profile .image{
 	display:inline-block;
 	width:40px;
@@ -710,12 +814,13 @@ button{
 	height:44px;
 	border-radius: 3px;
 }
-.profile .header{
+.profile > .header{
 	height:1em;
 	padding-top:0.5em;
 	padding-bottom:0.5em;
 	display:inline-block;
 	font-size:1.5em;
+	color:white;
 	transform: translateY(-12px);
 }
 #profileContent{
@@ -809,12 +914,25 @@ h1, h2, h3, h4, h5, h6, p{
 .lb-upload{
 	height:44px;
 }
+.forms{
+	position: fixed;
+	width:100%;
+	background:#440047;
+	top:0;
+	z-index: 9999999;
+	left:0;
+	height:100vh;
+	display:none;
+}
 #videoUploadForm{
 	display:none;
 	z-index: 9999;
-	top:0;
-	position:absolute;
+	top:10em;
+	position:relative;
 	height:100%;
+	width:100%;
+	max-width: 35em;
+	margin:auto;
 }
 #closeUploadForm{
 	position:relative;

@@ -1,0 +1,23 @@
+<template name="post">
+  <div class="post loading" id="comment{{_id}}">
+
+        {{post}}
+
+      <div class="float right adminPanel">
+        <i class="marker small icon"></i>
+
+          {{#if admin}}
+
+        <i class="trash small icon"></i>
+
+      {{/if}}
+
+      </div>
+      <div class="post-info" data="{{time}}">
+
+        {{name}}
+        {{date}}
+        
+      </div>
+  </div>
+</template>

@@ -1,0 +1,62 @@
+<template name="battleHome">
+  <div id="mainVideos" class="ui container allVideos">
+      <div class="ui stackable four column grid cards">
+
+          {{ #if videos.length }}
+
+            {{ #each videos.content }}
+
+              {{> mainVideos }}  
+
+            {{ /each }}
+
+          {{ else }}
+
+            <div><h1>no videos</h1></div>
+
+          {{ /if }}
+
+      </div>
+  </div>
+</template>
+
+<template name="mainVideos">
+  <div class="ui card link" data-voted="{{voted}}" data-votes="{{count}}">
+    <div class="image">
+      <img width="100%" height="auto" src="http://img.youtube.com/vi/{{url}}/0.jpg" frameborder="0" allowfullscreen />
+    </div>
+    <div class="content info">
+      <h3 class="ui header">{{title}}</h3>
+    </div>
+    <div class="extra content {{#if voted}}voted{{else}}vote{{/if}}">
+      <div class="ui float left">
+
+          {{#if count}}
+
+          <div class="votes"><span class="fa fa-heart"></span> {{count}}</div>
+
+          {{/if}}
+
+      </div>
+      <div class="ui float right">
+
+          {{#if currentUser}}
+
+            {{#if voted}}
+
+                <div id="vote" class="button vote"></div>
+
+            {{else}}
+
+                <div id="vote" class="button vote"><i class="thumbs up icon"></i></div>
+
+            {{/if}}     
+               
+          {{/if}}
+
+      </div>
+    </div>
+  </div>
+</template>
+
+

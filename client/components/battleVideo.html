@@ -1,0 +1,21 @@
+<template name="battleVideo">
+  <div class="videoPage">
+    <div class="ui container fluid">
+      <div class="videoContainer">
+        <div class="ui grid stackable">
+          <div class="twelve wide column">
+
+            {{>timeline}}   
+
+            <div id="player" class="player"></div>
+          </div>
+          <div class="four wide column">
+
+            {{> sidebarRight}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

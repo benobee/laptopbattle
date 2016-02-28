@@ -1,0 +1,17 @@
+<template name="timeline">
+  <div class="timeline-wrapper">
+    <div id="timeline" class="timeline container">
+      <div class="timeline comments" width="100%">
+
+      {{#each comment}}
+
+        {{>tick}}
+
+      {{/each}}
+
+      </div>
+    </div>
+    <div id="slider"></div>
+    <input id="progress" type="text" style="display:none;visibilty:hidden"/>
+  </div>
+</template>

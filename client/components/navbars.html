@@ -1,0 +1,83 @@
+<template name="navbarStatic">
+    <nav id="mainNav" class="top header">
+    <div class="ui menu inverted">
+      <div class="menu">
+        <a href="/" id="profileHeader" class="item">
+           <div class="profile">
+
+              <div class="image">
+                  <img id="avatar" src="img/logo-glad.png">
+              </div>
+
+             <div class="header">Laptop Battle</div>
+           </div>
+        </a>
+        <a class="item" href="/videos"><i class="video play icon"></i>Submission Videos</a>
+      </div>
+      <div class="menu right">
+
+          <a class="item" href="/signup"><i class="sign in icon"></i> Sign Up</a>         
+
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="navbar">
+  <nav id="mainNav" class="top header">
+    <div class="ui menu inverted">
+      <div class="menu">
+
+        {{ #if currentUser }}
+             
+        <a href="/" id="profileHeader" class="item">
+           <div class="profile">
+
+              <div class="image">
+                  <img id="avatar" src="img/logo-glad.png">
+              </div>
+
+             <div class="header">Laptop Battle</div>
+           </div>
+        </a>
+
+        {{ /if }}
+
+        <a href="battles" class="item"><i class="video play icon"></i>Battles</a>
+        <a href="leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
+        <a href="rules" class="item"><i class="file text icon"></i>Rules</a>
+        <a href="/profile" class="item"><i class="options icon"></i>Profile</a>
+
+      </div>
+      <div class="right menu">
+
+        {{ #if currentUser }}
+
+          {{> game }}
+
+        {{ /if }}
+
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="navbarMobile">
+<nav id="navbarMobile">
+
+  <div class="ui menu navbar">
+
+      <div class="menu">
+        <a href="/" class="logo text"> Laptop Battle</a>
+      </div>
+
+      <div class="right menu">
+
+        <a class="item"><i class="icon sidebar"></i></a>
+
+      </div>
+
+  </div>
+
+</nav>
+</template>

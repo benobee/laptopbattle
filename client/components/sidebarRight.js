@@ -18,9 +18,12 @@ Template.sidebarRight.events({
   'click #facebookLoginButton'(e){
 
     Meteor.loginWithFacebook({
-      requestPermissions: ['public_profile', 'email', 'user_friends']
-      }, function (err, data) {
 
+        requestPermissions: ['public_profile', 'email', 'user_friends'], 
+        loginStyle        : 'popup'
+
+      }, function (err, response) {
+         
       if (err) 
         Session.set('errorMessage', err.reason || 'Unknown error');    
     });
@@ -29,13 +32,18 @@ Template.sidebarRight.events({
   'submit #commentForm'(e){
       e.preventDefault();
 
-  if(Meteor.user().username){    
-  var name = Meteor.user().username;
+  if(Meteor.user().username){ 
+
+    var name = Meteor.user().username;
+
   } else {
-  var name = Meteor.user().profile.name;
+
+    var name = Meteor.user().profile.name;
+
   }
   var videoUserId = Session.get('videoUserId');
   var comment = {
+
         'videoTime' : player.getCurrentTime(),
         '_id'       : Session.get('video'),
         'userId'    : Meteor.user()._id,
@@ -47,6 +55,11 @@ Template.sidebarRight.events({
           $( "#commentForm" )[0].reset();
         }
   };
-  comment.addComment();      
+
+    comment.addComment();  
+
   }
 });
+
+
+

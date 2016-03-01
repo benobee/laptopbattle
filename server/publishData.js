@@ -11,7 +11,7 @@ Meteor.publish("levels", function(){
 });
 
 Meteor.publish("users", function(){
-  return Meteor.users.find({}, {fields: {username: 1, votes: 1, pointCount: 1}}, {sort: {pointCount: -1}});
+  return Meteor.users.find({}, {fields: { username: 1, votes: 1, pointCount: 1, admin : 1, player : 1, facebook: 1 }}, {sort: {pointCount: -1}});
 });
 
 Meteor.users.deny({

@@ -39,3 +39,5 @@ ecmascript
 accounts-base
 utilities:avatar
 particle4dev:upload-avatar
+useraccounts:semantic-ui
+houston:admin

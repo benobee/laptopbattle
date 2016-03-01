@@ -1,22 +1,27 @@
 <template name="navbarStatic">
-    <nav id="mainNav" class="top header">
+    <nav id="mainNav" class="nav">
     <div class="ui menu inverted">
       <div class="menu">
-        <a href="/" id="profileHeader" class="item">
-           <div class="profile">
+        <a href="/" id="brandHeader" class="item brand">
 
               <div class="image">
                   <img id="avatar" src="img/logo-glad.png">
               </div>
 
              <div class="header">Laptop Battle</div>
-           </div>
+ 
         </a>
-        <a class="item" href="/videos"><i class="video play icon"></i>Submission Videos</a>
+<!--         <a class="item" href="/videos"><i class="video play icon"></i>Submission Videos</a> -->
       </div>
       <div class="menu right">
 
-          <a class="item" href="/signup"><i class="sign in icon"></i> Sign Up</a>         
+          {{ #if player }}
+
+            <a class="item" href="/login"><i class="sign in icon"></i> Log In</a> 
+
+          {{ /if }}   
+
+          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>         
 
       </div>
     </div>
@@ -24,46 +29,52 @@
 </template>
 
 <template name="navbar">
-  <nav id="mainNav" class="top header">
+  <nav id="mainNav" class="nav">
     <div class="ui menu inverted">
       <div class="menu">
 
         {{ #if currentUser }}
              
-        <a href="/" id="profileHeader" class="item">
-           <div class="profile">
+        <div id="brandHeader" class="item brand">
 
-              <div class="image">
+              <div class="image icon">
                   <img id="avatar" src="img/logo-glad.png">
               </div>
 
              <div class="header">Laptop Battle</div>
-           </div>
-        </a>
+ 
+        </div>
 
         {{ /if }}
 
-        <a href="battles" class="item"><i class="video play icon"></i>Battles</a>
+        <a href="battles" class="item active"><i class="video play icon"></i>Battlers</a>
+        <a href="/profile" class="item"><i class="options icon"></i>{{ signInTitle }}</a>
+
+      {{# if player }}
+
         <a href="leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
         <a href="rules" class="item"><i class="file text icon"></i>Rules</a>
-        <a href="/profile" class="item"><i class="options icon"></i>Profile</a>
+
+      {{ /if }}
 
       </div>
+
+      {{ #if player }}
+
       <div class="right menu">
 
-        {{ #if currentUser }}
-
-          {{> game }}
-
-        {{ /if }}
+        {{> game }}
 
       </div>
+
+      {{ /if }}
+
     </div>
   </nav>
 </template>
 
 <template name="navbarMobile">
-<nav id="navbarMobile">
+<nav id="navbarMobile" class="nav">
 
   <div class="ui menu navbar">
 

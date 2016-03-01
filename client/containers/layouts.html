@@ -1,9 +1,20 @@
 <template name="site">
-
   <div class="ui sidebar">
+    <div class="sidebarContent">
+      <div class="ui menu vertical inverted">
 
-    {{> mobileSidebar }}
+        {{ #if currentUser }}
 
+        <a href="account" class="item">Profile Settings</a>
+
+        {{ else }}
+
+        <a href="account" class="item">Sign In</a>
+
+        {{ /if }}
+
+      </div>    
+    </div>
   </div>
   <div class="pusher">
       <header id="header">
@@ -12,6 +23,9 @@
           {{> navbarMobile }}
 
       </header>
+
+          {{> forms }}
+
     	<div id="pageContent">
 
     	 {{> yield }}

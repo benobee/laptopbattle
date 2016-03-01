@@ -29,15 +29,16 @@ FORMS
 .forms > .esc > .desc{
 	margin-top:0.5em;
 }
-.lb-form.upload{
+.lb-form.upload, .lb-form.profile{
 	padding-top:2em;
-	max-height:15em;
+	display:none;
 }
 .ui.segment.lb-form{
 	margin:auto;
 	background: #440047;
 	border: 4px solid #611055;
 	margin-bottom:2em;
+	margin-top:2em;
 }
 .ui.segment.lb-form > .header{
 	color: #F82262;
@@ -377,7 +378,7 @@ ALL OTHER GLOBAL STYLES
 
 a:focus {outline:0;}
 
-.navbar i{
+.nav i{
 	color:white;
 }
 
@@ -408,16 +409,15 @@ a:focus {outline:0;}
 	left:50%;
 }
 .ui.button.tickets{
-	border-style:solid;
-	border-width:2px;
-	border-color: #F82262;
+	border: solid 2px #F82262;
 	color:#F82262;
 	background:none;
 	cursor:pointer;
 	cursor:hand;
-	padding:0.5em;
+	padding:0.6em;
 	font-family: Prime;
 	font-size:1.7em;
+	white-space: nowrap;
 }
 .small.text{
 	font-size:1em;
@@ -431,10 +431,11 @@ a:focus {outline:0;}
 #logos img{
 	width:100%;
 }
-#footer{
+footer{
 	padding-top:2em;
+	border-top: #F82262 solid 4px;
 }
-#footer p{
+.footer p{
 	text-align:center;
 	font-size:1.2em;
 	color:#E22663;
@@ -458,9 +459,6 @@ a:focus {outline:0;}
 	font-size:3.2em;
 }
 .site-wrapper{
-	border-top-style:solid;
-	border-color:#F82262;
-	border-width: 4px;
 	background:#440047;
 }
 .line{
@@ -532,7 +530,7 @@ a{
 	min-height:30em;
 }
 
-.footer-content h2{
+h2{
 	color: #E22663;
 	text-align:center;
 	font-size:5em;
@@ -611,6 +609,7 @@ button{
 	opacity:0.6;
 	font-weight:300;
 	font-family: Prime;
+	min-width: 5em;
 }
 .square.button:hover{
 	opacity:1;
@@ -693,18 +692,15 @@ button{
 #mainNav .ui.menu.inverted{
 	background:#440047;
 }
-.navbar.menu{
-	min-height:60px;
+.nav.menu{
 	background: none;
 	position:relative;
 }
-.top.header{
+.nav{
 	width:100%;
-	background: #430082;
 	border-bottom-style:solid;
 	border-bottom-width:4px;
 	border-bottom-color:#611055;
-	z-index: 99;
 }
 .lb-input.small{
 	height:30px;
@@ -794,8 +790,7 @@ button{
 .ui-box .text.button.right{
 	float:right;
 }
-
-.profile .image{
+.brand .image{
 	display:inline-block;
 	width:40px;
 	height:40px;
@@ -805,23 +800,15 @@ button{
 	cursor: hand;
 	margin-right:0.5em;
 }
-.profile .image img{
+.brand .image img{
 	width:100%;
 }
-.profile .button{
-	width:100%;
-	border:none;
-	height:44px;
-	border-radius: 3px;
-}
-.profile > .header{
-	height:1em;
+.brand > .header{
 	padding-top:0.5em;
 	padding-bottom:0.5em;
 	display:inline-block;
 	font-size:1.5em;
 	color:white;
-	transform: translateY(-12px);
 }
 #profileContent{
 	margin-bottom:2em;
@@ -911,9 +898,6 @@ h1, h2, h3, h4, h5, h6, p{
    	-webkit-transition: .5s ease;
 	opacity:1;
 }
-.lb-upload{
-	height:44px;
-}
 .forms{
 	position: fixed;
 	width:100%;
@@ -924,12 +908,11 @@ h1, h2, h3, h4, h5, h6, p{
 	height:100vh;
 	display:none;
 }
-#videoUploadForm{
+.popupForm{
 	display:none;
 	z-index: 9999;
 	top:10em;
 	position:relative;
-	height:100%;
 	width:100%;
 	max-width: 35em;
 	margin:auto;
@@ -944,9 +927,6 @@ h1, h2, h3, h4, h5, h6, p{
 }
 #closeMenu{
 	padding:20px;
-}
-.login{
-	margin-bottom:20px;
 }
 #login-buttons{
 	display: inline-block;
@@ -1047,9 +1027,6 @@ h1, h2, h3, h4, h5, h6, p{
 	background-position: center;
 	background-repeat: no-repeat;
 }
-#banners{
-	margin-bottom:20px;
-}
 [data-voted="1"] .votes span{
 	color: #F82262;
 }
@@ -1075,6 +1052,10 @@ h1, h2, h3, h4, h5, h6, p{
 }
 .battleInfo .statistic .value{
 	font-size:2.2em;
+}
+.item i{
+	padding-right:0.5em;
+	margin: 0em 0.35714286em 0.3em 0em !important;
 }
 .item.info{
 	font-size:0.6em;

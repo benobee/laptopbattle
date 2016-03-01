@@ -1,10 +1,10 @@
-Template.sidebar.onRendered(function(){
+Template.videoSettings.onRendered(function(){
 
-  $('.dark.button').popup();
+  $('#addVideo').popup();
 
 });
 
-Template.sidebar.helpers({
+Template.videoSettings.helpers({
 
   userVideo: function() {
 
@@ -32,7 +32,7 @@ Template.sidebar.helpers({
 
 });
 
-Template.sidebar.events({
+Template.videoSettings.events({
   
     'click #closeUploadForm' : function(){
 
@@ -45,7 +45,7 @@ Template.sidebar.events({
       Meteor.call('deleteVideo', this._id);     
 
     },
-    'click #addVideo' : function(){
+    'click .addVideo' : function(){
 
       LaptopBattle.menu.toggleUploadForm();
 

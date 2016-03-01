@@ -7,6 +7,7 @@ Template.forms.onRendered(function(){
 
 	    }
 	});
+
 });
 
 Template.forms.events({

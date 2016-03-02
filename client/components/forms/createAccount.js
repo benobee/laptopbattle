@@ -3,18 +3,26 @@ Template.createAccount.events({
    'click #accountSubmit'(e){
 
     e.preventDefault();
-      
-    var username = $('#createName').val();
-    var password = $('#createPassword').val();
+  
+    var data = $('#createAccountForm').serializeArray();
 
-    Accounts.createUser({ 
+    var username = data[0].value;
+    var password = data[1].value;
+    var email = data[2].value;
+    var age = data[3].value;
+    var location = data[4].value;
 
-      'username': username, 
-      'password': password 
+    Meteor.call('submitUser', username, password, email, age, location, function(error, result){
 
-    }); 
+        Router.go('/account/verify');
 
-    Router.go('/account');
+        Session.set('verify', {
+
+            username : username,       
+            email    : email  
+
+        });           
+    });
 
   }
 });

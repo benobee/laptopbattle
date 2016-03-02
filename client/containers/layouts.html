@@ -9,7 +9,7 @@
 
         {{ else }}
 
-        <a href="account" class="item">Sign In</a>
+        <a href="signup" class="item">Sign Up</a>
 
         {{ /if }}
 
@@ -47,8 +47,6 @@
 
   {{/if}}
 
-    {{> navbarMobile }}
-
     {{> forms }}
 
   <div class="ui sidebar">  
@@ -63,6 +61,9 @@
   </div>
 
   <div class="pusher">
+  
+      {{> navbarMobile }}
+
     <div id="pageContent">
 
        {{> yield }}

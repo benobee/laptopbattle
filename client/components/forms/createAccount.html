@@ -1,12 +1,16 @@
 <template name="createAccount">
   <div class="ui container">
     <div class="ui segment lb-form">
+
       <div class="header">Create Account</div>
+
     	<form id="createAccountForm" method="post">
-    		<input class="lb-input" type="text" placeholder="User Name" id="createName">
-    		<input class="lb-input" type="password" placeholder="Password" id="createPassword">
-        <input class="lb-input" type="password" placeholder="Re-type Password" id="retypePassword">
-        <input class="lb-input" type="text" placeholder="E-mail" id="createEmail">
+    		<input class="lb-input" type="text" placeholder="User Name" name="username" required>
+        <input class="lb-input" type="password" placeholder="Password" name="password" required>
+        <input class="lb-input" type="email" placeholder="E-mail" name="email" required>
+        <input class="lb-input" type="text" placeholder="Age" name="age" required>
+        <input class="lb-input" type="text" placeholder="Location" name="location" required>
+
     		<button id="accountSubmit" class="square button">SUBMIT</button>
     	</form>
 

@@ -381,6 +381,9 @@ a:focus {outline:0;}
 .nav i{
 	color:white;
 }
+.nav > .ui.menu {
+	
+}
 
 #navbarMobile{
 	background:#440047;
@@ -717,7 +720,7 @@ button{
    	-webkit-transition: background 0.2s;
 }
 .lb-input{
-
+	font-family: Prime;
 	height:44px;
 	width:100%;
 	font-size: 18px;

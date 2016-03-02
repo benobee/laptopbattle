@@ -13,10 +13,10 @@ Template.login.events({
 
 	    e.preventDefault();
 
-      var username = $('.lb-input.name').val();
+      var email = $('.lb-input.email').val();
       var password = $('.lb-input.password').val();
 
-      Meteor.loginWithPassword(username, password, function(){
+      Meteor.loginWithPassword(email, password, function(){
 
         Router.go('/battles');
         if(Meteor.user().player){

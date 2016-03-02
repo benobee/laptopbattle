@@ -8,7 +8,7 @@ Template.videoSettings.helpers({
 
   userVideo: function() {
 
-      if(Accounts.admin){
+      if(Meteor.user().admin){
 
         return Videos.find();
 

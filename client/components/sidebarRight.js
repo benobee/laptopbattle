@@ -24,8 +24,9 @@ Template.sidebarRight.events({
 
       }, function (err, response) {
          
-      if (err) 
+      if (err) {
         Session.set('errorMessage', err.reason || 'Unknown error');    
+        }
     });
 
   },  

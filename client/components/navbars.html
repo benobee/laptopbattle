@@ -11,18 +11,20 @@
              <div class="header">Laptop Battle</div>
  
         </a>
-<!--         <a class="item" href="/videos"><i class="video play icon"></i>Submission Videos</a> -->
+<!--         <a class="item" href="/battlers"><i class="video play icon"></i>Battlers</a> -->
       </div>
       <div class="menu right">
 
           {{ #if player }}
 
-            <a class="item" href="/login"><i class="sign in icon"></i> Log In</a> 
+          <a class="item" href="/login"><i class="sign in icon"></i> Log In</a> 
 
-          {{ /if }}   
+          {{ else }}
 
-          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>         
+<!--           <a class="item" href="/login"><i class="facebook square icon"></i> Log In</a>   -->        
+          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>   
 
+          {{ /if }} 
       </div>
     </div>
   </nav>
@@ -35,7 +37,7 @@
 
         {{ #if currentUser }}
              
-        <div id="brandHeader" class="item brand">
+        <a href="/" id="brandHeader" class="item brand">
 
               <div class="image icon">
                   <img id="avatar" src="img/logo-glad.png">
@@ -43,31 +45,42 @@
 
              <div class="header">Laptop Battle</div>
  
-        </div>
+        </a>
 
         {{ /if }}
 
-        <a href="battles" class="item active"><i class="video play icon"></i>Battlers</a>
-        <a href="/profile" class="item"><i class="options icon"></i>{{ signInTitle }}</a>
+        <a href="battlers" class="item"><i class="video play icon"></i>Battlers</a>
 
       {{# if player }}
 
         <a href="leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
         <a href="rules" class="item"><i class="file text icon"></i>Rules</a>
+        <a href="/profile" class="item"><i class="options icon"></i>{{ signInTitle }}</a>
+
+      {{ /if }}
+
+      {{ #if admin }}
+
+        <a href="admin" class="item"><i class="setting icon"></i>Admin</a>
 
       {{ /if }}
 
       </div>
-
-      {{ #if player }}
 
       <div class="right menu">
 
-        {{> game }}
+        {{ #if player }}
+
+          {{> game }}
+
+        {{ else }}
+
+          <a id="signOut" class="item"><i class="sign out icon"></i> Log Out</a> 
+          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>       
+
+        {{ /if }}
 
       </div>
-
-      {{ /if }}
 
     </div>
   </nav>
@@ -95,3 +108,9 @@
 
 </nav>
 </template>
+
+
+
+
+
+

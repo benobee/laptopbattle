@@ -8,7 +8,7 @@ Template.videoSettings.helpers({
 
   userVideo: function() {
 
-      if(Meteor.user().admin){
+      if( Meteor.user().admin ){
 
         return Videos.find();
 
@@ -52,6 +52,9 @@ Template.videoSettings.events({
     },
     'click #videoList .item ' : function(e){
      //navigate to video edit page
+
+      LaptopBattle.menu.toggleForm('videoEdit');
+      Session.set('videoId', this._id);
 
     }
 });

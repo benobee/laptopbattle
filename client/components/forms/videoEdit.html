@@ -1,0 +1,19 @@
+<template name="videoEdit">
+
+	{{ #with videoData }}
+
+		<div id="videoEditSettings" class="ui segment lb-form videoEdit popupForm">
+	        <form id="videoEditForm">
+	          <label for="YTTitle">Title</label>
+	          <input id="YTTitle" type="text" value="{{ title }}" name="title" class="lb-input">
+	          <label for="YTLink">Youtube Video Id</label>
+	          <input id="YTlink" type="text" value="{{ link }}" name="link" class="lb-input">
+	          <button type="submit" class="square button"><i class="save icon"></i>Save</button> 
+	          <button id="deleteVideo" class="square button"><i class="icon trash"></i>Delete Video</button> 
+	        </form>
+
+	    </div>
+
+	{{ /with }}
+
+</template>

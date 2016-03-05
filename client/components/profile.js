@@ -19,7 +19,7 @@ Template.profile.events({
 
 Template.profile.helpers({
   admin : function(){
-    if (Accounts.admin){
+    if ( Meteor.user().profile.admin ){
 
        return true;
 

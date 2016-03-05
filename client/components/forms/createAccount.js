@@ -12,18 +12,9 @@ Template.createAccount.events({
     var age = data[3].value;
     var location = data[4].value;
 
-    Meteor.call('submitUser', username, password, email, age, location, function(error, result){
-
-        Router.go('/account/verify');
-
-        Session.set('verify', {
-
-            username : username,       
-            email    : email  
-
-        });           
-    });
-
+    Meteor.call('submitUser', username, password, email, age, location );
+    Router.go('/account/verify');
+    
   }
 });
 

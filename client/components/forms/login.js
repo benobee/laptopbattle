@@ -2,7 +2,7 @@ Template.login.onRendered(function(){
 
   if(Session.get('user') !== null){
 
-    Router.go('/battles');
+    Router.go('/battlers');
 
   }
 
@@ -18,8 +18,9 @@ Template.login.events({
 
       Meteor.loginWithPassword(email, password, function(){
 
-        Router.go('/battles');
-        if(Meteor.user().player){
+        Router.go('/battlers');
+        
+        if(Meteor.user().profile.player){
 
           Session.set('player', true); 
 
@@ -39,7 +40,7 @@ Template.login.events({
       requestPermissions: ['public_profile', 'email', 'user_friends']
       }, function (err, data) {
 
-        Router.go('/battles');
+        Router.go('/battlers');
 
       if (err) 
         Session.set('errorMessage', err.reason || 'Unknown error'); 

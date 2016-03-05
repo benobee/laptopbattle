@@ -18,7 +18,9 @@ Template.battleHome.helpers({
   videos : {
       'content' : Videos.find({}, {sort: {date: -1}}),
       'length'  : function(){
+
         return this.content.count();
+
       }
   }
 });
@@ -29,10 +31,15 @@ Template.mainVideos.helpers({
     count : function(){
       //show count of votes per video
       if(this.votes == undefined){
+
         return "no votes";
+
       } else if (this.votes.length == 1){
+
         return this.votes.length + " " + "vote";  
+
       } else {
+
         return this.votes.length + " " + "votes";
       }           
     },
@@ -40,13 +47,21 @@ Template.mainVideos.helpers({
     voted : function(){
 
       var voteList = _.map(this.votes, function(user){
+
         return user.userId;
+
       });
+      
       var voted = _.contains(voteList, Meteor.userId());
+
       if (voted == true){
+
         return 1;
+
       } else {
+
         return 0;
+
       }
 
     }

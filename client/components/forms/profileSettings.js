@@ -17,8 +17,11 @@ Template.profileSettings.events({
 Template.profileSettings.helpers({
 
   username : function(){
-    
-      return Session.get('username');
+      var user = Session.get('user');
+      if(user.username !== undefined) {
 
+        return user.username;
+
+      }
   }
 })

@@ -1,6 +1,8 @@
 Template.navbar.events({
 	'click #toggleSidebar' : function(){
+
      LaptopBattle.menu.toggleSidebar();
+
   },
   'click #signOut':function(e){
       e.preventDefault();
@@ -9,25 +11,26 @@ Template.navbar.events({
       $('.spinner-wrapper').fadeIn();
 
       Meteor.logout();
-  },
-  'click .item'(e){
-    $('.nav .item').removeClass('active');
-    $(e.currentTarget).addClass('active');
-
+      Router.go('/');
   }
 });
 
 Template.navbar.helpers({
   'signInTitle':function(){
+
     if(Meteor.user()){
+
       return Meteor.user().username;
+
     } else {
+
       return 'Sign In';
+
     }   
   },
   'player':function(){
 
-    if( Session.get('player') ){
+    if( Meteor.user().player ){
 
       return true;
            
@@ -36,6 +39,18 @@ Template.navbar.helpers({
       return false;
 
     } 
+  },
+  'admin'(){
+
+    if( Meteor.user().admin == true ){
+
+      return true;
+
+    } else {
+
+      return false;
+
+    }
   }
 });
 

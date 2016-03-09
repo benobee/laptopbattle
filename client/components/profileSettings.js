@@ -11,17 +11,24 @@ Template.profileSettings.events({
 
     }); 
 
-  } 
+  },
+  'click .square.button.logout':function(e){
+      e.preventDefault();
+      LaptopBattle.menu.hideForm();  
+      $('.spinner-wrapper').fadeIn();
+      Meteor.logout();
+
+  }
 });
 
 Template.profileSettings.helpers({
 
-  username : function(){
-      var user = Session.get('user');
-      if(user.username !== undefined) {
+  'username':function(){
 
-        return user.username;
+    if(Meteor.user()){
 
-      }
+      return Meteor.user().username;
+
+    }
   }
 })

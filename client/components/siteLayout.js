@@ -5,10 +5,8 @@ Template.join.events({
 });
 
 Template.home.onRendered(function(){
-
-    Session.set("url", 'MV_cCzI17eE');
-    Session.set("video", 'TRCqnzKsGvwb8TsLD'); 
-
-  $('.spinner-wrapper').addClass('hide');	
+	
+    $('.spinner-wrapper').addClass('hide');	
 
 });
+

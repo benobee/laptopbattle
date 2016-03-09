@@ -39,22 +39,28 @@ Template.videoSettings.events({
       LaptopBattle.menu.toggleUploadForm();
 
     },
-    'click .admin .trash': function(e){
-
-      e.stopPropagation(); 
-      Meteor.call('deleteVideo', this._id);     
-
-    },
     'click .addVideo' : function(){
 
       LaptopBattle.menu.toggleUploadForm();
 
     },
-    'click #videoList .item ' : function(e){
+    'click #videoList .item' : function(e){
      //navigate to video edit page
 
-      LaptopBattle.menu.toggleForm('videoEdit');
-      Session.set('videoId', this._id);
+      var data = Videos.findOne({_id : this._id });
+
+      var parentNode = document.getElementById('forms');
+      Blaze.renderWithData(Template.videoEdit, data, parentNode);
+
+      $('.forms').transition('fade');
+      $('.lb-form.videoEdit').transition('drop');
+
+    },
+    'click .lb-form.videoEdit'(e){
+
+      var element = document.getElementById('videoEditSettings');
+      var view = Blaze.getView(element);
+      Blaze.remove(view);
 
     }
 });

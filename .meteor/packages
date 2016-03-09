@@ -10,7 +10,6 @@ miro:preloader
 sacha:spin
 underscore
 tmeasday:publish-counts
-flemay:less-autoprefixer
 standard-minifiers
 meteor-base
 mobile-experience
@@ -38,3 +37,4 @@ ecmascript
 accounts-base
 useraccounts:semantic-ui
 email
+less

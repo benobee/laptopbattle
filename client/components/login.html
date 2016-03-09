@@ -1,0 +1,46 @@
+<template name="login">
+	<div class="ui segment lb-form">
+	    <div class="header">Login</div>     
+        <form id="loginForm">
+          
+          <input placeholder="e-mail" class="lb-input email" type="email">
+          <input placeholder="password" class="lb-input password" type="password">
+          <button class="square button login"><i class="sign in icon"></i>GO!</button>
+          <button id="signup" class="square button"><i class="write icon"></i>Sign Up</button>
+          <button id="facebookLoginButton" class="square button"><i class="facebook square icon"></i>Login with Facebook</button>
+<!--           <div class="ui segment">
+            <a href="account/password/reset" id="forgotPassword"><p>Forgot Password?</p></a>
+          </div> -->
+        </form>
+
+        <div class="ui small modal">
+          <div class="ui message">
+              <div class="header">Login Error</div>
+              <p>We couldn't detect the email provided. Please try again.</p>
+          </div>
+        </div>
+        <div id="passwordSent" class="ui message hidden">
+                  Password Sent
+        </div>
+	</div>
+</template>
+
+<template name="forgotPassword">
+
+    <div class="ui segment lb-form">
+      <div class="header">Reset Password</div>     
+        <form id="resetPasswordForm">
+          
+          <input placeholder="e-mail" class="lb-input email" type="email">
+          <button id="passwordReset" class="square button">RESET</button>
+
+        </form>
+        <div class="ui segment">
+            <a href="/login" id="forgotPassword"><p>Back to Login</p></a>
+        </div>
+        <div id="passwordSent" class="ui message hidden">
+                  Password Sent
+        </div>
+  </div>
+</template>
+

@@ -3,15 +3,8 @@
     <div class="sidebarContent">
       <div class="ui menu vertical inverted">
 
-        {{ #if currentUser }}
-
-        <a href="account" class="item">Profile Settings</a>
-
-        {{ else }}
-
-        <a href="signup" class="item">Sign Up</a>
-
-        {{ /if }}
+        <a href="/" class="item">Home</a>
+        <a href="/signup" class="item">Sign Up</a>
 
       </div>    
     </div>
@@ -52,10 +45,10 @@
   <div class="ui sidebar">  
 
       <div class="ui vertical menu inverted">
-          <a href="profile" class="item"><i class="options icon"></i>Profile</a>    
-          <a href="battles" class="item"><i class="video play icon"></i>Battles</a>
-          <a href="leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
-          <a href="rules" class="item"><i class="file text icon"></i>Rules</a>
+          <a href="/profile" class="item"><i class="options icon"></i>Profile</a>    
+          <a href="/battlers" class="item"><i class="video play icon"></i>Battlers</a>
+          <a href="/leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
+          <a href="/rules" class="item"><i class="file text icon"></i>Rules</a>
       </div>
 
   </div>

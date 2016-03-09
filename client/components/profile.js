@@ -1,14 +1,5 @@
 Template.profile.events({
-  'click .square.button.logout':function(e){
-      e.preventDefault();
-
-      $('#menuStart').sidebar('hide');
-      $('.spinner-wrapper').fadeIn();
-
-      Meteor.logout();
-
-  },
-  'click .square.button.profile':function(e){
+  'click .dark.button.profile':function(e){
       e.preventDefault();
 
       var target = $(e.currentTarget).data('target');
@@ -28,7 +19,20 @@ Template.profile.helpers({
        return false;
 
     }
+  },
+  username : function(){
+
+    if(Meteor.user()){
+
+      return Meteor.user().username;
+
+    }
+
   }
 });
 
+Template.profile.onRendered(function(){
 
+   $('#profileSettingsButton').popup();
+
+});

@@ -75,8 +75,8 @@ Template.battleHome.events({
         Session.set("url" , this.url);
         Session.set("video" , this._id);
         Session.set("videoUserId" , this.id);
-        Router.go('/battle?id='+ this._id + '&url=' + this.url);
-
+        Router.go('/battle/'+ this._id + '?url=' + this.url);
+        $('#spinner-wrapper').fadeIn();
     },
     'click .extra.content.vote' : function(e){
 

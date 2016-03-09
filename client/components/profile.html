@@ -1,33 +1,32 @@
 <template name="profile">
 	<div class="ui container">
-    <div class="ui grid stackable">
+        <div class="ui segment lb-form darkBackground">
 
-    <div class="eight wide column">
-      <div class="ui segment lb-form">
+            {{ #if currentUser }}
+            
+            <div class="ui segment">
+              <div class="ui grid">
+                 <div class="eight wide column content">
+                   
+                     <div class="leaderboard header">{{ username }}</div>
 
-          {{> videoSettings }}
+                 </div>
+                 <div class="eight wide column content">
 
-      </div>
-    </div>
+                  <button id="profileSettingsButton" data-content="Profile Settings" class="dark button profile" data-target="profile"><i class="settings icon"></i></button>
 
-   <div class="eight wide column">
+                 </div>
+              </div>
+            </div>
 
-      <div class="ui segment lb-form">
+            {{> videoSettings }}
 
-        {{ #if currentUser }}
+            {{ else }}
 
-         <button class="square button profile" data-target="profile"><i class="settings icon"></i>Profile Settings</button>
-         <button class="square button logout"><i class="sign out icon"></i>LOG OUT</button>
+             <a href="/login" class="square button"><i class="sign in icon"></i>Sign In</a>
 
-        {{ else }}
+            {{ /if }}
 
-         <a href="/login" class="square button"><i class="sign in icon"></i>Sign In</a>
-
-        {{ /if }}
-      </div>
-
-    </div>
-
-    </div>
+        </div>
 	</div>
 </template>

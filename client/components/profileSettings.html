@@ -1,0 +1,12 @@
+<template name="profileSettings">
+    <div id="profileSettings" class="ui segment lb-form profile popupForm">
+        <form id="settingsForm">
+<!--           <label for="avatarImage">Avatar</label>
+          <input id="avatarImage" accept="image/*" type="file" class="lb-input"> -->
+          <label for="changeUsername">Username</label>
+          <input type="text" value="{{ username }}" class="lb-input username">
+          <button type="submit" class="square button"><i class="icon save"></i>Save</button>
+          <button class="square button logout"><i class="sign out icon"></i>LOG OUT</button> 
+        </form>
+    </div>
+</template>

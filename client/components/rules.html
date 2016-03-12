@@ -1,44 +1,32 @@
-<template name="rulesPage">
+<template name="rules">
 	<div id="rulesPage" class="ui container">
-		<div class="header"><h1>RULES</h1></div>
 		<div class="content">
 
 			<div id="rules">
 
-			<p>At the end of each battle, a panel of judges will select a Champion and announce the runners up.
+					  <div class="header"><h1>Rules for Online Qualifier</h1></div>
+						<div class="ui ordered list">
 
-			Battle Points are used to create a status for contestants and drive positive feedback. Battle Points help us determine which videos to watch and provide incentive for constructive commenting.</p>
+							{{#each data.online}}
 
-			<h3>Battle Points</h3>
+								<div class="item">{{ item }}</div>
 
-			<p>You can earn points in a few ways:
-			<ul>
-			<li>Video Hearts - 100 points</li>
-			<li>Leave a Comment - 5 points</li>
-			</ul>
-			</p>
-			<h3>Judging</h3>
+						  {{/each}}
 
-			<p>Videos will be judged in different areas:
-			<ul>
-			<li>Song</li>
-			<li>Performance</li>
-			<li>Sound Design</li>
-			<li>Style</li>
-			<li>Skill Level</li>
-			</ul>
-			</p>
-			<p>Champions will be selected upon a battle’s completion.</p>
+						</div>
 
-			<h3>Prizes</h3>
+					  <div class="header"><h1>Rules for Seattle Laptop Battle Event, Saturday April 30th</h1></div>
+						<div class="ui ordered list">
 
-			<p>Prizes will be delivered within one month of winner announcement.</p>
+							{{#each data.live}}
 
-			<h3>Grudge Matches - beta</h3>
+								<div class="item">{{ item }}</div>
 
-			<p>Currently head-to-head battles are hand selected and points system for Grudge Matches is TBD.</p>
+						  {{/each}}
+
+						</div>
+
 			</div>
-
 		</div>
 	</div>
 </template>

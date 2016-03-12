@@ -4,29 +4,29 @@
     <div class="ui grid">
 
       <div class="two wide column">
-        <div class="header leaderboard">rank</div>
+        <div class="header">RANK</div>
       </div>
 
-      <div class="eight wide column">
-        <div class="header leaderboard">username</div>
+      <div class="ten wide column">
+        <div class="header">USERNAME</div>
       </div>
       
-      <div class="six wide column">
-        <div class="header leaderboard">points</div>
+      <div class="four wide column">
+        <div class="header">POINTS</div>
       </div>
 
       {{#each user}}
 
         <div class="two wide column">
-          <div class="leaderboard">{{index}}</div>
+          <div class="item">{{index}}</div>
         </div>
 
-        <div class="eight wide column">
-          <div class="leaderboard">{{username}}</div>
+        <div class="ten wide column">
+          <div class="item">{{username}}</div>
         </div>
 
-        <div class="six wide column">
-          <div class="leaderboard">{{pointCount}}</div>
+        <div class="four wide column">
+          <div class="item">{{pointCount}}</div>
         </div>
 
       {{/each}}

@@ -1,86 +1,35 @@
-<template name="home">
+<template name="site">
 
-    {{> banner }}
+        {{> sidebar }}
+  
+  <div class="pusher">
+      <header id="header">
 
-    <div class="site-wrapper">
-      <div class="site-inner">
+          {{> navbar }}
+          {{> navbarMobile }}
 
-        {{> tickets }}
-        {{> battleVideo }}    
+      </header>
 
+          {{> forms }}
+
+      <div class="site-wrapper">
+        <div class="site-inner">
+      	   <div id="pageContent">
+
+      	     {{> yield }}
+
+      	   </div>
+        </div>
       </div>
-    </div>
-    <footer id="footer" class="footer">
-        <div class="footer-content">
-
-            {{> signup }}
-
+      
+      <footer id="footer" class="footer">
+        <div class="content">
+        
             {{> logos }}
 
         </div>
-    </footer>
-</template>
 
-
-<template name="tickets">
-  <div class="callToAction">
-    <a class="action link" target="blacnk" href="https://squareup.com/store/laptopbattle/item/seattle-laptop-battle-1"><div class="ui button tickets">GET TICKETS!</div></a>
-  </div>  
-</template>
-
-<template name="banner">
-    <div class="coverImage"></div>
-</template>
-
-<template name="spectate">
-
-  {{> battleHome }}
-
-  {{> tickets }}
-
-</template>
-
-<template name="about">
-  <div id="about" class="page">
-  <h2>About</h2>
-
-    <div class="paragraph">
-      <img src="img/poster1.png" class="image right">
-      <p>Laptop Battle exploded into the universe of next level audio nerdery in 2002. Events began taking off in Seattle, Bristol, Italy, Germany, New Zealand, Japan, and many other U.S. cities. Our goal is to help artists forge a pathway and gain skill, appreciation, recognition, audience, and feedback through the platform.</p>  
-    </div>
-
-    <div class="paragraph">
-      <img src="img/poster2.png" class="image left">
-      <p>Over a decade since it’s beginnings, much ground remains to be covered in the realm of computer music performance. Now, it’s time to connect in the virtual world, offering a higher level of inclusion and interaction than ever before.</p>
-    </div>
-
-  </div>
-  <div class="line"></div>
-</template>
-
-<template name="logos">
-  <div id="logos" class="ui container fluid">
-    <div class="ui equal width grid stackable">
-       <div class="column">
-        <img src="img/Ableton.png" alt="Ableton">
-       </div>
-       <div class="column">
-         <img src="img/CreativeLive.png" alt="Creative Live">
-       </div>
-       <div class="column">
-         <img src="img/iZotope.png" alt="iZotope">
-       </div>
-       <div class="column">
-         <img src="img/KeithMcMillen.png" alt="Keith Mcmillen">
-       </div>
-       <div class="column">
-         <img src="img/Mackie.png" alt="Mackie">
-       </div>
-    </div>
+            
+    </footer>   
   </div>
 </template>
-
-
-
-
-

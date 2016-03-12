@@ -1,0 +1,44 @@
+#slider{
+	width:100%;
+	position: absolute;
+	background:#FF4769;
+	border-radius: 0;
+	transition:0.3s;
+	border-color: #363636;
+	left:0;
+	opacity: 0.4;
+	height:10px;
+	cursor: pointer; 
+	cursor: hand;
+	display:none;
+	div {
+		background:#212121;
+		border-radius: 0px;		
+	}
+	&:hover{
+		opacity: 0.6;
+	}
+	.ui-slider-handle{
+		
+		opacity: 0;
+		&:hover{
+			cursor: pointer; 
+			cursor: hand;			
+		}
+	}
+}
+.timeline-wrapper{
+
+	overflow: hidden;
+	height:25px;
+	position: relative;
+	left:0;
+
+	.timeline.container{
+		background:#212121;
+		height:25px;
+		width:100%;
+		opacity:0;
+		max-height:15px;
+	}
+}

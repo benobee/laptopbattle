@@ -1,82 +1,43 @@
-<template name="navbarStatic">
-    <nav id="mainNav" class="nav">
-    <div class="ui menu inverted">
-      <div class="menu">
-        <a href="/" id="brandHeader" class="item brand">
-
-              <div class="image">
-                  <img id="avatar" src="img/logo-glad.png">
-              </div>
-
-             <div class="header">Laptop Battle</div>
- 
-        </a>
-<!--         <a class="item" href="/battlers"><i class="video play icon"></i>Battlers</a> -->
-      </div>
-      <div class="menu right">
-
-          {{ #if player }}
-
-          <a class="item" href="/login"><i class="sign in icon"></i> Log In</a> 
-
-          {{ else }}
-
-<!--           <a class="item" href="/login"><i class="facebook square icon"></i> Log In</a>   -->        
-          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>   
-
-          {{ /if }} 
-      </div>
-    </div>
-  </nav>
-</template>
-
 <template name="navbar">
   <nav id="mainNav" class="nav">
     <div class="ui menu inverted">
       <div class="menu">
-
-        {{ #if currentUser }}
              
         <a href="/" id="brandHeader" class="item brand">
 
               <div class="image icon">
-                  <img id="avatar" src="img/logo-glad.png">
+                  <img id="avatar" src="{{ logo.image }}">
               </div>
 
              <div class="header">Laptop Battle</div>
  
         </a>
 
-        {{ /if }}
+        <a href="/qualifiers" class="item"><i class="video play icon"></i>QUALIFIER</a>
+        <a href="/leaderboard" class="item"><i class="trophy icon"></i>LEADERBOARD</a>
+        <a href="/rules" class="item"><i class="file text icon"></i>RULES</a>
+        <a class="item" target="_blank" href="https://squareup.com/store/laptopbattle/item/seattle-laptop-battle-1"><i class="ticket icon"></i>GET TICKETS!</a>
+        
+        {{#if currentUser}}
 
-        <a href="/battlers" class="item"><i class="video play icon"></i>Battlers</a>
+          {{ #if player }}<a href="/profile" class="item"><i class="options icon"></i>{{ signInTitle }}</a>{{/if}}
+          {{#if admin}}<a href="admin" class="item"><i class="setting icon"></i>Admin</a>{{/if}}
 
-      {{# if player }}
-
-        <a href="/leaderboard" class="item"><i class="trophy icon"></i>Leaderboard</a>
-        <a href="/rules" class="item"><i class="file text icon"></i>Rules</a>
-        <a href="/profile" class="item"><i class="options icon"></i>{{ signInTitle }}</a>
-
-      {{ /if }}
-
-      {{ #if admin }}
-
-        <a href="admin" class="item"><i class="setting icon"></i>Admin</a>
-
-      {{ /if }}
+        {{/if}}
 
       </div>
 
       <div class="right menu">
 
-        {{ #if player }}
+        {{#if currentUser}}
 
-          {{> game }}
+          {{ #if player }}{{> game }}{{/if}}
 
         {{ else }}
 
-          <a id="signOut" class="item"><i class="sign out icon"></i> Log Out</a> 
-          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>       
+        {{#if currentUser}}<a id="signOut" class="item"><i class="sign out icon"></i> Log Out</a>{{/if}}
+
+          <a class="item" href="/signup"><i class="write icon"></i> Sign Up</a>      
 
         {{ /if }}
 
@@ -92,11 +53,11 @@
   <div class="ui menu nav">
 
       <div class="menu">
-        <a class="item"><i class="icon sidebar"></i></a>
+        <a class="item" id="toggleSidebar"><i class="icon sidebar"></i></a>
         <a href="/" id="brandHeader" class="item brand">
 
               <div class="image">
-                  <img id="avatar" src="img/logo-glad.png">
+                  <img id="avatar" src="/img/logo-glad.png">
               </div>
 
              <div class="header">Laptop Battle</div>

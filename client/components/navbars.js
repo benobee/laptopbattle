@@ -1,21 +1,19 @@
 Template.navbar.events({
-	'click #toggleSidebar' : function(){
-
-     LaptopBattle.menu.toggleSidebar();
-
-  },
   'click #signOut':function(e){
       e.preventDefault();
 
       $('#menuStart').sidebar('hide');
-      $('.spinner-wrapper').fadeIn();
-
       Meteor.logout();
       Router.go('/');
   }
 });
 
 Template.navbar.helpers({
+  'logo': {
+
+    image : '/img/logo-glad.png'
+
+  },
   'signInTitle':function(){
 
     if(Meteor.user()){
@@ -41,8 +39,8 @@ Template.navbar.helpers({
     } 
   },
   'admin'(){
-
-    if( Meteor.user().admin == true ){
+    
+    if( Meteor.user().admin !== undefined){
 
       return true;
 
@@ -54,24 +52,9 @@ Template.navbar.helpers({
   }
 });
 
-Template.navbarStatic.helpers({
-  'player':function(){
-
-    if( Session.get('player') ){
-
-      return true;
-           
-    } else {
-
-      return false;
-
-    } 
-  }
-});
-
 Template.navbarMobile.events({
 
-  'click .icon.sidebar'(){
+  'click #toggleSidebar'(){
 
     $('.ui.sidebar').sidebar('toggle');
 

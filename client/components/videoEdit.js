@@ -22,7 +22,7 @@ Template.videoEdit.events({
 	},
 	'click #deleteVideo'(e){
 		e.preventDefault();
-
+		var self = this;
 		Meteor.call('deleteVideo', this._id, function(error, result){
 
 		    $('.forms').transition('fade');
@@ -34,6 +34,14 @@ Template.videoEdit.events({
 		      	Blaze.remove(view);
 
 			}
+
+		});
+
+		var voteArray = this.votes;
+
+		_.each(voteArray, function(i){
+
+			Meteor.call("removePoints", i.userId, i.videoId, self.id);
 
 		});
 

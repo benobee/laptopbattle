@@ -1,0 +1,25 @@
+<template name="battleHome">
+  <div id="mainVideos" class="ui container allVideos">
+      <div class="ui stackable four column grid cards">
+
+          {{ #if videos.length }}
+
+            {{ #each videos.content }}
+
+              {{> videoCard }}  
+
+            {{ /each }}
+
+          {{ else }}
+
+            <div><h1>no videos</h1></div>
+
+          {{ /if }}
+
+      </div>
+  </div>
+</template>
+
+
+
+

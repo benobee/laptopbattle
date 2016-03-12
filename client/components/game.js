@@ -2,7 +2,7 @@ Template.game.helpers({
 
   'points':function(){
 
-    if(Meteor.user().pointCount){
+    if(Meteor.user().pointCount !== undefined){
 
       return Meteor.user().pointCount;
 

@@ -53,7 +53,7 @@ Template.battleVideo.helpers({
       Session.set("url", params.query.url);
       Session.set("video", params._id);
     } else {
-      var q = Videos.findOne({_id: 'WvomSQb6RjCEHgoms'});
+      var q = Videos.findOne({title : 'Intro Video'});
       Session.set("url", q.url);
       Session.set("video", q._id);
       LaptopBattle.video.play(Session.get('url')); 

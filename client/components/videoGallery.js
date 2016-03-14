@@ -1,7 +1,7 @@
 //load all videos and populate on the page
 Template.battleHome.helpers({
   videos : {
-      'content' : Videos.find({}, {sort: {date: -1}}),
+      'content' : Videos.find({ "state.vote" : true  }, {sort: { date: -1} }),
       'length'  : function(){
 
         return this.content.count();

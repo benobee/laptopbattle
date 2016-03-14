@@ -8,6 +8,6 @@ Template.home.onRendered(function(){
 	
     $('.spinner-wrapper').addClass('hide');	
     Session.set('duration', null);
-    
+   
 });
 

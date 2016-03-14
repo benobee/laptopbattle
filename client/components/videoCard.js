@@ -13,7 +13,6 @@ Template.videoCard.helpers({
     voted : function(){
       var voteList = _.map(this.votes, function(user){
         return user.userId;
-
       });     
       var voted = _.contains(voteList, Meteor.userId());
 
@@ -22,16 +21,13 @@ Template.videoCard.helpers({
 
       } else {
         return 0;
-
       }
-
     }
 });
 
 Template.videoCard.events({
 
     'click .card' : function(){
-
         $('.spinner-wrapper').removeClass('hide');
         Session.set("url" , this.url);
         Session.set("video" , this._id);
@@ -40,19 +36,15 @@ Template.videoCard.events({
         $('#spinner-wrapper').fadeIn();
     },
     'click .extra.content.vote' : function(e){
-
         //vote for the video
         e.stopPropagation();
         Meteor.call("vote", this._id, Meteor.user()._id);
         Meteor.call("addPoints", this._id, this.id, "vote");
-
     },
     'click .extra.content.voted' : function(e){
-
         //remove vote for the video
         e.stopPropagation();
         Meteor.call("removeVote", this._id, Meteor.user()._id );
         Meteor.call("removePoints", Meteor.userId(), this._id, this.id);
-
     }
 });

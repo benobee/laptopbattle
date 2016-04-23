@@ -19,18 +19,18 @@
 
                             <div class="controls">
                               {{ #if currentUser }}
+                         
+                                {{ #if this.state.vote }}<a id="vote" class="square button {{#if voted}}voted{{else}}vote{{/if}}" data-voted="{{voted}}" data-votes="{{count}}"><i class="heart icon"></i>{{count}}</a>{{ /if }}
 
-                              {{ #if this.state.vote }}
+                                {{ #if this.state.share }}<a id="share" target="_blank" href="{{ shareLink }}" data-layout="button_count" class="square button share"><i class="square facebook icon"></i>Share</a>{{/if}}
 
-                                <a id="vote" class="square button {{#if voted}}voted{{else}}vote{{/if}}" data-voted="{{voted}}" data-votes="{{count}}"><i class="heart icon"></i>{{count}}</a>                               
-                                <a id="share" target="_blank" href="{{ shareLink }}" data-layout="button_count" class="square button share"><i class="square facebook icon"></i>Share</a>
-                                {{#if next}}<a id="playNext" data-url="{{ next }}" class="square button"><i class="chevron right icon"></i>Next</a>
-                                  {{else}}
-                                  <a data-url="{{ previous }}" id="playNext" class="square button"><i class="chevron right icon"></i>Next</a> 
+                                {{ #if this.state.playlist }}
+                                  {{#if next}}<a id="playNext" data-url="{{ next }}" class="square button"><i class="chevron right icon"></i>Next</a>
+                                  {{else}}<a data-url="{{ previous }}" id="playNext" class="square button">
+                                  <i class="chevron right icon"></i>Next</a>
+                                  {{/if}} 
                                 {{/if}}
-
-                              {{ /if }}
-
+                                
                                 <form method="post" id="commentForm">
                                   <input id="post" class="lb-input" type="text" autocomplete="off" required/> 
                                   <button class="square button" id="addComment" type="submit"><i class="comment icon"></i>Comment</button>
@@ -38,7 +38,7 @@
                               
                               {{else}}
 
-                                <h3>Login to Comment</h3>
+                                <h3>Login to Vote and Comment</h3>
 
                                 <button id="facebookLoginButton" class="square button">Login with Facebook</button>
 

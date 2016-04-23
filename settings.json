@@ -1,0 +1,9 @@
+{ "galaxy.meteor.com": 
+	{ "env": 
+		{
+			"ROOT_URL"  : "http://www.laptopbattle.com",
+			"MONGO_URL" : "mongodb://battlepro:battle2016@ds021219-a0.mlab.com:21219,ds021219-a1.mlab.com:21219/lb-db?replicaSet=rs-ds021219"
+		} 
+	}
+}
+

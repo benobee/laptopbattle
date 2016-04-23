@@ -11,9 +11,7 @@ Template.videoCard.helpers({
     },
 
     voted : function(){
-      var voteList = _.map(this.votes, function(user){
-        return user.userId;
-      });     
+      var voteList = _.map(this.votes, user => user.userId);     
       var voted = _.contains(voteList, Meteor.userId());
 
       if (voted == true){
@@ -37,9 +35,11 @@ Template.videoCard.events({
     },
     'click .extra.content.vote' : function(e){
         //vote for the video
-        e.stopPropagation();
-        Meteor.call("vote", this._id, Meteor.user()._id);
-        Meteor.call("addPoints", this._id, this.id, "vote");
+        if(Meteor.user() !== null){
+          e.stopPropagation();
+          Meteor.call("vote", this._id, Meteor.user()._id);
+          Meteor.call("addPoints", this._id, this.id, "vote");
+        } 
     },
     'click .extra.content.voted' : function(e){
         //remove vote for the video

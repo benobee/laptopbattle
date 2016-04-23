@@ -1,7 +1,6 @@
 Template.navbar.events({
   'click #signOut':function(e){
       e.preventDefault();
-
       $('#menuStart').sidebar('hide');
       Meteor.logout();
       Router.go('/');

@@ -3,22 +3,22 @@ Template.videoEdit.events({
 	'click #save'(e){
         e.preventDefault();
 		var data = $('#videoEditForm').serializeArray();
-
 	    var url = data[1].value;
-	    var res = url.split("=");
+	    var res = url.split("=");console.log(res[1], this._id);
 
-		Meteor.call('updateVideo', this._id, data[0].value, res[1]);
-		LaptopBattle.menu.hideForm();
+		Meteor.call('updateVideo', this._id, data[0].value, res[1], function(error, result){
+			if (error){ console.log(error)};
 
-		var element = document.getElementById('videoEditSettings');
+			LaptopBattle.menu.hideForm();
+			var element = document.getElementById('videoEditSettings');
 
-		if(element !== null){
-			
-	    	var view = Blaze.getView(element);
-	      	Blaze.remove(view);
+			if(element !== null){
+				
+		    	var view = Blaze.getView(element);
+		      	Blaze.remove(view);
 
-		}
-
+			}
+		});
 	},
 	'click #deleteVideo'(e){
 		e.preventDefault();

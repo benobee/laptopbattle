@@ -1,4 +1,8 @@
 meteor build deployment --architecture os.linux.x86_64
 
+meteor deploy laptopbattle.meteorapp.com --settings test_settings.json
+
+meteor deploy www.laptopbattle.com --settings settings.json
+
 
 

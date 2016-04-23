@@ -4,7 +4,6 @@ Template.forms.events({
 		LaptopBattle.menu.hideForm();
 
 		var element = document.getElementById('videoEditSettings');
-		console.log(element);
 		if(element !== null){
 
 	    	var view = Blaze.getView(element);

@@ -1,5 +1,5 @@
 Template.battleVideo.onRendered(function(){
-
+  $('#spinner-wrapper').removeClass('hide');
   function run(){
     var url = (function(){ 
 
@@ -13,11 +13,12 @@ Template.battleVideo.onRendered(function(){
       return url[1];
 
     })();
+
     LaptopBattle.video.play(url);
   }
 
   $(document).ready(function(){
-    Meteor.setTimeout(run, 1000);
+    Meteor.setTimeout(run, 1700);
   });
 
 });
@@ -30,7 +31,7 @@ Template.battleVideo.helpers({
   },
   next: function(){
     var current = Videos.findOne({_id: Session.get('video')});
-    var query = Videos.find({date: {$gt: current.date}, "state.vote" : true }, {sort: {date: 1}, limit:1});
+    var query = Videos.find({date: {$gt: current.date}, "state.playlist" : true }, {sort: {date: 1}, limit:1});
     if(query.fetch().length !== 0){
       return query.fetch()[0]._id + '?url=' + query.fetch()[0].url;   
       return true;
@@ -39,7 +40,7 @@ Template.battleVideo.helpers({
   },
   previous: function(){
     var current = Videos.findOne({_id: Session.get('video')});
-    var query = Videos.find({date: {$lt: current.date}, "state.vote" : true }, {sort: {date: 1}, limit:1});
+    var query = Videos.find({date: {$lt: current.date}, "state.playlist" : true }, {sort: {date: 1}, limit:1});
     if(query.fetch().length !== 0){
       return query.fetch()[0]._id + '?url=' + query.fetch()[0].url;   
       return true;
@@ -64,7 +65,7 @@ Template.battleVideo.helpers({
   count : function(){
       //show count of votes per video
       if(this.votes == undefined){
-        return "no votes";
+        return "0 votes";
       } else if (this.votes.length == 1){
         return this.votes.length + " " + "vote";  
       } else {
@@ -81,13 +82,10 @@ Template.battleVideo.helpers({
       } else {
         return 0;
       }
-
     },
-    shareLink : function(){
-      var controller = Iron.controller();
-      var params = controller.getParams();      
-      return "https://www.facebook.com/sharer/sharer.php?u=http%3A//laptopbattle.com//battle/" + params._id + "?url=" + params.query.url;
-    }  
+    shareLink(){ 
+      return "https://www.facebook.com/sharer/sharer.php?u=http%3A//"+ location.host +"//battle/" + this._id + "?url=" + this.url;
+    } 
 });
 
 //new comment form
